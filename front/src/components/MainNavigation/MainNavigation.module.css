@@ -1,4 +1,6 @@
 .mainNav {
+  display: flex;
+  justify-content: space-evenly;
   background-color: white;
 }
 
@@ -21,4 +23,8 @@
   background-color: white;
   border: solid #a4ac9e;
   color: #a4ac9e;
+}
+
+.logo {
+  width: 8rem;
 }

@@ -16,7 +16,11 @@ const MainNavigation = () => {
             </Button>
             <Button className={classes.mainNavButton}>RECIPES</Button>
             <Button className={classes.mainNavButton}>ARTICLES</Button>
-            <img alt="logo of the website" src={logo} />
+            <img
+              alt="logo of the website"
+              src={logo}
+              className={classes.logo}
+            />
             <Button className={classes.mainNavButton}>ADMIN</Button>
             <Button className={classes.mainNavButton}>ABOUT US</Button>
             <Button className={classes.mainNavButton}>CONTACT US</Button>
