@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
+import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
@@ -28,8 +29,8 @@ const MainNavigation = () => {
   };
 
   const openSearchBarHandler = () => {
-    setOpenSearchBar(!openSearchBar)
-  }
+    setOpenSearchBar(!openSearchBar);
+  };
 
   return (
     <React.Fragment>
@@ -80,29 +81,48 @@ const MainNavigation = () => {
             <MainButton className={classes.mainButton}>LOGIN</MainButton>
           </Toolbar>
         </AppBar>
-        {openSearchBar && <Box className={classes.searchSection}>
-          <TextField
-            id="search-bar"
-            label="Search everything"
-            variant="outlined"
-            InputProps={{
-              endAdornment: (
-                <InputAdornment position="end">
-                  <SearchIcon />
-                </InputAdornment>
-              ),
-              className: classes.outlinedSearchBar,
-            }}
-            className={classes.searchBar}
-          />
-        </Box>}
+        <AppBar position="static">
+          <Toolbar className={classes.responsiveMainNav}>
+            <IconButton onClick={openSearchBarHandler}>
+              <SearchIcon sx={{ color: '#a4ac9e' }} />
+            </IconButton>
+
+            <img
+              alt="logo of the website"
+              src={logo}
+              className={classes.logo}
+            />
+            <IconButton
+              size="large"
+              edge="start"
+              aria-label="menu"
+              sx={{ mr: 2 }}
+            >
+              <MenuIcon sx={{ color: '#a4ac9e' }} />
+            </IconButton>
+          </Toolbar>
+        </AppBar>
+        {openSearchBar && (
+          <Box className={classes.searchSection}>
+            <TextField
+              id="search-bar"
+              label="Search everything"
+              variant="outlined"
+              InputProps={{
+                endAdornment: (
+                  <InputAdornment position="end">
+                    <SearchIcon />
+                  </InputAdornment>
+                ),
+                className: classes.outlinedSearchBar,
+              }}
+              className={classes.searchBar}
+            />
+          </Box>
+        )}
       </StyledEngineProvider>
     </React.Fragment>
   );
 };
-// '& .MuiSlider-thumb': {
-//   borderRadius: '1px',
-// },
-// .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root
 
 export default MainNavigation;
