@@ -18,3 +18,9 @@
 .logo {
   width: 8rem;
 }
+
+.mainNavMenuItem {
+  font-family: 'Yuji Syuku', serif;
+  font-size: 1rem;
+  color: #a4ac9e;
+}
