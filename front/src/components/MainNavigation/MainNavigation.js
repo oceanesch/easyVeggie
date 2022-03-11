@@ -6,6 +6,8 @@ import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
+import SearchIcon from '@mui/icons-material/Search';
+import IconButton from '@mui/material/IconButton';
 import logo from '../../images/logo_easy_veggie_2.png';
 import MainButton from '../Button/MainButton';
 
@@ -26,6 +28,9 @@ const MainNavigation = () => {
       <StyledEngineProvider injectFirst>
         <AppBar position="static">
           <Toolbar className={classes.mainNav}>
+            <IconButton>
+              <SearchIcon sx={{ color: '#a4ac9e' }} />
+            </IconButton>
             <Button className={classes.mainNavButton}>
               NUTRITIONAL RECORDS
             </Button>
@@ -52,9 +57,15 @@ const MainNavigation = () => {
               onClose={closeHandler}
               MenuListProps={{ 'aria-labelledby': 'admin-button' }}
             >
-              <MenuItem className={classes.mainNavMenuItem}>Nutritional Records List</MenuItem>
-              <MenuItem className={classes.mainNavMenuItem}>Recipes List</MenuItem>
-              <MenuItem className={classes.mainNavMenuItem}>Articles List</MenuItem>
+              <MenuItem className={classes.mainNavMenuItem}>
+                Nutritional Records List
+              </MenuItem>
+              <MenuItem className={classes.mainNavMenuItem}>
+                Recipes List
+              </MenuItem>
+              <MenuItem className={classes.mainNavMenuItem}>
+                Articles List
+              </MenuItem>
             </Menu>
             <Button className={classes.mainNavButton}>ABOUT US</Button>
             <Button className={classes.mainNavButton}>CONTACT US</Button>
