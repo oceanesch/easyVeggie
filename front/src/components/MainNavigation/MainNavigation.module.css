@@ -6,23 +6,13 @@
 
 .mainNavButton {
   font-family: 'Yuji Syuku', serif;
+  font-size: 1rem;
   color: #a4ac9e;
-}
-
-.mainButton {
-  background-color: #a4ac9e;
-  color: white;
 }
 
 .mainNavButton:hover {
   background-color: white;
   text-decoration: underline;
-}
-
-.mainButton:hover {
-  background-color: white;
-  border: solid #a4ac9e;
-  color: #a4ac9e;
 }
 
 .logo {

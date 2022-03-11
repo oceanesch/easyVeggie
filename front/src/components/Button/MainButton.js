@@ -1,10 +1,10 @@
 import React from 'react';
 import { StyledEngineProvider } from '@mui/material/styles';
-import classes from './mainButton.module.css';
+import classes from './MainButton.module.css';
 
 import Button from '@mui/material/Button';
 
-const mainButton = (props) => {
+const MainButton = (props) => {
   return (
     <React.Fragment>
       <StyledEngineProvider injectFirst>
@@ -14,4 +14,4 @@ const mainButton = (props) => {
   );
 };
 
-export default mainButton;
+export default MainButton;
