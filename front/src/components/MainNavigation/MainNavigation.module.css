@@ -24,3 +24,22 @@
   font-size: 1rem;
   color: #a4ac9e;
 }
+
+.searchSection {
+  background-color: #64825e;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchBar {
+  background-color: white;
+  width: 50%;
+  border-radius: 3rem;
+}
+
+.outlinedSearchBar {
+  border-radius: 3rem;
+}

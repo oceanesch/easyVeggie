@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { StyledEngineProvider } from '@mui/material/styles';
 import classes from './MainNavigation.module.css';
 import Toolbar from '@mui/material/Toolbar';
@@ -8,11 +8,15 @@ import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@mui/material/IconButton';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import InputAdornment from '@mui/material/InputAdornment';
 import logo from '../../images/logo_easy_veggie_2.png';
 import MainButton from '../Button/MainButton';
 
 const MainNavigation = () => {
   const [anchorEl, setAnchorEl] = useState(null);
+  const [openSearchBar, setOpenSearchBar] = useState(false);
   const open = Boolean(anchorEl);
 
   const adminButtonHandler = (event) => {
@@ -23,12 +27,16 @@ const MainNavigation = () => {
     setAnchorEl(null);
   };
 
+  const openSearchBarHandler = () => {
+    setOpenSearchBar(!openSearchBar)
+  }
+
   return (
-    <div>
+    <React.Fragment>
       <StyledEngineProvider injectFirst>
         <AppBar position="static">
           <Toolbar className={classes.mainNav}>
-            <IconButton>
+            <IconButton onClick={openSearchBarHandler}>
               <SearchIcon sx={{ color: '#a4ac9e' }} />
             </IconButton>
             <Button className={classes.mainNavButton}>
@@ -72,9 +80,29 @@ const MainNavigation = () => {
             <MainButton className={classes.mainButton}>LOGIN</MainButton>
           </Toolbar>
         </AppBar>
+        {openSearchBar && <Box className={classes.searchSection}>
+          <TextField
+            id="search-bar"
+            label="Search everything"
+            variant="outlined"
+            InputProps={{
+              endAdornment: (
+                <InputAdornment position="end">
+                  <SearchIcon />
+                </InputAdornment>
+              ),
+              className: classes.outlinedSearchBar,
+            }}
+            className={classes.searchBar}
+          />
+        </Box>}
       </StyledEngineProvider>
-    </div>
+    </React.Fragment>
   );
 };
+// '& .MuiSlider-thumb': {
+//   borderRadius: '1px',
+// },
+// .css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root
 
 export default MainNavigation;
