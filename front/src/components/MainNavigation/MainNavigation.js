@@ -17,8 +17,10 @@ import MainButton from '../Button/MainButton';
 
 const MainNavigation = () => {
   const [anchorEl, setAnchorEl] = useState(null);
-  const [openSearchBar, setOpenSearchBar] = useState(false);
   const open = Boolean(anchorEl);
+
+  const [openSearchBar, setOpenSearchBar] = useState(false);
+  const [openResponsiveMenu, setOpenResponsiveMenu] = useState(false);
 
   const adminButtonHandler = (event) => {
     setAnchorEl(event.currentTarget);
@@ -30,6 +32,10 @@ const MainNavigation = () => {
 
   const openSearchBarHandler = () => {
     setOpenSearchBar(!openSearchBar);
+  };
+
+  const openResponsiveMenuHandler = () => {
+    setOpenResponsiveMenu(!openResponsiveMenu);
   };
 
   return (
@@ -78,7 +84,7 @@ const MainNavigation = () => {
             </Menu>
             <Button className={classes.mainNavButton}>ABOUT US</Button>
             <Button className={classes.mainNavButton}>CONTACT US</Button>
-            <MainButton className={classes.mainButton}>LOGIN</MainButton>
+            <MainButton>LOGIN</MainButton>
           </Toolbar>
         </AppBar>
         <AppBar position="static">
@@ -86,7 +92,6 @@ const MainNavigation = () => {
             <IconButton onClick={openSearchBarHandler}>
               <SearchIcon sx={{ color: '#a4ac9e' }} />
             </IconButton>
-
             <img
               alt="logo of the website"
               src={logo}
@@ -97,11 +102,50 @@ const MainNavigation = () => {
               edge="start"
               aria-label="menu"
               sx={{ mr: 2 }}
+              onClick={openResponsiveMenuHandler}
             >
               <MenuIcon sx={{ color: '#a4ac9e' }} />
             </IconButton>
           </Toolbar>
         </AppBar>
+        {openResponsiveMenu && (
+          <Box className={classes.responsiveMenu}>
+            <Button className={classes.mainNavButton}>
+              NUTRITIONAL RECORDS
+            </Button>
+            <Button className={classes.mainNavButton}>RECIPES</Button>
+            <Button className={classes.mainNavButton}>ARTICLES</Button>
+            <Button
+              id="admin-button"
+              aria-controls={open ? 'admin-menu' : undefined}
+              aria-expanded={open ? 'true' : undefined}
+              onClick={adminButtonHandler}
+              className={classes.mainNavButton}
+            >
+              ADMIN
+            </Button>
+            <Menu
+              id="admin-menu"
+              anchorEl={anchorEl}
+              open={open}
+              onClose={closeHandler}
+              MenuListProps={{ 'aria-labelledby': 'admin-button' }}
+            >
+              <MenuItem className={classes.mainNavMenuItem}>
+                Nutritional Records List
+              </MenuItem>
+              <MenuItem className={classes.mainNavMenuItem}>
+                Recipes List
+              </MenuItem>
+              <MenuItem className={classes.mainNavMenuItem}>
+                Articles List
+              </MenuItem>
+            </Menu>
+            <Button className={classes.mainNavButton}>ABOUT US</Button>
+            <Button className={classes.mainNavButton}>CONTACT US</Button>
+            <MainButton>LOGIN</MainButton>
+          </Box>
+        )}
         {openSearchBar && (
           <Box className={classes.searchSection}>
             <TextField

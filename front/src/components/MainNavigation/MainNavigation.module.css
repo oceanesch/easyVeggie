@@ -4,16 +4,65 @@
 
 .responsiveMainNav {
   display: flex;
-    justify-content: space-evenly;
-    background-color: white;
+  justify-content: space-evenly;
+  background-color: white;
 }
 
 .logo {
   width: 8rem;
 }
 
+.responsiveMenu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 2rem;
+}
+
+.mainNavButton {
+  font-family: 'Yuji Syuku', serif;
+  font-size: 1rem;
+  color: #a4ac9e;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+
+.mainNavButton:hover {
+  background-color: white;
+  text-decoration: underline;
+}
+
+.mainNavMenuItem {
+  font-family: 'Yuji Syuku', serif;
+  font-size: 1rem;
+  color: #a4ac9e;
+}
+
+.searchSection {
+  background-color: #64825e;
+  height: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.searchBar {
+  background-color: white;
+  width: 50%;
+  border-radius: 3rem;
+}
+
+.outlinedSearchBar {
+  border-radius: 3rem;
+}
+
 @media (min-width: 950px) {
-  .responsiveMainNav{
+  .responsiveMainNav {
+    display: none;
+  }
+
+  .responsiveMenu {
     display: none;
   }
 
@@ -24,40 +73,6 @@
   }
 
   .mainNavButton {
-    font-family: 'Yuji Syuku', serif;
-    font-size: 1rem;
-    color: #a4ac9e;
-  }
-
-  .mainNavButton:hover {
-    background-color: white;
-    text-decoration: underline;
-  }
-
- 
-
-  .mainNavMenuItem {
-    font-family: 'Yuji Syuku', serif;
-    font-size: 1rem;
-    color: #a4ac9e;
-  }
-
-  .searchSection {
-    background-color: #64825e;
-    height: 5rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .searchBar {
-    background-color: white;
-    width: 50%;
-    border-radius: 3rem;
-  }
-
-  .outlinedSearchBar {
-    border-radius: 3rem;
+    padding: 0rem;
   }
 }
