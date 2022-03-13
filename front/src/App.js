@@ -1,4 +1,4 @@
-import MainNavigation from './components/MainNavigation/MainNavigation';
+import { MainNavigation } from './shared';
 
 function App() {
   return (

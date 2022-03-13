@@ -1,0 +1,10 @@
+.mainButton {
+  background-color: #a4ac9e;
+  color: white;
+}
+
+.mainButton:hover {
+  background-color: white;
+  border: solid #a4ac9e;
+  color: #a4ac9e;
+}
