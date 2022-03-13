@@ -4,7 +4,7 @@ import classes from './MainButton.module.css';
 
 import Button from '@mui/material/Button';
 
-const MainButton = (props) => {
+export const MainButton = (props) => {
   return (
     <React.Fragment>
       <StyledEngineProvider injectFirst>
@@ -13,5 +13,3 @@ const MainButton = (props) => {
     </React.Fragment>
   );
 };
-
-export default MainButton;

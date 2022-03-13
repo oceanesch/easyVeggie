@@ -4,31 +4,16 @@ import classes from './MainNavigation.module.css';
 import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
-import Menu from '@mui/material/Menu';
-import MenuItem from '@mui/material/MenuItem';
 import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
 import IconButton from '@mui/material/IconButton';
 import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import InputAdornment from '@mui/material/InputAdornment';
-import logo from '../../images/logo_easy_veggie_2.png';
-import MainButton from '../Button/MainButton';
+import { MainButton } from '../Button/MainButton';
+import { SearchBar } from '../SearchBar/SearchBar';
 
-const MainNavigation = () => {
-  const [anchorEl, setAnchorEl] = useState(null);
-  const open = Boolean(anchorEl);
-
+export const MainNavigation = () => {
   const [openSearchBar, setOpenSearchBar] = useState(false);
   const [openResponsiveMenu, setOpenResponsiveMenu] = useState(false);
-
-  const adminButtonHandler = (event) => {
-    setAnchorEl(event.currentTarget);
-  };
-
-  const closeHandler = () => {
-    setAnchorEl(null);
-  };
 
   const openSearchBarHandler = () => {
     setOpenSearchBar(!openSearchBar);
@@ -53,35 +38,10 @@ const MainNavigation = () => {
             <Button className={classes.mainNavButton}>ARTICLES</Button>
             <img
               alt="logo of the website"
-              src={logo}
+              src="images/logo_easy_veggie_2.png"
               className={classes.logo}
             />
-            <Button
-              id="admin-button"
-              aria-controls={open ? 'admin-menu' : undefined}
-              aria-expanded={open ? 'true' : undefined}
-              onClick={adminButtonHandler}
-              className={classes.mainNavButton}
-            >
-              ADMIN
-            </Button>
-            <Menu
-              id="admin-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={closeHandler}
-              MenuListProps={{ 'aria-labelledby': 'admin-button' }}
-            >
-              <MenuItem className={classes.mainNavMenuItem}>
-                Nutritional Records List
-              </MenuItem>
-              <MenuItem className={classes.mainNavMenuItem}>
-                Recipes List
-              </MenuItem>
-              <MenuItem className={classes.mainNavMenuItem}>
-                Articles List
-              </MenuItem>
-            </Menu>
+            <Button className={classes.mainNavButton}>ADMIN</Button>
             <Button className={classes.mainNavButton}>ABOUT US</Button>
             <Button className={classes.mainNavButton}>CONTACT US</Button>
             <MainButton>LOGIN</MainButton>
@@ -94,7 +54,7 @@ const MainNavigation = () => {
             </IconButton>
             <img
               alt="logo of the website"
-              src={logo}
+              src="images/logo_easy_veggie_2.png"
               className={classes.logo}
             />
             <IconButton
@@ -115,32 +75,7 @@ const MainNavigation = () => {
             </Button>
             <Button className={classes.mainNavButton}>RECIPES</Button>
             <Button className={classes.mainNavButton}>ARTICLES</Button>
-            <Button
-              id="admin-button"
-              aria-controls={open ? 'admin-menu' : undefined}
-              aria-expanded={open ? 'true' : undefined}
-              onClick={adminButtonHandler}
-              className={classes.mainNavButton}
-            >
-              ADMIN
-            </Button>
-            <Menu
-              id="admin-menu"
-              anchorEl={anchorEl}
-              open={open}
-              onClose={closeHandler}
-              MenuListProps={{ 'aria-labelledby': 'admin-button' }}
-            >
-              <MenuItem className={classes.mainNavMenuItem}>
-                Nutritional Records List
-              </MenuItem>
-              <MenuItem className={classes.mainNavMenuItem}>
-                Recipes List
-              </MenuItem>
-              <MenuItem className={classes.mainNavMenuItem}>
-                Articles List
-              </MenuItem>
-            </Menu>
+            <Button className={classes.mainNavButton}>ADMIN</Button>
             <Button className={classes.mainNavButton}>ABOUT US</Button>
             <Button className={classes.mainNavButton}>CONTACT US</Button>
             <MainButton>LOGIN</MainButton>
@@ -148,25 +83,10 @@ const MainNavigation = () => {
         )}
         {openSearchBar && (
           <Box className={classes.searchSection}>
-            <TextField
-              id="search-bar"
-              label="Search everything"
-              variant="outlined"
-              InputProps={{
-                endAdornment: (
-                  <InputAdornment position="end">
-                    <SearchIcon />
-                  </InputAdornment>
-                ),
-                className: classes.outlinedSearchBar,
-              }}
-              className={classes.searchBar}
-            />
+            <SearchBar />
           </Box>
         )}
       </StyledEngineProvider>
     </React.Fragment>
   );
 };
-
-export default MainNavigation;
