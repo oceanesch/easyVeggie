@@ -47,16 +47,6 @@
   align-items: center;
 }
 
-/* .searchBar {
-  background-color: white;
-  width: 50%;
-  border-radius: 3rem;
-}
-
-.outlinedSearchBar {
-  border-radius: 3rem;
-} */
-
 @media (min-width: 950px) {
   .responsiveMainNav {
     display: none;
