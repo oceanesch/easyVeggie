@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
 import classes from './MainNavigation.module.css';
 import Toolbar from '@mui/material/Toolbar';
@@ -36,12 +37,20 @@ export const MainNavigation = () => {
             </Button>
             <Button className={classes.mainNavButton}>RECIPES</Button>
             <Button className={classes.mainNavButton}>ARTICLES</Button>
-            <img
-              alt="logo of the website"
-              src="images/logo_easy_veggie_2.png"
-              className={classes.logo}
-            />
-            <Button className={classes.mainNavButton}>ADMIN</Button>
+            <RouterLink to="/">
+              <img
+                alt="logo of the website"
+                src="images/logo_easy_veggie_2.png"
+                className={classes.logo}
+              />
+            </RouterLink>
+            <Button
+              className={classes.mainNavButton}
+              component={RouterLink}
+              to="/admin"
+            >
+              ADMIN
+            </Button>
             <Button className={classes.mainNavButton}>ABOUT US</Button>
             <Button className={classes.mainNavButton}>CONTACT US</Button>
             <MainButton>LOGIN</MainButton>
@@ -52,11 +61,13 @@ export const MainNavigation = () => {
             <IconButton onClick={openSearchBarHandler}>
               <SearchIcon sx={{ color: '#a4ac9e' }} />
             </IconButton>
-            <img
-              alt="logo of the website"
-              src="images/logo_easy_veggie_2.png"
-              className={classes.logo}
-            />
+            <RouterLink to="/">
+              <img
+                alt="logo of the website"
+                src="images/logo_easy_veggie_2.png"
+                className={classes.logo}
+              />
+            </RouterLink>
             <IconButton
               size="large"
               edge="start"
@@ -75,7 +86,13 @@ export const MainNavigation = () => {
             </Button>
             <Button className={classes.mainNavButton}>RECIPES</Button>
             <Button className={classes.mainNavButton}>ARTICLES</Button>
-            <Button className={classes.mainNavButton}>ADMIN</Button>
+            <Button
+              className={classes.mainNavButton}
+              component={RouterLink}
+              to="/admin"
+            >
+              ADMIN
+            </Button>
             <Button className={classes.mainNavButton}>ABOUT US</Button>
             <Button className={classes.mainNavButton}>CONTACT US</Button>
             <MainButton>LOGIN</MainButton>
