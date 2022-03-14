@@ -6,6 +6,7 @@ import ListItemText from '@mui/material/ListItemText';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
+import { ListItem } from '@mui/material';
 
 const SideMenu = () => {
   const [openSideMenu, setOpenSideMenu] = useState(false);
@@ -47,6 +48,33 @@ const SideMenu = () => {
     setOpenSideMenu(!setOpenSideMenu);
   };
 
+  const menu = [
+    {
+      key: 1,
+      primaryName: 'NUTRITIONAL RECORDS',
+      nestedList1: 'Nutritional records list',
+      nestedList2: 'Add a new nutritional record',
+      toggleFunction: toggleNestedNutritionalRecordsHandler,
+      state: openNestedMenu.openNutritionalNestedMenu,
+    },
+    {
+      key: 2,
+      primaryName: 'RECIPES',
+      nestedList1: 'Recipes list',
+      nestedList2: 'Add a new recipe',
+      toggleFunction: toggleNestedRecipesHandler,
+      state: openNestedMenu.openRecipeNestedMenu,
+    },
+    {
+      key: 3,
+      primaryName: 'ARTICLES',
+      nestedList1: 'Articles list',
+      nestedList2: 'Add a new article',
+      toggleFunction: toggleNestedArticlesHandler,
+      state: openNestedMenu.openArticleNestedMenu,
+    },
+  ];
+
   return (
     <SwipeableDrawer
       anchor="left"
@@ -56,72 +84,26 @@ const SideMenu = () => {
       variant="permanent"
     >
       <List>
-        <ListItemButton onClick={toggleNestedNutritionalRecordsHandler}>
-          <ListItemText primary="NUTRITIONAL RECORDS" />
-          {openNestedMenu.openNutritionalNestedMenu ? (
-            <ExpandLess />
-          ) : (
-            <ExpandMore />
-          )}
-        </ListItemButton>
-        <Collapse
-          in={openNestedMenu.openNutritionalNestedMenu}
-          timeout="auto"
-          unmountOnExit
-        >
-          <List>
-            <ListItemButton>
-              <ListItemText primary="Nutritional records list" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemText primary="Add a new nutritional record" />
-            </ListItemButton>
-          </List>
-        </Collapse>
-        <ListItemButton onClick={toggleNestedRecipesHandler}>
-          <ListItemText primary="RECIPES" />
-          {openNestedMenu.openRecipeNestedMenu ? (
-            <ExpandLess />
-          ) : (
-            <ExpandMore />
-          )}
-        </ListItemButton>
-        <Collapse
-          in={openNestedMenu.openRecipeNestedMenu}
-          timeout="auto"
-          unmountOnExit
-        >
-          <List>
-            <ListItemButton>
-              <ListItemText primary="Recipes list" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemText primary="Add a new recipe" />
-            </ListItemButton>
-          </List>
-        </Collapse>
-        <ListItemButton onClick={toggleNestedArticlesHandler}>
-          <ListItemText primary="ARTICLES" />
-          {openNestedMenu.openArticleNestedMenu ? (
-            <ExpandLess />
-          ) : (
-            <ExpandMore />
-          )}
-        </ListItemButton>
-        <Collapse
-          in={openNestedMenu.openArticleNestedMenu}
-          timeout="auto"
-          unmountOnExit
-        >
-          <List>
-            <ListItemButton>
-              <ListItemText primary="Articles List" />
-            </ListItemButton>
-            <ListItemButton>
-              <ListItemText primary="Add a new article" />
-            </ListItemButton>
-          </List>
-        </Collapse>
+        {menu.map((menuItem) => {
+          return (
+            <div key={menuItem.key}>
+              <ListItemButton onClick={menuItem.toggleFunction}>
+                <ListItemText primary={menuItem.primaryName} />
+                {menuItem.state ? <ExpandLess /> : <ExpandMore />}
+              </ListItemButton>
+              <Collapse in={menuItem.state} timeout="auto" unmountOnExit>
+                <List>
+                  <ListItemButton>
+                    <ListItemText primary={menuItem.nestedList1} />
+                  </ListItemButton>
+                  <ListItemButton>
+                    <ListItemText primary={menuItem.nestedList2} />
+                  </ListItemButton>
+                </List>
+              </Collapse>
+            </div>
+          );
+        })}
         <ListItemButton>
           <ListItemText primary="MANAGE USER" />
         </ListItemButton>
