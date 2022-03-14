@@ -1,0 +1,14 @@
+.sideMenuButton {
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+}
+
+.sideMenuText {
+  font-family: 'Yuji Syuku', serif;
+  font-size: 1rem;
+  color: #a4ac9e;
+}
+
+.nestedListItem {
+  padding-left: 1.5rem;
+}
