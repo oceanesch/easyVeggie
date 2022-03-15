@@ -1,4 +1,5 @@
 import { StyledEngineProvider } from '@mui/material/styles';
+import classes from './NutritionCard.module.css';
 import Card from '@mui/material/Card';
 import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
@@ -7,12 +8,14 @@ import IconButton from '@mui/material/IconButton';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
-const NutritionCard = () => {
+const NutritionCard = (props) => {
   return (
     <StyledEngineProvider injectFirst>
-      <Card>
+      <Card className={classes.nutritionCard}>
         <CardContent>
-          <Typography>Broccoli</Typography>
+          <Typography className={classes.nutritionCardText}>
+            {props.name}
+          </Typography>
         </CardContent>
         <CardActions>
           <IconButton>
