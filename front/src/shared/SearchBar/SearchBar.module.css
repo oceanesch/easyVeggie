@@ -6,4 +6,5 @@
 
 .outlinedSearchBar {
   border-radius: 3rem;
+  border: solid 2px #64825e;
 }

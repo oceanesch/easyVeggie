@@ -12,7 +12,6 @@ import Box from '@mui/material/Box';
 import classes from './SideMenu.module.css';
 
 const SideMenu = () => {
-
   const [openNestedMenu, setOpenNestedMenu] = useState({
     openNutritionalNestedMenu: false,
     openRecipeNestedMenu: false,
@@ -52,6 +51,7 @@ const SideMenu = () => {
       key: 1,
       primaryName: 'NUTRITIONAL RECORDS',
       nestedList1: 'Nutritional records list',
+      url1: '/admin/nutritionalrecordslist',
       nestedList2: 'Add a new nutritional record',
       toggleFunction: toggleNestedNutritionalRecordsHandler,
       state: openNestedMenu.openNutritionalNestedMenu,
@@ -78,13 +78,13 @@ const SideMenu = () => {
     <StyledEngineProvider injectFirst>
       <Drawer variant="permanent">
         <Box className={classes.sideMenu}>
-        <RouterLink to="/">
-              <img
-                alt="logo of the website"
-                src="images/logo_easy_veggie_2.png"
-                className={classes.logo}
-              />
-            </RouterLink>
+          <RouterLink to="/">
+            <img
+              alt="logo of the website"
+              src="images/logo_easy_veggie_2.png"
+              className={classes.logo}
+            />
+          </RouterLink>
           <List>
             {menu.map((menuItem) => {
               return (
@@ -101,13 +101,15 @@ const SideMenu = () => {
                   </ListItemButton>
                   <Collapse in={menuItem.state} timeout="auto" unmountOnExit>
                     <List>
-                      <ListItemButton>
-                        <ListItemText
-                          primary={menuItem.nestedList1}
-                          className={`${classes.sideMenuText} ${classes.nestedListItem}`}
-                          disableTypography={true}
-                        />
-                      </ListItemButton>
+                      <RouterLink to={menuItem.url1}>
+                        <ListItemButton>
+                          <ListItemText
+                            primary={menuItem.nestedList1}
+                            className={`${classes.sideMenuText} ${classes.nestedListItem}`}
+                            disableTypography={true}
+                          />
+                        </ListItemButton>
+                      </RouterLink>
                       <ListItemButton>
                         <ListItemText
                           primary={menuItem.nestedList2}
