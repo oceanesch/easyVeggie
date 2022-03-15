@@ -1,5 +1,12 @@
+import React from 'react';
+import SideMenu from '../UI/SideMenu';
+
 const AdminLandingPage = () => {
-  return <h1>ADMIN LANDING PAGE</h1>;
+  return (
+    <div>
+      <SideMenu />
+    </div>
+  );
 };
 
 export default AdminLandingPage;
