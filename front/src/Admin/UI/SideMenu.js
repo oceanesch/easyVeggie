@@ -78,10 +78,13 @@ const SideMenu = () => {
           {menu.map((menuItem) => {
             return (
               <div key={menuItem.key} className={classes.sideMenuButton}>
-                <ListItemButton onClick={menuItem.toggleFunction}>
+                <ListItemButton
+                  onClick={menuItem.toggleFunction}
+                  className={classes.sideMenuText}
+                >
                   <ListItemText
                     primary={menuItem.primaryName}
-                    className={classes.sideMenuText}
+                    disableTypography={true}
                   />
                   {menuItem.state ? <ExpandLess /> : <ExpandMore />}
                 </ListItemButton>
@@ -91,12 +94,14 @@ const SideMenu = () => {
                       <ListItemText
                         primary={menuItem.nestedList1}
                         className={`${classes.sideMenuText} ${classes.nestedListItem}`}
+                        disableTypography={true}
                       />
                     </ListItemButton>
                     <ListItemButton>
                       <ListItemText
                         primary={menuItem.nestedList2}
                         className={`${classes.sideMenuText} ${classes.nestedListItem}`}
+                        disableTypography={true}
                       />
                     </ListItemButton>
                   </List>
@@ -108,6 +113,7 @@ const SideMenu = () => {
             <ListItemText
               primary="MANAGE USER"
               className={classes.sideMenuText}
+              disableTypography={true}
             />
           </ListItemButton>
         </List>
