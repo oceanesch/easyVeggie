@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link as RouterLink } from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
 import Drawer from '@mui/material/Drawer';
 import List from '@mui/material/List';
@@ -7,9 +8,11 @@ import ListItemText from '@mui/material/ListItemText';
 import ExpandLess from '@mui/icons-material/ExpandLess';
 import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
+import Box from '@mui/material/Box';
 import classes from './SideMenu.module.css';
 
 const SideMenu = () => {
+
   const [openNestedMenu, setOpenNestedMenu] = useState({
     openNutritionalNestedMenu: false,
     openRecipeNestedMenu: false,
@@ -73,50 +76,59 @@ const SideMenu = () => {
 
   return (
     <StyledEngineProvider injectFirst>
-      <Drawer anchor="left" variant="permanent">
-        <List>
-          {menu.map((menuItem) => {
-            return (
-              <div key={menuItem.key} className={classes.sideMenuButton}>
-                <ListItemButton
-                  onClick={menuItem.toggleFunction}
-                  className={classes.sideMenuText}
-                >
-                  <ListItemText
-                    primary={menuItem.primaryName}
-                    disableTypography={true}
-                  />
-                  {menuItem.state ? <ExpandLess /> : <ExpandMore />}
-                </ListItemButton>
-                <Collapse in={menuItem.state} timeout="auto" unmountOnExit>
-                  <List>
-                    <ListItemButton>
-                      <ListItemText
-                        primary={menuItem.nestedList1}
-                        className={`${classes.sideMenuText} ${classes.nestedListItem}`}
-                        disableTypography={true}
-                      />
-                    </ListItemButton>
-                    <ListItemButton>
-                      <ListItemText
-                        primary={menuItem.nestedList2}
-                        className={`${classes.sideMenuText} ${classes.nestedListItem}`}
-                        disableTypography={true}
-                      />
-                    </ListItemButton>
-                  </List>
-                </Collapse>
-              </div>
-            );
-          })}
-          <ListItemButton>
-            <ListItemText
-              primary="MANAGE USER"
-              className={classes.sideMenuText}
-              disableTypography={true}
-            />
-          </ListItemButton>
-        </List>
+      <Drawer variant="permanent">
+        <Box className={classes.sideMenu}>
+        <RouterLink to="/">
+              <img
+                alt="logo of the website"
+                src="images/logo_easy_veggie_2.png"
+                className={classes.logo}
+              />
+            </RouterLink>
+          <List>
+            {menu.map((menuItem) => {
+              return (
+                <div key={menuItem.key} className={classes.sideMenuButton}>
+                  <ListItemButton
+                    onClick={menuItem.toggleFunction}
+                    className={classes.sideMenuText}
+                  >
+                    <ListItemText
+                      primary={menuItem.primaryName}
+                      disableTypography={true}
+                    />
+                    {menuItem.state ? <ExpandLess /> : <ExpandMore />}
+                  </ListItemButton>
+                  <Collapse in={menuItem.state} timeout="auto" unmountOnExit>
+                    <List>
+                      <ListItemButton>
+                        <ListItemText
+                          primary={menuItem.nestedList1}
+                          className={`${classes.sideMenuText} ${classes.nestedListItem}`}
+                          disableTypography={true}
+                        />
+                      </ListItemButton>
+                      <ListItemButton>
+                        <ListItemText
+                          primary={menuItem.nestedList2}
+                          className={`${classes.sideMenuText} ${classes.nestedListItem}`}
+                          disableTypography={true}
+                        />
+                      </ListItemButton>
+                    </List>
+                  </Collapse>
+                </div>
+              );
+            })}
+            <ListItemButton>
+              <ListItemText
+                primary="MANAGE USER"
+                className={classes.sideMenuText}
+                disableTypography={true}
+              />
+            </ListItemButton>
+          </List>
+        </Box>
       </Drawer>
     </StyledEngineProvider>
   );
