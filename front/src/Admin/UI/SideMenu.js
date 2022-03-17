@@ -53,6 +53,7 @@ const SideMenu = () => {
       nestedList1: 'Nutritional records list',
       url1: '/admin/nutritionalrecordslist',
       nestedList2: 'Add a new nutritional record',
+      url2: '/admin/addnewrecord',
       toggleFunction: toggleNestedNutritionalRecordsHandler,
       state: openNestedMenu.openNutritionalNestedMenu,
     },
@@ -110,13 +111,15 @@ const SideMenu = () => {
                           />
                         </ListItemButton>
                       </RouterLink>
-                      <ListItemButton>
-                        <ListItemText
-                          primary={menuItem.nestedList2}
-                          className={`${classes.sideMenuText} ${classes.nestedListItem}`}
-                          disableTypography={true}
-                        />
-                      </ListItemButton>
+                      <RouterLink to={menuItem.url2}>
+                        <ListItemButton>
+                          <ListItemText
+                            primary={menuItem.nestedList2}
+                            className={`${classes.sideMenuText} ${classes.nestedListItem}`}
+                            disableTypography={true}
+                          />
+                        </ListItemButton>
+                      </RouterLink>
                     </List>
                   </Collapse>
                 </div>

@@ -1,8 +1,9 @@
 import { Route, Routes } from 'react-router-dom';
+import { MainNavigation } from './shared';
 import LandingPage from './Landing Page/Page/LandingPage';
 import AdminLandingPage from './Admin/Pages/AdminLandingPage';
 import AdminNutritionalListPage from './Admin/Pages/AdminNutritionalListPage';
-import { MainNavigation } from './shared';
+import AdminAddNewRecord from './Admin/Pages/AdminAddNewRecord';
 
 function App() {
   return (
@@ -14,6 +15,10 @@ function App() {
         <Route
           path="/admin/nutritionalrecordslist"
           element={<AdminNutritionalListPage />}
+        />
+        <Route
+          path="/admin/addnewrecord"
+          element={<AdminAddNewRecord />}
         />
       </Routes>
     </div>
