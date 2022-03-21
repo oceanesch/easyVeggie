@@ -8,7 +8,9 @@ export const MainButton = (props) => {
   return (
     <React.Fragment>
       <StyledEngineProvider injectFirst>
-        <Button className={classes.mainButton}>{props.children}</Button>
+        <Button className={classes.mainButton} type={props.type || null}>
+          {props.children}
+        </Button>
       </StyledEngineProvider>
     </React.Fragment>
   );
