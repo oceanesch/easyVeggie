@@ -54,54 +54,54 @@ const nutritionalRecordSchema = new Schema({
     type: String,
     required: true,
   },
-  sodium: {
-    type: String,
-    required: true,
-  },
-  iron: {
-    type: String,
-    required: true,
-  },
-  potassium: {
-    type: String,
-    required: true,
-  },
-  calcium: {
-    type: String,
-    required: true,
-  },
-  zinc: {
-    type: String,
-    required: true,
-  },
-  vitaminA: {
-    type: String,
-    required: true,
-  },
-  vitaminB6: {
-    type: String,
-    required: true,
-  },
-  vitaminB12: {
-    type: String,
-    required: true,
-  },
-  vitaminC: {
-    type: String,
-    required: true,
-  },
-  vitaminD: {
-    type: String,
-    required: true,
-  },
-  vitaminE: {
-    type: String,
-    required: true,
-  },
-  vitaminK: {
-    type: String,
-    required: true,
-  },
+//   sodium: {
+//     type: String,
+//     required: true,
+//   },
+//   iron: {
+//     type: String,
+//     required: true,
+//   },
+//   potassium: {
+//     type: String,
+//     required: true,
+//   },
+//   calcium: {
+//     type: String,
+//     required: true,
+//   },
+//   zinc: {
+//     type: String,
+//     required: true,
+//   },
+//   vitaminA: {
+//     type: String,
+//     required: true,
+//   },
+//   vitaminB6: {
+//     type: String,
+//     required: true,
+//   },
+//   vitaminB12: {
+//     type: String,
+//     required: true,
+//   },
+//   vitaminC: {
+//     type: String,
+//     required: true,
+//   },
+//   vitaminD: {
+//     type: String,
+//     required: true,
+//   },
+//   vitaminE: {
+//     type: String,
+//     required: true,
+//   },
+//   vitaminK: {
+//     type: String,
+//     required: true,
+//   },
 });
 
 module.exports = mongoose.model('Nutritional Record', nutritionalRecordSchema);

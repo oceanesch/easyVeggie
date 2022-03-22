@@ -31,17 +31,30 @@ const microTable = [
   'Vitamin K',
 ];
 
+// const macroTable = [
+//   'calories',
+//   'totalFat',
+//   'saturatedFat',
+//   'unsaturatedFat',
+//   'Trans fat',
+//   'Cholesterol',
+//   'Total carbs',
+//   'Dietary fiber',
+//   'Total sugars',
+//   'Proteins',
+// ];
+
 const macroTable = [
-  'Calories',
-  'Total fat',
-  'Saturated fat',
-  'Unsaturated fat',
-  'Trans fat',
-  'Cholesterol',
-  'Total carbs',
-  'Dietary fiber',
-  'Total sugars',
-  'Proteins',
+  'calories',
+  'totalFat',
+  'saturatedFat',
+  'unsaturatedFat',
+  'transFat',
+  'cholesterol',
+  'totalCarbs',
+  'dietaryFiber',
+  'totalSugars',
+  'proteins',
 ];
 
 const AddNewRecordForm = () => {
@@ -55,6 +68,26 @@ const AddNewRecordForm = () => {
     },
     onSubmit: (values) => {
       console.log(values);
+
+      fetch('http://localhost:8080/admin/nutritionalrecord', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(values),
+      })
+        .then((response) => {
+          if (response.status !== 200 && response.status !== 201) {
+            throw new Error('Adding a new record failed.');
+          }
+          return response.json();
+        })
+        .then((responseData) => {
+          console.log(responseData);
+        })
+        .catch((error) => {
+          console.error(error);
+        });
     },
   });
 
