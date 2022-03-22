@@ -2,13 +2,23 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
+const nutritionalRecordRoutes = require('./routes/routes-nutritionalRecord');
+
 const app = express();
 
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 app.use((req, res, next) => {
-    res.status(200).json({message:'Success!'})
-})
+  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader(
+    'Access-Control-Allow-Methods',
+    'GET, POST, PUT, PATCH, DELETE'
+  );
+  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  next();
+});
+
+app.use('/admin', nutritionalRecordRoutes);
 
 mongoose
   .connect(
