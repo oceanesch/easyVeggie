@@ -98,7 +98,7 @@ const nutritionalRecordSchema = new Schema({
     type: String,
     required: true,
   },
-  vitaninK: {
+  vitaminK: {
     type: String,
     required: true,
   },
