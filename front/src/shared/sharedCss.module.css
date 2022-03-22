@@ -1,9 +1,16 @@
+.headSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
+}
+
 .mainTitle {
   font-family: 'Yuji Syuku', serif;
   font-size: 3.5rem;
   color: #64825e;
   text-align: center;
-  padding-top: 1.5rem;
+  padding: 1.5rem 0rem;
 }
 
 .subTitle {
@@ -11,4 +18,15 @@
   font-size: 1.5rem;
   color: #64825e;
   padding: 1rem;
+}
+
+.noLink {
+  text-decoration: none;
+}
+
+.searchSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0rem;
 }

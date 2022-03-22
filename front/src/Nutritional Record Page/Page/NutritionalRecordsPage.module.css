@@ -1,0 +1,15 @@
+.filterSection {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.filterSelect {
+    margin: 1.5rem 0rem;
+    background: #a4ac9e;
+    border: solid #64825e 2px;
+    border-radius: 50px;
+}
+
+.filterSection fieldset {
+    border-radius: 50px;
+}
