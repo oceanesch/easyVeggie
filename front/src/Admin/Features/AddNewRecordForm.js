@@ -29,7 +29,6 @@ const microTable = [
   'Vitamin D',
   'Vitamin E',
   'Vitamin K',
-  'Folate',
 ];
 
 const macroTable = [
