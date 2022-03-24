@@ -5,6 +5,7 @@ import AdminLandingPage from './Admin/Pages/AdminLandingPage';
 import AdminNutritionalListPage from './Admin/Pages/AdminNutritionalListPage';
 import AdminAddNewRecord from './Admin/Pages/AdminAddNewRecord';
 import NutritionalRecordsPage from './Nutritional Record Page/Page/NutritionalRecordsPage';
+import NutritionalRecordDetailPage from './Nutritional Record Detail/Page/NutritionalRecordDetailPage';
 
 function App() {
   return (
@@ -15,6 +16,10 @@ function App() {
         <Route
           path="/nutritionalrecords"
           element={<NutritionalRecordsPage />}
+        />
+        <Route
+          path="/nutritionalrecords/broccoli"
+          element={<NutritionalRecordDetailPage />}
         />
         <Route path="/admin" element={<AdminLandingPage />} />
         <Route

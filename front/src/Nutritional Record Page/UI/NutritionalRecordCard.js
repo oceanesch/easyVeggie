@@ -1,3 +1,4 @@
+import { Link as RouterLink } from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
 import {
   Card,
@@ -8,11 +9,17 @@ import {
 } from '@mui/material';
 import classes from './NutritionalRecordCard.module.css';
 
+// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+// <CardActionArea component={Link} to="/Blog">
+
 const NutritionalRecordCard = (props) => {
   return (
     <StyledEngineProvider injectFirst>
       <Card className={classes.card}>
-        <CardActionArea>
+        <CardActionArea
+          component={RouterLink}
+          to={props.URL}
+        >
           <CardMedia
             component="img"
             image={props.image}
