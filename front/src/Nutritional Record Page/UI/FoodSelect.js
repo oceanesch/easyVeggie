@@ -32,7 +32,6 @@ const FoodSelect = () => {
           <MenuItem value={'Vegetables'}>Vegetables</MenuItem>
         </Select>
       </FormControl>
-      ;
     </StyledEngineProvider>
   );
 };

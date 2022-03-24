@@ -1,0 +1,25 @@
+.cardSection {
+  display: flex;
+}
+
+.card {
+  box-sizing: border-box;
+  width: 17rem;
+  height: 15.5rem;
+  margin: 1.5rem;
+  padding: 1.5rem;
+  border: solid 3px #a4ac9e;
+  border-radius: 30px;
+}
+
+.cardImage {
+  height: 50%;
+}
+
+.cardTitle {
+  font-family: 'Yuji Syuku';
+  text-align: center;
+  font-size: 1.3rem;
+  color: #64825e;
+  font-weight: 500;
+}

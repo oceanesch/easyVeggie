@@ -1,7 +1,6 @@
-import { useState } from 'react';
 import { StyledEngineProvider } from '@mui/material/styles';
 import { Grid, Typography } from '@mui/material';
-import { SearchBar } from '../../shared';
+import { MainButton, SearchBar } from '../../shared';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import FoodSelect from '../UI/FoodSelect';
 import NutrientSelect from '../UI/NutrientSelect';
@@ -26,6 +25,7 @@ const SearchSection = () => {
           <NutrientSelect />
         </Grid>
       </Grid>
+        <MainButton>SUBMIT</MainButton>
     </StyledEngineProvider>
   );
 };
