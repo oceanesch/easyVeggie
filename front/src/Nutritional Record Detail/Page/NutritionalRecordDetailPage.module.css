@@ -1,0 +1,42 @@
+.foodDetailImage {
+  width: 45vw;
+  border-radius: 30px;
+}
+
+.foodDetailSection {
+  display: flex;
+  margin: 2rem;
+}
+
+.foodDetailArrayTitle {
+  font-family: 'Yuji Syuku', serif;
+  color: #64825e;
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+.foodDetailArrayText {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 1rem;
+  text-align: justify;
+}
+
+.foodDetailArrayRow {
+  justify-content: space-between;
+}
+
+.foodDetailArrayColumn {
+  width: 45%;
+}
+
+.foodDetailArrayItem {
+    justify-content: space-between;
+}
+
+.foodDetailArrayNutriValue {
+    text-align: right;
+}
+
+.foodDetailArrayImportant {
+    font-weight: 500;
+}

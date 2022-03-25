@@ -9,9 +9,6 @@ import {
 } from '@mui/material';
 import classes from './NutritionalRecordCard.module.css';
 
-// import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-// <CardActionArea component={Link} to="/Blog">
-
 const NutritionalRecordCard = (props) => {
   return (
     <StyledEngineProvider injectFirst>

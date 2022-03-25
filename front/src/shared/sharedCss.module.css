@@ -46,3 +46,10 @@
 .filterSection fieldset {
   border-radius: 50px;
 }
+
+.mainText {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 1rem;
+  text-align: justify;
+  padding: 1.2rem;
+}
