@@ -59,192 +59,226 @@ const NutritionalRecordDetailPage = () => {
           </Typography>
         </Grid>
       </Grid>
-
-      <img
-        alt="stack of broccoli"
-        src="../../images/image_broccoli.jpg"
-        className={classes.foodDetailImage}
-      />
-
-      <Typography component="h5" className={classes.foodDetailArrayTitle}>
-        NUTRITION FOR: {DUMMY_NUTRITIONAL_VALUES[0].quantity}{' '}
-      </Typography>
-      <Typography component="p" className={classes.foodDetailArrayText}>
-        Calories: {DUMMY_NUTRITIONAL_VALUES[0].calories}{' '}
-      </Typography>
-      <Divider />
-
-      <Grid container className={classes.foodDetailArrayRow}>
-        <Grid item className={classes.foodDetailArrayColumn}>
-          <List>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText
-                primaryTypographyProps={{classes: classes.foodDetailArrayImportant}}
-                primary="Total Fat"
-              />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].totalFat}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Saturated Fat" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].saturatedFat}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Unsaturated Fat" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].unsaturatedFat}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Trans Fat" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].transFat}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Cholesterol" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].cholesterol}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-          </List>
+      <Grid container className={classes.foodDetailMainSection}>
+        <Grid item>
+          <img
+            alt="stack of broccoli"
+            src="../../images/image_broccoli.jpg"
+            className={classes.foodDetailImage}
+          />
         </Grid>
-        <Grid item className={classes.foodDetailArrayColumn}>
-          <List>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Total Carbs" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].totalCarbs}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Dietary Fiber" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].dietaryFiber}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Total Sugars" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].totalSugars}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Protein" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].protein}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-          </List>
-        </Grid>
-      </Grid>
+        <Grid item>
+          <Typography component="h5" className={classes.foodDetailArrayTitle}>
+            NUTRITION FOR: {DUMMY_NUTRITIONAL_VALUES[0].quantity}{' '}
+          </Typography>
+          <Typography component="p" className={sharedClasses.mainText}>
+            Calories: {DUMMY_NUTRITIONAL_VALUES[0].calories}{' '}
+          </Typography>
+          <Divider />
 
-      <Divider />
+          <Grid container className={classes.foodDetailArrayRow}>
+            <Grid item className={classes.foodDetailArrayColumn}>
+              <List>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography
+                    className={`${classes.foodDetailArrayText} ${classes.important}`}
+                  >
+                    Total Fat
+                  </Typography>
+                  <Typography
+                    className={`${classes.foodDetailArrayNutriValue} ${classes.important}`}
+                  >
+                    {DUMMY_NUTRITIONAL_VALUES[0].totalFat}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Saturated Fat
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].saturatedFat}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Unsaturated Fat
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].unsaturatedFat}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Trans Fat
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].transFat}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Cholesterol
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].cholesterol}
+                  </Typography>
+                </ListItem>
+              </List>
+            </Grid>
+            <Grid item className={classes.foodDetailArrayColumn}>
+              <List>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography
+                    className={`${classes.foodDetailArrayText} ${classes.important}`}
+                  >
+                    Total Carbs
+                  </Typography>
+                  <Typography
+                    className={`${classes.foodDetailArrayNutriValue} ${classes.important}`}
+                  >
+                    {DUMMY_NUTRITIONAL_VALUES[0].totalCarbs}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Dietary Fiber
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].dietaryFiber}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Total Sugars
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].totalSugars}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography
+                    className={`${classes.foodDetailArrayText} ${classes.important}`}
+                  >
+                    Proteins
+                  </Typography>
+                  <Typography
+                    className={`${classes.foodDetailArrayNutriValue} ${classes.important}`}
+                  >
+                    {DUMMY_NUTRITIONAL_VALUES[0].protein}
+                  </Typography>
+                </ListItem>
+              </List>
+            </Grid>
+          </Grid>
 
-      <Grid container className={classes.foodDetailArrayRow}>
-        <Grid item className={classes.foodDetailArrayColumn}>
-          <List>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Sodium" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].sodium}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Iron" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].iron}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Potassium" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].potassium}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Calcium" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].calcium}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Zinc" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].zinc}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-          </List>
-        </Grid>
-        <Grid item className={classes.foodDetailArrayColumn}>
-          <List>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Vitamin A" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].vitaminA}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Vitamin B6" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].vitaminB6}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Vitamin B12" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].vitaminB12}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Vitamin C" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].vitaminC}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Vitamin D" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].vitaminD}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Vitamin E" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].vitaminE}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-            <ListItem className={classes.foodDetailArrayItem}>
-              <ListItemText primary="Vitamin K" />
-              <ListItemText
-                primary={DUMMY_NUTRITIONAL_VALUES[0].vitaminK}
-                className={classes.foodDetailArrayNutriValue}
-              />
-            </ListItem>
-          </List>
+          <Divider />
+
+          <Grid container className={classes.foodDetailArrayRow}>
+            <Grid item className={classes.foodDetailArrayColumn}>
+              <List>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Sodium
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].sodium}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Iron
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].iron}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Potassium
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].potassium}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Calcium
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].calcium}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Zinc
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].zinc}
+                  </Typography>
+                </ListItem>
+              </List>
+            </Grid>
+            <Grid item className={classes.foodDetailArrayColumn}>
+              <List>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Vitamin A
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].vitaminA}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Vitamin B6
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].vitaminB6}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Vitamin B12
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].vitaminB12}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Vitamin C
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].vitaminC}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Vitamin D
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].vitaminD}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Vitamin E
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].vitaminE}
+                  </Typography>
+                </ListItem>
+                <ListItem className={classes.foodDetailArrayItem}>
+                  <Typography className={classes.foodDetailArrayText}>
+                    Vitamin K
+                  </Typography>
+                  <Typography className={classes.foodDetailArrayNutriValue}>
+                    {DUMMY_NUTRITIONAL_VALUES[0].vitaminK}
+                  </Typography>
+                </ListItem>
+              </List>
+            </Grid>
+          </Grid>
         </Grid>
       </Grid>
     </StyledEngineProvider>
