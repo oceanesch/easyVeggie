@@ -1,0 +1,18 @@
+.foodDetailMainSection {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+
+  .foodDetailImage {
+    width: 45vw;
+    border-radius: 30px;
+  }
+  
+  .foodDetailArrayTitle {
+    font-family: 'Yuji Syuku', serif;
+    color: #64825e;
+    font-size: 1.5rem;
+    font-weight: 500;
+  }

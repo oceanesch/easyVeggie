@@ -1,14 +1,8 @@
 import { StyledEngineProvider } from '@mui/material/styles';
-import {
-  Divider,
-  Grid,
-  List,
-  ListItem,
-  ListItemText,
-  Typography,
-} from '@mui/material';
+import { Divider, Grid, List, ListItem, Typography } from '@mui/material';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import classes from './NutritionalRecordDetailPage.module.css';
+import NutritionalRecordMainSection from '../Features/NutritionalRecordMainSection';
 
 const DUMMY_NUTRITIONAL_VALUES = [
   {
@@ -59,7 +53,9 @@ const NutritionalRecordDetailPage = () => {
           </Typography>
         </Grid>
       </Grid>
-      <Grid container className={classes.foodDetailMainSection}>
+      <NutritionalRecordMainSection />
+
+      {/* <Grid container className={classes.foodDetailMainSection}>
         <Grid item>
           <img
             alt="stack of broccoli"
@@ -280,7 +276,7 @@ const NutritionalRecordDetailPage = () => {
             </Grid>
           </Grid>
         </Grid>
-      </Grid>
+      </Grid> */}
     </StyledEngineProvider>
   );
 };
