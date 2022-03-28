@@ -2,41 +2,15 @@ import { Grid, List, ListItem, Typography } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
 import classes from './NutritionalRecordArray.module.css';
 
-const ArrayPart1 = [
-  { name: 'Total Fat', nameValue: 'totalFat', important: true },
-  { name: 'Saturated Fat', nameValue: 'saturatedFat' },
-  { name: 'Unsaturated Fat', nameValue: 'unsaturatedFat' },
-  { name: 'Trans Fat', nameValue: 'transFat' },
-  { name: 'Cholesterol', nameValue: 'cholesterol' },
-];
-
-const ArrayPart2 = [
-  { name: 'Total Carb', nameValue: 'totalCarb', important: true },
-  { name: 'Dietary Fiber', nameValue: 'dietaryFiber' },
-  { name: 'Total Sugars', nameValue: 'totalSugars' },
-  { name: 'Protein', nameValue: 'protein', important: true },
-];
-
-const ArrayPart3 = [
-  { name: 'Sodium', nameValue: 'sodium' },
-  { name: 'Iron', nameValue: 'iron' },
-  { name: 'Potassium', nameValue: 'potassium' },
-  { name: 'Calcium', nameValue: 'calcium' },
-  { name: 'Zinc', nameValue: 'zinc' },
-];
-
-const ArrayPart4 = [
-  { name: 'Vitamin A', nameValue: 'vitaminA' },
-  { name: 'Vitamin B6', nameValue: 'vitaminB6' },
-  { name: 'Vitamin B12', nameValue: 'vitaminB12' },
-  { name: 'Vitamin C', nameValue: 'vitaminC' },
-  { name: 'Vitamin D', nameValue: 'vitaminD' },
-  { name: 'Vitamin K', nameValue: 'vitaminK' },
-  { name: 'Vitamin E', nameValue: 'vitaminE' },
-];
-
 const NutritionalRecordArray = (props) => {
-  console.log(props.nutriValue[0]);
+  const ArrayPart1 = props.nutriValue.slice(2, 7);
+
+  const ArrayPart2 = props.nutriValue.slice(7, 11);
+
+  const ArrayPart3 = props.nutriValue.slice(11, 16);
+
+  const ArrayPart4 = props.nutriValue.slice(16);
+
   return (
     <StyledEngineProvider injectFirst>
       <Grid container className={classes.foodDetailArrayRow}>
@@ -44,14 +18,17 @@ const NutritionalRecordArray = (props) => {
           <List>
             {ArrayPart1.map((item) => {
               return (
-                <ListItem className={classes.foodDetailArrayItem}>
+                <ListItem
+                  key={ArrayPart1.indexOf(item)}
+                  className={classes.foodDetailArrayItem}
+                >
                   <Typography className={`${classes.foodDetailArrayText}`}>
                     {item.name}
                   </Typography>
                   <Typography
                     className={`${classes.foodDetailArrayNutriValue} ${classes.foodDetailArrayText}`}
                   >
-                    {props.nutriValue[0].calories}
+                    {item.value}
                   </Typography>
                 </ListItem>
               );
@@ -62,14 +39,17 @@ const NutritionalRecordArray = (props) => {
           <List>
             {ArrayPart2.map((item) => {
               return (
-                <ListItem className={classes.foodDetailArrayItem}>
+                <ListItem
+                  key={ArrayPart2.indexOf(item)}
+                  className={classes.foodDetailArrayItem}
+                >
                   <Typography className={`${classes.foodDetailArrayText}`}>
                     {item.name}
                   </Typography>
                   <Typography
                     className={`${classes.foodDetailArrayNutriValue} ${classes.foodDetailArrayText}`}
                   >
-                    {props.nutriValue[0].calorie}
+                    {item.value}
                   </Typography>
                 </ListItem>
               );
@@ -80,14 +60,17 @@ const NutritionalRecordArray = (props) => {
           <List>
             {ArrayPart3.map((item) => {
               return (
-                <ListItem className={classes.foodDetailArrayItem}>
+                <ListItem
+                  key={ArrayPart3.indexOf(item)}
+                  className={classes.foodDetailArrayItem}
+                >
                   <Typography className={`${classes.foodDetailArrayText}`}>
                     {item.name}
                   </Typography>
                   <Typography
                     className={`${classes.foodDetailArrayNutriValue} ${classes.foodDetailArrayText}`}
                   >
-                    {props.nutriValue[0].calorie}
+                    {item.value}
                   </Typography>
                 </ListItem>
               );
@@ -98,14 +81,17 @@ const NutritionalRecordArray = (props) => {
           <List>
             {ArrayPart4.map((item) => {
               return (
-                <ListItem className={classes.foodDetailArrayItem}>
+                <ListItem
+                  key={ArrayPart4.indexOf(item)}
+                  className={classes.foodDetailArrayItem}
+                >
                   <Typography className={`${classes.foodDetailArrayText}`}>
                     {item.name}
                   </Typography>
                   <Typography
                     className={`${classes.foodDetailArrayNutriValue} ${classes.foodDetailArrayText}`}
                   >
-                    {props.nutriValue[0].calorie}
+                    {item.value}
                   </Typography>
                 </ListItem>
               );
