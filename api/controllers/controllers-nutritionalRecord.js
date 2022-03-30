@@ -14,10 +14,10 @@ exports.getNutritionalRecords = (req, res, next) => {
 };
 
 exports.addNewNutritionalRecord = (req, res, next) => {
+  console.log(req.body);
+  const { foodName, foodDescription, foodQuantity } = req.body;
+
   const {
-    foodName,
-    foodDescription,
-    foodQuantity,
     calories,
     totalFat,
     saturatedFat,
@@ -27,25 +27,29 @@ exports.addNewNutritionalRecord = (req, res, next) => {
     totalCarbs,
     dietaryFiber,
     totalSugars,
-    proteins,
-    // sodium,
-    // iron,
-    // potassium,
-    // calcium,
-    // zinc,
-    // vitaminA,
-    // vitaminB6,
-    // vitaminB12,
-    // vitaminC,
-    // vitaminD,
-    // vitaminE,
-    // vitaminK,
-  } = req.body;
+    protein,
+  } = req.body.macroNutrition;
+
+  const {
+    sodium,
+    iron,
+    potassium,
+    calcium,
+    zinc,
+    vitaminA,
+    vitaminB6,
+    vitaminB12,
+    vitaminC,
+    vitaminD,
+    vitaminE,
+    vitaminK,
+  } = req.body.microNutrition;
 
   const newNutritionalRecord = new NutritionalRecord({
     foodName,
     foodDescription,
     foodQuantity,
+
     calories,
     totalFat,
     saturatedFat,
@@ -55,19 +59,20 @@ exports.addNewNutritionalRecord = (req, res, next) => {
     totalCarbs,
     dietaryFiber,
     totalSugars,
-    proteins,
-    // sodium,
-    // iron,
-    // potassium,
-    // calcium,
-    // zinc,
-    // vitaminA,
-    // vitaminB6,
-    // vitaminB12,
-    // vitaminC,
-    // vitaminD,
-    // vitaminE,
-    // vitaminK,
+    protein,
+
+    sodium,
+    iron,
+    potassium,
+    calcium,
+    zinc,
+    vitaminA,
+    vitaminB6,
+    vitaminB12,
+    vitaminC,
+    vitaminD,
+    vitaminE,
+    vitaminK,
   });
 
   newNutritionalRecord

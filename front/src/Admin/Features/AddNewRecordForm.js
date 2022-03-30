@@ -1,4 +1,5 @@
 import { useFormik } from 'formik';
+import * as Yup from 'yup';
 import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import classes from './AddNewRecordForm.module.css';
@@ -15,6 +16,7 @@ import {
   Paper,
 } from '@mui/material';
 import { MainButton } from '../../shared/Button/MainButton';
+import camelCase from 'camelcase';
 
 const microTable = [
   'Sodium',
@@ -31,30 +33,17 @@ const microTable = [
   'Vitamin K',
 ];
 
-// const macroTable = [
-//   'calories',
-//   'totalFat',
-//   'saturatedFat',
-//   'unsaturatedFat',
-//   'Trans fat',
-//   'Cholesterol',
-//   'Total carbs',
-//   'Dietary fiber',
-//   'Total sugars',
-//   'Proteins',
-// ];
-
 const macroTable = [
-  'calories',
-  'totalFat',
-  'saturatedFat',
-  'unsaturatedFat',
-  'transFat',
-  'cholesterol',
-  'totalCarbs',
-  'dietaryFiber',
-  'totalSugars',
-  'proteins',
+  'Calories',
+  'Total Fat',
+  'Saturated Fat',
+  'Unsaturated Fat',
+  'Trans fat',
+  'Cholesterol',
+  'Total carbs',
+  'Dietary fiber',
+  'Total sugars',
+  'Protein',
 ];
 
 const AddNewRecordForm = () => {
@@ -63,9 +52,65 @@ const AddNewRecordForm = () => {
       foodName: '',
       foodDescription: '',
       foodQuantity: '',
-      macroNutrition: macroTable,
-      microNutrition: microTable,
+      macroNutrition: {
+        calories: '',
+        totalFat: '',
+        saturatedFat: '',
+        unsaturatedFat: '',
+        transFat: '',
+        cholesterol: '',
+        totalCarbs: '',
+        dietaryFiber: '',
+        totalSugars: '',
+        protein: '',
+      },
+
+      microNutrition: {
+        sodium: '',
+        iron: '',
+        potassium: '',
+        calcium: '',
+        zinc: '',
+        vitaminA: '',
+        vitaminB6: '',
+        vitaminB12: '',
+        vitaminC: '',
+        vitaminD: '',
+        vitaminE: '',
+        vitaminK: '',
+      },
     },
+    validationSchema: Yup.object({
+      foodName: Yup.string().required('Required.'),
+      foodDescription: Yup.string().required('Required.'),
+      foodQuantity: Yup.string().required('Required.'),
+      // macroNutrition: Yup.object({
+      //   calories: Yup.string().required('Required.'),
+      //   totalFat: Yup.string().required('Required.'),
+      //   saturatedFat: Yup.string().required('Required.'),
+      //   unsaturatedFat: Yup.string().required('Required.'),
+      //   transFat: Yup.string().required('Required.'),
+      //   cholesterol: Yup.string().required('Required.'),
+      //   totalCarbs: Yup.string().required('Required.'),
+      //   dietaryFiber: Yup.string().required('Required.'),
+      //   totalSugars: Yup.string().required('Required.'),
+      //   protein: Yup.string().required('Required.'),
+      // }),
+      // microNutrition: Yup.object({
+      //   sodium: Yup.string().required('Required.'),
+      //   iron: Yup.string().required('Required.'),
+      //   potassium: Yup.string().required('Required.'),
+      //   calcium: Yup.string().required('Required.'),
+      //   zinc: Yup.string().required('Required.'),
+      //   vitaminA: Yup.string().required('Required.'),
+      //   vitaminB6: Yup.string().required('Required.'),
+      //   vitaminB12: Yup.string().required('Required.'),
+      //   vitaminC: Yup.string().required('Required.'),
+      //   vitaminD: Yup.string().required('Required.'),
+      //   vitaminE: Yup.string().required('Required.'),
+      //   vitaminK: Yup.string().required('Required.'),
+      // }),
+    }),
     onSubmit: (values) => {
       console.log(values);
 
@@ -106,6 +151,8 @@ const AddNewRecordForm = () => {
             label="Name of the food"
             value={formik.values.foodName}
             onChange={formik.handleChange}
+            error={formik.touched.foodName && Boolean(formik.errors.foodName)}
+            helperText={formik.touched.foodName && formik.errors.foodName}
           />
           <TextField
             multiline
@@ -116,6 +163,13 @@ const AddNewRecordForm = () => {
             label="Description of the food"
             value={formik.values.foodDescription}
             onChange={formik.handleChange}
+            error={
+              formik.touched.foodDescription &&
+              Boolean(formik.errors.foodDescription)
+            }
+            helperText={
+              formik.touched.foodDescription && formik.errors.foodDescription
+            }
           />
           <TextField
             variant="outlined"
@@ -125,6 +179,12 @@ const AddNewRecordForm = () => {
             label="Nutritional values for this quantity of food"
             onChange={formik.handleChange}
             value={formik.values.foodQuantity}
+            error={
+              formik.touched.foodQuantity && Boolean(formik.errors.foodQuantity)
+            }
+            helperText={
+              formik.touched.foodQuantity && formik.errors.foodQuantity
+            }
           />
         </Box>
         {/* TO DO: add the upload button */}
@@ -145,7 +205,7 @@ const AddNewRecordForm = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {formik.initialValues.macroNutrition.map((item, index) => {
+                {macroTable.map((item, index) => {
                   return (
                     <TableRow key={index} hover>
                       <TableCell
@@ -158,10 +218,20 @@ const AddNewRecordForm = () => {
                         <TextField
                           variant="outlined"
                           className={classes.arrayInputCell}
-                          id={item}
-                          name={item}
+                          id={`macroNutrition.${camelCase(item)}`}
+                          name={`macroNutrition.${camelCase(item)}`}
                           onChange={formik.handleChange}
                           value={formik.values.item}
+                          // error={
+                          //   formik.touched.camelCase(item) &&
+                          //   Boolean(
+                          //     formik.errors.camelCase(item)
+                          //   )
+                          // }
+                          // helperText={
+                          //   formik.touched.camelCase(item) &&
+                          //   formik.errors.camelCase(item)
+                          // }
                         />
                       </TableCell>
                     </TableRow>
@@ -184,7 +254,7 @@ const AddNewRecordForm = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {formik.initialValues.microNutrition.map((item, index) => {
+                {microTable.map((item, index) => {
                   return (
                     <TableRow key={index} hover>
                       <TableCell
@@ -197,8 +267,8 @@ const AddNewRecordForm = () => {
                         <TextField
                           variant="outlined"
                           className={classes.arrayInputCell}
-                          id={item}
-                          name={item}
+                          id={`microNutrition.${camelCase(item)}`}
+                          name={`microNutrition.${camelCase(item)}`}
                           onChange={formik.handleChange}
                           value={formik.values.item}
                         />
