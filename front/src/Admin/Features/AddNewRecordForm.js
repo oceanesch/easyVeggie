@@ -1,4 +1,4 @@
-import { useFormik } from 'formik';
+import { useFormik, getIn } from 'formik';
 import * as Yup from 'yup';
 import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../shared/sharedCss.module.css';
@@ -84,18 +84,18 @@ const AddNewRecordForm = () => {
       foodName: Yup.string().required('Required.'),
       foodDescription: Yup.string().required('Required.'),
       foodQuantity: Yup.string().required('Required.'),
-      // macroNutrition: Yup.object({
-      //   calories: Yup.string().required('Required.'),
-      //   totalFat: Yup.string().required('Required.'),
-      //   saturatedFat: Yup.string().required('Required.'),
-      //   unsaturatedFat: Yup.string().required('Required.'),
-      //   transFat: Yup.string().required('Required.'),
-      //   cholesterol: Yup.string().required('Required.'),
-      //   totalCarbs: Yup.string().required('Required.'),
-      //   dietaryFiber: Yup.string().required('Required.'),
-      //   totalSugars: Yup.string().required('Required.'),
-      //   protein: Yup.string().required('Required.'),
-      // }),
+      macroNutrition: Yup.object({
+        calories: Yup.string().required('Required.'),
+        totalFat: Yup.string().required('Required.'),
+        saturatedFat: Yup.string().required('Required.'),
+        unsaturatedFat: Yup.string().required('Required.'),
+        transFat: Yup.string().required('Required.'),
+        cholesterol: Yup.string().required('Required.'),
+        totalCarbs: Yup.string().required('Required.'),
+        dietaryFiber: Yup.string().required('Required.'),
+        totalSugars: Yup.string().required('Required.'),
+        protein: Yup.string().required('Required.'),
+      }),
       // microNutrition: Yup.object({
       //   sodium: Yup.string().required('Required.'),
       //   iron: Yup.string().required('Required.'),
@@ -221,17 +221,32 @@ const AddNewRecordForm = () => {
                           id={`macroNutrition.${camelCase(item)}`}
                           name={`macroNutrition.${camelCase(item)}`}
                           onChange={formik.handleChange}
-                          value={formik.values.item}
-                          // error={
-                          //   formik.touched.camelCase(item) &&
-                          //   Boolean(
-                          //     formik.errors.camelCase(item)
-                          //   )
-                          // }
-                          // helperText={
-                          //   formik.touched.camelCase(item) &&
-                          //   formik.errors.camelCase(item)
-                          // }
+                          value={getIn(
+                            formik.values,
+                            `macroNutrition.${camelCase(item)}`
+                          )}
+                          error={
+                            getIn(
+                              formik.touched,
+                              `macroNutrition.${camelCase(item)}`
+                            ) &&
+                            Boolean(
+                              getIn(
+                                formik.errors,
+                                `macroNutrition.${camelCase(item)}`
+                              )
+                            )
+                          }
+                          helperText={
+                            getIn(
+                              formik.touched,
+                              `macroNutrition.${camelCase(item)}`
+                            ) &&
+                            getIn(
+                              formik.errors,
+                              `macroNutrition.${camelCase(item)}`
+                            )
+                          }
                         />
                       </TableCell>
                     </TableRow>
