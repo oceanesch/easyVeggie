@@ -190,12 +190,8 @@ const AddNewRecordForm = () => {
             label="Adress URL of the food's image"
             onChange={formik.handleChange}
             value={formik.values.foodQuantity}
-            error={
-              formik.touched.foodImage && Boolean(formik.errors.foodImage)
-            }
-            helperText={
-              formik.touched.foodImage && formik.errors.foodImage
-            }
+            error={formik.touched.foodImage && Boolean(formik.errors.foodImage)}
+            helperText={formik.touched.foodImage && formik.errors.foodImage}
           />
         </Box>
         {/* TO DO: add the upload button */}
