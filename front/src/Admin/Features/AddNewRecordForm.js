@@ -58,6 +58,7 @@ const AddNewRecordForm = () => {
       foodName: '',
       foodDescription: '',
       foodQuantity: '',
+      foodImage: '',
       //macroNutrition
       calories: '',
       totalFat: '',
@@ -88,6 +89,7 @@ const AddNewRecordForm = () => {
       foodName: Yup.string().required('Required.'),
       foodDescription: Yup.string().required('Required.'),
       foodQuantity: Yup.string().required('Required.'),
+      foodImage: Yup.string().required('Required.'),
 
       calories: Yup.string().required('Required.'),
       totalFat: Yup.string().required('Required.'),
@@ -186,6 +188,21 @@ const AddNewRecordForm = () => {
             }
             helperText={
               formik.touched.foodQuantity && formik.errors.foodQuantity
+            }
+          />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            id="foodImage"
+            name="foodImage"
+            label="Adress URL of the food's image"
+            onChange={formik.handleChange}
+            value={formik.values.foodQuantity}
+            error={
+              formik.touched.foodImage && Boolean(formik.errors.foodImage)
+            }
+            helperText={
+              formik.touched.foodImage && formik.errors.foodImage
             }
           />
         </Box>

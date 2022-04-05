@@ -14,6 +14,10 @@ const nutritionalRecordSchema = new Schema({
     type: String,
     required: true,
   },
+  foodImage: {
+    type: String,
+    required: true,
+  },
 
   calories: {
     type: String,
