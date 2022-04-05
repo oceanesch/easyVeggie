@@ -1,0 +1,21 @@
+.foodDetailArrayRow {
+  justify-content: space-between;
+}
+
+.foodDetailArrayColumn {
+  width: 45%;
+}
+
+.foodDetailArrayItem {
+  justify-content: space-between;
+}
+
+.foodDetailArrayText {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 1.1rem;
+  text-align: justify;
+}
+
+.foodDetailArrayNutriValue {
+  text-align: right;
+}

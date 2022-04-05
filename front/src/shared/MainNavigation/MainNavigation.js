@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 import { StyledEngineProvider } from '@mui/material/styles';
 import classes from './MainNavigation.module.css';
+import sharedClasses from '../sharedCss.module.css'
 import Toolbar from '@mui/material/Toolbar';
 import AppBar from '@mui/material/AppBar';
 import Button from '@mui/material/Button';
@@ -32,9 +33,11 @@ export const MainNavigation = () => {
             <IconButton onClick={openSearchBarHandler}>
               <SearchIcon sx={{ color: '#a4ac9e' }} />
             </IconButton>
-            <Button className={classes.mainNavButton}>
-              NUTRITIONAL RECORDS
-            </Button>
+            <RouterLink to="/nutritionalrecords" className={sharedClasses.noLink}>
+              <Button className={classes.mainNavButton}>
+                NUTRITIONAL RECORDS
+              </Button>
+            </RouterLink>
             <Button className={classes.mainNavButton}>RECIPES</Button>
             <Button className={classes.mainNavButton}>ARTICLES</Button>
             <RouterLink to="/">

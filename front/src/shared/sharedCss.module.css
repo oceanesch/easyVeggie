@@ -1,0 +1,55 @@
+.headSection {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 3rem 0;
+}
+
+.mainTitle {
+  font-family: 'Yuji Syuku', serif;
+  font-size: 3.5rem;
+  color: #64825e;
+  text-align: center;
+  padding: 1.5rem 0rem;
+}
+
+.subTitle {
+  font-family: 'Yuji Syuku', serif;
+  font-size: 1.5rem;
+  color: #64825e;
+  padding: 1rem;
+}
+
+.noLink {
+  text-decoration: none;
+}
+
+.searchSection {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0rem;
+}
+
+.filterSelect {
+  margin: 1.5rem 0rem;
+  background: #a4ac9e;
+  border: solid #64825e 2px;
+  border-radius: 50px;
+}
+
+.filterSection {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.filterSection fieldset {
+  border-radius: 50px;
+}
+
+.mainText {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+  font-size: 1.2rem;
+  text-align: justify;
+  padding: 1.2rem;
+}

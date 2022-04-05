@@ -1,0 +1,10 @@
+.nutritionCard {
+  display: flex;
+  flex-direction: row;
+  margin: 1.5rem;
+  border: solid 2px #64825e;
+}
+
+.nutritionCardText {
+  font-family: 'Zen Kaku Gothic New', sans-serif;
+}
