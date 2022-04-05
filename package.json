@@ -1,7 +1,0 @@
-{
-  "dependencies": {
-    "camelcase": "^6.3.0",
-    "case": "^1.6.3",
-    "yup": "^0.32.11"
-  }
-}

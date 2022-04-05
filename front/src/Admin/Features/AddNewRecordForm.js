@@ -1,4 +1,4 @@
-import { useFormik, getIn } from 'formik';
+import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../shared/sharedCss.module.css';
@@ -23,6 +23,7 @@ const microTable = [
   'Iron',
   'Potassium',
   'Calcium',
+  'Magnesium',
   'Zinc',
   'Vitamin A',
   'Vitamin B6',
@@ -73,6 +74,7 @@ const AddNewRecordForm = () => {
       iron: '',
       potassium: '',
       calcium: '',
+      magnesium:'',
       zinc: '',
       vitaminA: '',
       vitaminB6: '',
@@ -101,6 +103,7 @@ const AddNewRecordForm = () => {
       iron: Yup.string().required('Required.'),
       potassium: Yup.string().required('Required.'),
       calcium: Yup.string().required('Required.'),
+      magnesium: Yup.string().required('Required.'),
       zinc: Yup.string().required('Required.'),
       vitaminA: Yup.string().required('Required.'),
       vitaminB6: Yup.string().required('Required.'),

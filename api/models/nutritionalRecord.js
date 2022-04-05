@@ -72,6 +72,10 @@ const nutritionalRecordSchema = new Schema({
     type: String,
     required: true,
   },
+  magnesium: {
+    type: String,
+    required: true,
+  },
   zinc: {
     type: String,
     required: true,
