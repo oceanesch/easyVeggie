@@ -24,8 +24,8 @@
 //     );
 //   };
 
-onSubmit: (values) => {
-    console.log(values);
+// onSubmit: (values) => {
+//     console.log(values);
 
 //     fetch('http://localhost:8080/admin/nutritionalrecord', {
 //       method: 'POST',

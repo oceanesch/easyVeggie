@@ -121,7 +121,6 @@ const AddNewRecordForm = () => {
 
       createNutritionalRecord(JSON.stringify(values))
         .then((response) => {
-          console.log(response);
           if (response.status !== 200) {
             throw new Error('Adding a new record failed.');
           }

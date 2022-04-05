@@ -14,8 +14,8 @@ const NutritionalRecordCard = (props) => {
     <StyledEngineProvider injectFirst>
       <Card className={classes.card}>
         <CardActionArea
-          component={RouterLink}
-          to={props.URL}
+          // component={RouterLink}
+          // to={props.URL}
         >
           <CardMedia
             component="img"
