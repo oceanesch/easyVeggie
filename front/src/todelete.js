@@ -23,3 +23,26 @@
 //       </List>
 //     );
 //   };
+
+onSubmit: (values) => {
+    console.log(values);
+
+//     fetch('http://localhost:8080/admin/nutritionalrecord', {
+//       method: 'POST',
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//       body: JSON.stringify(values),
+//     })
+//       .then((response) => {
+//         if (response.status !== 200 && response.status !== 201) {
+//           throw new Error('Adding a new record failed.');
+//         }
+//         return response.json();
+//       })
+//       .then((responseData) => {
+//         console.log(responseData);
+//       })
+//       .catch((error) => {
+//         console.error(error);
+//       });

@@ -17,6 +17,7 @@ import {
 } from '@mui/material';
 import { MainButton } from '../../shared/Button/MainButton';
 import camelCase from 'camelcase';
+import { createNutritionalRecord } from '../../api-client/nutritional-record/nutritional-record.api';
 
 const microTable = [
   'Sodium',
@@ -75,7 +76,7 @@ const AddNewRecordForm = () => {
       iron: '',
       potassium: '',
       calcium: '',
-      magnesium:'',
+      magnesium: '',
       zinc: '',
       vitaminA: '',
       vitaminB6: '',
@@ -118,25 +119,16 @@ const AddNewRecordForm = () => {
     onSubmit: (values) => {
       console.log(values);
 
-      fetch('http://localhost:8080/admin/nutritionalrecord', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      })
+      createNutritionalRecord(JSON.stringify(values))
         .then((response) => {
-          if (response.status !== 200 && response.status !== 201) {
+          console.log(response);
+          if (response.status !== 200) {
             throw new Error('Adding a new record failed.');
           }
-          return response.json();
+          return response;
         })
-        .then((responseData) => {
-          console.log(responseData);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        .then((responseData) => console.log(responseData.data.message))
+        .catch((error) => console.error(error));
     },
   });
 
@@ -198,12 +190,8 @@ const AddNewRecordForm = () => {
             label="Adress URL of the food's image"
             onChange={formik.handleChange}
             value={formik.values.foodQuantity}
-            error={
-              formik.touched.foodImage && Boolean(formik.errors.foodImage)
-            }
-            helperText={
-              formik.touched.foodImage && formik.errors.foodImage
-            }
+            error={formik.touched.foodImage && Boolean(formik.errors.foodImage)}
+            helperText={formik.touched.foodImage && formik.errors.foodImage}
           />
         </Box>
         {/* TO DO: add the upload button */}
@@ -271,7 +259,6 @@ const AddNewRecordForm = () => {
               </TableContainer>
             );
           })}
-
         </Box>
         <Typography component="h2" className={sharedClasses.subTitle}>
           TAGS

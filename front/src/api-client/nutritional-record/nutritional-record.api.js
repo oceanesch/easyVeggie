@@ -1,7 +1,11 @@
 import { httpClient } from '../http.client';
 
 export async function getNutritionalRecords() {
-  return await (
+  return (
     await httpClient.get('admin/nutritionalrecord')
   ).data.nutritionalRecords;
+}
+
+export async function createNutritionalRecord(data){
+    return await httpClient.post('admin/nutritionalrecord', data)
 }
