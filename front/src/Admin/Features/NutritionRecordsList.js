@@ -10,8 +10,7 @@ const NutritionRecordsList = () => {
   useEffect(() => {
     getNutritionalRecords()
       .then((records) => {
-        setFoodList(records);
-      })
+        setFoodList(records)})
       .catch((error) => console.error(error));
   }, []);
 
