@@ -1,4 +1,4 @@
-const NutritionalRecord = require('../models/nutritionalRecord');
+const NutritionalRecord = require('./nutritional-record.model');
 
 exports.getNutritionalRecords = (req, res, next) => {
   NutritionalRecord.find()
