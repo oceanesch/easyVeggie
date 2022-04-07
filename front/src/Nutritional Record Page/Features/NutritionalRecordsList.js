@@ -10,7 +10,6 @@ const NutritionalRecordsList = () => {
   useEffect(() => {
     getNutritionalRecords()
       .then((records) => {
-        console.log(records);
         setFoodList(records);
       })
       .catch((error) => console.error(error));
@@ -22,9 +21,9 @@ const NutritionalRecordsList = () => {
         return (
           <Grid item key={item._id}>
             <NutritionalRecordCard
+              id={item._id}
               name={item.foodName}
               image={item.foodImage}
-              // URL={item.URL}
             />
           </Grid>
         );

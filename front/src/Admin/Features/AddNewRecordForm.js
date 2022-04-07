@@ -14,6 +14,7 @@ import {
   Typography,
   Box,
   Paper,
+  Input,
 } from '@mui/material';
 import { MainButton } from '../../shared/Button/MainButton';
 import camelCase from 'camelcase';
@@ -194,6 +195,10 @@ const AddNewRecordForm = () => {
           />
         </Box>
         {/* TO DO: add the upload button */}
+        <label htmlFor="food-image-upload-button">
+          <Input id="food-image-upload-button" type="file" />
+          <MainButton component="span">UPLOAD IMAGE OF FOOD</MainButton>
+        </label>
         <Typography component="h2" className={sharedClasses.subTitle}>
           NUTRITIONAL VALUES
         </Typography>

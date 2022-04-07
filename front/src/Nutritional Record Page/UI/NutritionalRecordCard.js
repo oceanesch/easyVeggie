@@ -7,16 +7,14 @@ import {
   CardContent,
   Typography,
 } from '@mui/material';
+import { noCase } from 'change-case';
 import classes from './NutritionalRecordCard.module.css';
 
 const NutritionalRecordCard = (props) => {
   return (
     <StyledEngineProvider injectFirst>
       <Card className={classes.card}>
-        <CardActionArea
-          // component={RouterLink}
-          // to={props.URL}
-        >
+        <CardActionArea component={RouterLink} to={`/nutritionalrecords/${noCase(props.id)}`}>
           <CardMedia
             component="img"
             image={props.image}

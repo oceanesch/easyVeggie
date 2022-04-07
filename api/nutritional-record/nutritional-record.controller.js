@@ -13,6 +13,18 @@ exports.getNutritionalRecords = (req, res, next) => {
     });
 };
 
+exports.getNutritionalRecord = (req, res, next) => {
+  const { foodId } = req.params;
+  NutritionalRecord.findById(foodId)
+    .then((record) => {
+      res.status(200).json({
+        message: 'Nutritional record successfully fetched.',
+        nutritionalRecord: record,
+      });
+    })
+    .catch((error) => console.error(error));
+};
+
 exports.addNewNutritionalRecord = (req, res, next) => {
   console.log(req.body);
   const newNutritionalRecord = new NutritionalRecord(req.body);
