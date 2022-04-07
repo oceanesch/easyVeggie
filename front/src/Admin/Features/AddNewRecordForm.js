@@ -195,10 +195,10 @@ const AddNewRecordForm = () => {
           />
         </Box>
         {/* TO DO: add the upload button */}
-        {/* <label htmlFor="food-image-upload-button">
+        <label htmlFor="food-image-upload-button">
           <Input id="food-image-upload-button" type="file" />
           <MainButton component="span">UPLOAD IMAGE OF FOOD</MainButton>
-        </label> */}
+        </label>
         <Typography component="h2" className={sharedClasses.subTitle}>
           NUTRITIONAL VALUES
         </Typography>
