@@ -14,7 +14,6 @@ const NutritionalRecordDetailPage = () => {
   useEffect(() => {
     getNutritionalRecord(params.foodId)
       .then((record) => {
-        console.log(record);
         setFoodData(record);
       })
       .catch((error) => console.error(error));

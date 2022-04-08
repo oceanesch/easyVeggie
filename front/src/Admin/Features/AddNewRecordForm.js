@@ -189,16 +189,16 @@ const AddNewRecordForm = () => {
             name="foodImage"
             label="Adress URL of the food's image"
             onChange={formik.handleChange}
-            value={formik.values.foodQuantity}
+            value={formik.values.foodImage}
             error={formik.touched.foodImage && Boolean(formik.errors.foodImage)}
             helperText={formik.touched.foodImage && formik.errors.foodImage}
           />
         </Box>
         {/* TO DO: add the upload button */}
-        <label htmlFor="food-image-upload-button">
+        {/* <label htmlFor="food-image-upload-button">
           <Input id="food-image-upload-button" type="file" />
           <MainButton component="span">UPLOAD IMAGE OF FOOD</MainButton>
-        </label>
+        </label> */}
         <Typography component="h2" className={sharedClasses.subTitle}>
           NUTRITIONAL VALUES
         </Typography>

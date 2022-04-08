@@ -3,9 +3,6 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import classes from './NutritionalRecordMainSection.module.css';
 import NutritionalRecordArray from '../UI/NutritionalRecordArray';
-import { useParams } from 'react-router-dom';
-import { useEffect, useState } from 'react';
-import { getNutritionalRecord } from '../../api-client/nutritional-record/nutritional-record.api';
 
 const NutritionalRecordMainSection = (props) => {
   return (
