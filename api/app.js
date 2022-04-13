@@ -2,7 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 
-const nutritionalRecordRoutes = require('./routes/routes-nutritionalRecord');
+const nutritionalRecordRoutes = require('./nutritional-record/nutritional-record.router');
 
 const app = express();
 

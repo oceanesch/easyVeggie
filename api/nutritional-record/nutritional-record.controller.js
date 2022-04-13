@@ -1,4 +1,4 @@
-const NutritionalRecord = require('../models/nutritionalRecord');
+const NutritionalRecord = require('./nutritional-record.model');
 
 exports.getNutritionalRecords = (req, res, next) => {
   NutritionalRecord.find()
@@ -11,6 +11,18 @@ exports.getNutritionalRecords = (req, res, next) => {
     .catch((error) => {
       console.error(error);
     });
+};
+
+exports.getNutritionalRecord = (req, res, next) => {
+  const { foodId } = req.params;
+  NutritionalRecord.findById(foodId)
+    .then((record) => {
+      res.status(200).json({
+        message: 'Nutritional record successfully fetched.',
+        nutritionalRecord: record,
+      });
+    })
+    .catch((error) => console.error(error));
 };
 
 exports.addNewNutritionalRecord = (req, res, next) => {

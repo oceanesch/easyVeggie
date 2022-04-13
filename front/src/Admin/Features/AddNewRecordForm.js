@@ -14,9 +14,11 @@ import {
   Typography,
   Box,
   Paper,
+  Input,
 } from '@mui/material';
 import { MainButton } from '../../shared/Button/MainButton';
 import camelCase from 'camelcase';
+import { createNutritionalRecord } from '../../api-client/nutritional-record/nutritional-record.api';
 
 const microTable = [
   'Sodium',
@@ -58,6 +60,7 @@ const AddNewRecordForm = () => {
       foodName: '',
       foodDescription: '',
       foodQuantity: '',
+      foodImage: '',
       //macroNutrition
       calories: '',
       totalFat: '',
@@ -74,7 +77,7 @@ const AddNewRecordForm = () => {
       iron: '',
       potassium: '',
       calcium: '',
-      magnesium:'',
+      magnesium: '',
       zinc: '',
       vitaminA: '',
       vitaminB6: '',
@@ -88,6 +91,7 @@ const AddNewRecordForm = () => {
       foodName: Yup.string().required('Required.'),
       foodDescription: Yup.string().required('Required.'),
       foodQuantity: Yup.string().required('Required.'),
+      foodImage: Yup.string().required('Required.'),
 
       calories: Yup.string().required('Required.'),
       totalFat: Yup.string().required('Required.'),
@@ -116,25 +120,15 @@ const AddNewRecordForm = () => {
     onSubmit: (values) => {
       console.log(values);
 
-      fetch('http://localhost:8080/admin/nutritionalrecord', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(values),
-      })
+      createNutritionalRecord(JSON.stringify(values))
         .then((response) => {
-          if (response.status !== 200 && response.status !== 201) {
+          if (response.status !== 200) {
             throw new Error('Adding a new record failed.');
           }
-          return response.json();
+          return response;
         })
-        .then((responseData) => {
-          console.log(responseData);
-        })
-        .catch((error) => {
-          console.error(error);
-        });
+        .then((responseData) => console.log(responseData.data.message))
+        .catch((error) => console.error(error));
     },
   });
 
@@ -188,8 +182,23 @@ const AddNewRecordForm = () => {
               formik.touched.foodQuantity && formik.errors.foodQuantity
             }
           />
+          <TextField
+            variant="outlined"
+            margin="normal"
+            id="foodImage"
+            name="foodImage"
+            label="Adress URL of the food's image"
+            onChange={formik.handleChange}
+            value={formik.values.foodImage}
+            error={formik.touched.foodImage && Boolean(formik.errors.foodImage)}
+            helperText={formik.touched.foodImage && formik.errors.foodImage}
+          />
         </Box>
         {/* TO DO: add the upload button */}
+        {/* <label htmlFor="food-image-upload-button">
+          <Input id="food-image-upload-button" type="file" />
+          <MainButton component="span">UPLOAD IMAGE OF FOOD</MainButton>
+        </label> */}
         <Typography component="h2" className={sharedClasses.subTitle}>
           NUTRITIONAL VALUES
         </Typography>
@@ -254,7 +263,6 @@ const AddNewRecordForm = () => {
               </TableContainer>
             );
           })}
-
         </Box>
         <Typography component="h2" className={sharedClasses.subTitle}>
           TAGS

@@ -2,29 +2,38 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import { Grid, Typography } from '@mui/material';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import NutritionalRecordMainSection from '../Features/NutritionalRecordMainSection';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from 'react';
+import { getNutritionalRecord } from '../../api-client/nutritional-record/nutritional-record.api';
 
 const NutritionalRecordDetailPage = () => {
+  const params = useParams();
+
+  const [foodData, setFoodData] = useState({});
+
+  useEffect(() => {
+    getNutritionalRecord(params.foodId)
+      .then((record) => {
+        setFoodData(record);
+      })
+      .catch((error) => console.error(error));
+  }, [params.foodId]);
+
   return (
     <StyledEngineProvider injectFirst>
       <Grid container className={sharedClasses.headSection}>
         <Grid item>
           <Typography component="h1" className={sharedClasses.mainTitle}>
-            NUTRITIONAL RECORD - BROCCOLI
+            {`NUTRITIONAL RECORD - ${foodData.foodName}`}
           </Typography>
         </Grid>
         <Grid item>
           <Typography component="p" className={sharedClasses.mainText}>
-            Broccoli are a variety of cabbage originated from Sicily. Broccolis
-            are high in water so low in energy but high in other minerals.
-            Various different studies have shown that broccolis like other
-            brassicaceae are an anti-cancer food. It has a preventive action
-            against certain cancer because they are high in fiber and various
-            antioxidants. This vegetable can also fight existing cancer and can
-            increase the chance of survival.
+            {foodData.foodDescription}
           </Typography>
         </Grid>
       </Grid>
-      <NutritionalRecordMainSection />
+      <NutritionalRecordMainSection foodData={foodData}/>
     </StyledEngineProvider>
   );
 };

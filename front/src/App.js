@@ -14,13 +14,14 @@ function App() {
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route
+          path="/nutritionalrecords/:foodId"
+          element={<NutritionalRecordDetailPage />}
+        />
+        <Route
           path="/nutritionalrecords"
           element={<NutritionalRecordsPage />}
         />
-        <Route
-          path="/nutritionalrecords/broccoli"
-          element={<NutritionalRecordDetailPage />}
-        />
+
         <Route path="/admin" element={<AdminLandingPage />} />
         <Route
           path="/admin/nutritionalrecordslist"
