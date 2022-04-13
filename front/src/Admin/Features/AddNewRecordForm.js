@@ -19,6 +19,7 @@ import {
 import { MainButton } from '../../shared/Button/MainButton';
 import camelCase from 'camelcase';
 import { createNutritionalRecord } from '../../api-client/nutritional-record/nutritional-record.api';
+import { useState } from 'react';
 
 const microTable = [
   'Sodium',
@@ -55,6 +56,10 @@ const nutrientGroups = [
 ];
 
 const AddNewRecordForm = () => {
+  const [uploadedImage, setUploadedImage] = useState();
+  const [isImageSelected, setIsImageSelected] = useState(false);
+  const [previewImage, setPreviewImage] = useState();
+
   const formik = useFormik({
     initialValues: {
       foodName: '',
@@ -91,7 +96,7 @@ const AddNewRecordForm = () => {
       foodName: Yup.string().required('Required.'),
       foodDescription: Yup.string().required('Required.'),
       foodQuantity: Yup.string().required('Required.'),
-      foodImage: Yup.string().required('Required.'),
+      // foodImage: Yup.string().required('Required.'),
 
       calories: Yup.string().required('Required.'),
       totalFat: Yup.string().required('Required.'),
@@ -120,7 +125,13 @@ const AddNewRecordForm = () => {
     onSubmit: (values) => {
       console.log(values);
 
-      createNutritionalRecord(JSON.stringify(values))
+      const formData = new FormData();
+      Object.entries(values).forEach(([key, value]) => {
+        formData.append(key, value);
+      });
+      formData.append('image', uploadedImage);
+
+      createNutritionalRecord(formData)
         .then((response) => {
           if (response.status !== 200) {
             throw new Error('Adding a new record failed.');
@@ -132,9 +143,17 @@ const AddNewRecordForm = () => {
     },
   });
 
+  const uploadedImageChangeHandler = (event) => {
+    event.preventDefault();
+    setUploadedImage(event.target.files[0]);
+    console.log(event.target.files[0])
+    setIsImageSelected(true);
+    setPreviewImage(URL.createObjectURL(event.target.files[0]));
+  };
+
   return (
     <StyledEngineProvider injectFirst>
-      <form onSubmit={formik.handleSubmit}>
+      <form onSubmit={formik.handleSubmit} encType="multipart/form-data">
         <Typography component="h2" className={sharedClasses.subTitle}>
           GENERAL
         </Typography>
@@ -193,12 +212,37 @@ const AddNewRecordForm = () => {
             error={formik.touched.foodImage && Boolean(formik.errors.foodImage)}
             helperText={formik.touched.foodImage && formik.errors.foodImage}
           />
+          <Box
+            container
+            className={`${classes.uploadImageSection} ${
+              previewImage ? classes.uploadImageSectionActive : ''
+            }`}
+          >
+            <Box item>
+              <label htmlFor="image">
+                <Input
+                  onChange={uploadedImageChangeHandler}
+                  id="image"
+                  name="image"
+                  type="file"
+                  accept="image/*"
+                  style={{ display: 'none' }}
+                />
+                <MainButton component="span">UPLOAD IMAGE OF FOOD</MainButton>
+              </label>
+            </Box>
+            <Box item className={previewImage ? classes.uploadImageBox : ''}>
+              {previewImage && (
+                <img
+                  className={classes.imagePreview}
+                  src={previewImage}
+                  alt=""
+                />
+              )}
+            </Box>
+          </Box>
         </Box>
-        {/* TO DO: add the upload button */}
-        {/* <label htmlFor="food-image-upload-button">
-          <Input id="food-image-upload-button" type="file" />
-          <MainButton component="span">UPLOAD IMAGE OF FOOD</MainButton>
-        </label> */}
+
         <Typography component="h2" className={sharedClasses.subTitle}>
           NUTRITIONAL VALUES
         </Typography>
