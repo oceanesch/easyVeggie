@@ -26,13 +26,14 @@ exports.getNutritionalRecord = (req, res, next) => {
 };
 
 exports.addNewNutritionalRecord = (req, res, next) => {
-  console.log(req.body);
   const newNutritionalRecord = new NutritionalRecord(req.body);
-
   newNutritionalRecord
     .save()
     .then(() => {
       res.status(200).json({ message: 'New nutritional record added.' });
+    })
+    .then(() => {
+      const foodId = newNutritionalRecord._id;
     })
     .catch((error) => {
       console.error(error);
