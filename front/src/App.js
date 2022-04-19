@@ -3,9 +3,10 @@ import { MainNavigation } from './shared';
 import LandingPage from './Landing Page/Page/LandingPage';
 import AdminLandingPage from './Admin/Pages/AdminLandingPage';
 import AdminNutritionalListPage from './Admin/Pages/AdminNutritionalListPage';
-import AdminAddNewRecord from './Admin/Pages/AdminAddNewRecord';
+import AdminAddNewRecordPage from './Admin/Pages/AdminAddNewRecordPage';
 import NutritionalRecordsPage from './Nutritional Record Page/Page/NutritionalRecordsPage';
 import NutritionalRecordDetailPage from './Nutritional Record Detail/Page/NutritionalRecordDetailPage';
+import AdminEditRecordPage from './Admin/Pages/AdminEditRecordPage';
 
 function App() {
   return (
@@ -27,7 +28,8 @@ function App() {
           path="/admin/nutritionalrecordslist"
           element={<AdminNutritionalListPage />}
         />
-        <Route path="/admin/addnewrecord" element={<AdminAddNewRecord />} />
+        <Route path="/admin/addnewrecord" element={<AdminAddNewRecordPage />} />
+        <Route path="/admin/editrecord/:foodId" element={<AdminEditRecordPage />} />
       </Routes>
     </div>
   );

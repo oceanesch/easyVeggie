@@ -9,9 +9,13 @@ import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const NutritionCard = (props) => {
-  const deleteRecordHandler = () => {
+  const deleteButtonHandler = () => {
     props.onDelete(props.id);
   };
+
+  const editButtonHandler = () => {
+    props.onEdit(props.id)
+  }
 
   return (
     <StyledEngineProvider injectFirst>
@@ -22,10 +26,10 @@ const NutritionCard = (props) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <IconButton>
+          <IconButton onClick={editButtonHandler}>
             <EditIcon />
           </IconButton>
-          <IconButton onClick={deleteRecordHandler}>
+          <IconButton onClick={deleteButtonHandler}>
             <DeleteIcon />
           </IconButton>
         </CardActions>
