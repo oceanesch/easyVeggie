@@ -104,7 +104,7 @@ const AddNewRecordForm = () => {
       magnesium: `${foodData.magnesium || ''}`,
       zinc: `${foodData.zinc || ''}`,
       vitaminA: `${foodData.vitaminA || ''}`,
-      vitaminB6: `${foodData.vitaminB || ''}`,
+      vitaminB6: `${foodData.vitaminB6 || ''}`,
       vitaminB12: `${foodData.vitaminB12 || ''}`,
       vitaminC: `${foodData.vitaminC || ''}`,
       vitaminD: `${foodData.vitaminD || ''}`,
@@ -330,7 +330,8 @@ const AddNewRecordForm = () => {
         <Typography component="h2" className={sharedClasses.subTitle}>
           TAGS
         </Typography>
-        <MainButton type="submit">Submit</MainButton>
+        {!foodId && <MainButton type="submit">Submit</MainButton>}
+        {foodId && <MainButton type="submit">Edit</MainButton>}
       </form>
     </StyledEngineProvider>
   );
