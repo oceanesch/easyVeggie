@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import classes from './NutritionRecordsList.module.css';
 import { List } from '@mui/material';
 import NutritionCard from '../UI/NutritionCard';
@@ -9,6 +10,7 @@ import {
 
 const NutritionRecordsList = () => {
   const [foodList, setFoodList] = useState([]);
+  const navigation = useNavigate();
 
   useEffect(() => {
     getNutritionalRecords()
@@ -32,6 +34,10 @@ const NutritionRecordsList = () => {
     }
   };
 
+  const editRecordHandler = (foodId) => {
+    navigation(`/admin/editrecord/${foodId}`);
+  };
+
   return (
     <List className={classes.nutritionRecordsList}>
       {foodList.map((foodItem) => {
@@ -41,6 +47,7 @@ const NutritionRecordsList = () => {
             id={foodItem._id}
             name={foodItem.foodName}
             onDelete={deleteRecordHandler}
+            onEdit={editRecordHandler}
           />
         );
       })}

@@ -18,8 +18,12 @@ import {
 } from '@mui/material';
 import { MainButton } from '../../shared/Button/MainButton';
 import camelCase from 'camelcase';
-import { createNutritionalRecord } from '../../api-client/nutritional-record/nutritional-record.api';
-import { useState } from 'react';
+import {
+  createNutritionalRecord,
+  getNutritionalRecord,
+} from '../../api-client/nutritional-record/nutritional-record.api';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 
 const microTable = [
   'Sodium',
@@ -57,40 +61,55 @@ const nutrientGroups = [
 
 const AddNewRecordForm = () => {
   const [uploadedImage, setUploadedImage] = useState();
+  const [foodData, setFoodData] = useState({});
   const [isImageSelected, setIsImageSelected] = useState(false);
   const [previewImage, setPreviewImage] = useState();
+  const { foodId } = useParams();
+
+  useEffect(() => {
+    if (foodId) {
+      getNutritionalRecord(foodId)
+        .then((record) => {
+          setFoodData(record);
+        })
+        .catch((error) => console.error(error));
+    } else {
+      return;
+    }
+  }, [foodId]);
 
   const formik = useFormik({
+    enableReinitialize: true,
     initialValues: {
-      foodName: '',
-      foodDescription: '',
-      foodQuantity: '',
-      foodImage: '',
+      foodName: `${foodData.foodName || ''}`,
+      foodDescription: `${foodData.foodDescription || ''}`,
+      foodQuantity: `${foodData.foodQuantity || ''}`,
+      foodImage: `${foodData.foodImage || ''}`,
       //macroNutrition
-      calories: '',
-      totalFat: '',
-      saturatedFat: '',
-      unsaturatedFat: '',
-      transFat: '',
-      cholesterol: '',
-      totalCarbs: '',
-      dietaryFiber: '',
-      totalSugars: '',
-      protein: '',
+      calories: `${foodData.calories || ''}`,
+      totalFat: `${foodData.totalFat || ''}`,
+      saturatedFat: `${foodData.saturatedFat || ''}`,
+      unsaturatedFat: `${foodData.unsaturatedFat || ''}`,
+      transFat: `${foodData.transFat || ''}`,
+      cholesterol: `${foodData.cholesterol || ''}`,
+      totalCarbs: `${foodData.totalCarbs || ''}`,
+      dietaryFiber: `${foodData.dietaryFiber || ''}`,
+      totalSugars: `${foodData.totalSugars || ''}`,
+      protein: `${foodData.protein || ''}`,
       //microNutrition
-      sodium: '',
-      iron: '',
-      potassium: '',
-      calcium: '',
-      magnesium: '',
-      zinc: '',
-      vitaminA: '',
-      vitaminB6: '',
-      vitaminB12: '',
-      vitaminC: '',
-      vitaminD: '',
-      vitaminE: '',
-      vitaminK: '',
+      sodium: `${foodData.sodium || ''}`,
+      iron: `${foodData.iron || ''}`,
+      potassium: `${foodData.potassium || ''}`,
+      calcium: `${foodData.calcium || ''}`,
+      magnesium: `${foodData.magnesium || ''}`,
+      zinc: `${foodData.zinc || ''}`,
+      vitaminA: `${foodData.vitaminA || ''}`,
+      vitaminB6: `${foodData.vitaminB || ''}`,
+      vitaminB12: `${foodData.vitaminB12 || ''}`,
+      vitaminC: `${foodData.vitaminC || ''}`,
+      vitaminD: `${foodData.vitaminD || ''}`,
+      vitaminE: `${foodData.vitaminE || ''}`,
+      vitaminK: `${foodData.vitaminK || ''}`,
     },
     validationSchema: Yup.object({
       foodName: Yup.string().required('Required.'),
@@ -146,7 +165,7 @@ const AddNewRecordForm = () => {
   const uploadedImageChangeHandler = (event) => {
     event.preventDefault();
     setUploadedImage(event.target.files[0]);
-    console.log(event.target.files[0])
+    console.log(event.target.files[0]);
     setIsImageSelected(true);
     setPreviewImage(URL.createObjectURL(event.target.files[0]));
   };

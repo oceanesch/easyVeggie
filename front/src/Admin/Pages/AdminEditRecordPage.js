@@ -3,15 +3,15 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import AddNewRecordForm from '../Features/AddNewRecordForm';
 
-const AdminAddNewRecord = () => {
+const AdminEditRecordPage = () => {
   return (
     <StyledEngineProvider injectFirst>
       <Typography component="h1" className={sharedClasses.mainTitle}>
-        ADD A NEW RECORD
+        EDIT RECORD
       </Typography>
       <AddNewRecordForm />
     </StyledEngineProvider>
   );
 };
 
-export default AdminAddNewRecord;
+export default AdminEditRecordPage;
