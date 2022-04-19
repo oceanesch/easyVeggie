@@ -13,3 +13,7 @@ export async function getNutritionalRecords() {
 export async function createNutritionalRecord(data) {
   return await httpClient.post('admin/nutritionalrecord', data);
 }
+
+export async function deleteNutritionalRecord(foodId) {
+  return await httpClient.delete(`admin/nutritionalrecord/${foodId}`);
+}
