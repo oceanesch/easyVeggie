@@ -1,8 +1,8 @@
 import { StyledEngineProvider } from '@mui/material/styles';
-import sharedClasses from '../../shared/sharedCss.module.css';
+import sharedClasses from '../../../shared/sharedCss.module.css';
 import { Typography, Grid } from '@mui/material';
-import { SearchBar } from '../../shared/SearchBar/SearchBar';
-import { MainButton } from '../../shared/Button/MainButton';
+import { SearchBar } from '../../../shared/SearchBar/SearchBar';
+import { MainButton } from '../../../shared/Button/MainButton';
 import NutritionRecordsList from '../Features/NutritionRecordsList';
 
 const AdminNutritionalListPage = () => {

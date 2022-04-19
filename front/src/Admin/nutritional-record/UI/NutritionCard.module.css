@@ -1,6 +1,8 @@
 .nutritionCard {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  width: 17rem;
   margin: 1.5rem;
   border: solid 2px #64825e;
 }

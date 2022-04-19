@@ -1,6 +1,6 @@
 import { Typography } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
-import sharedClasses from '../../shared/sharedCss.module.css';
+import sharedClasses from '../../../shared/sharedCss.module.css';
 import AddNewRecordForm from '../Features/AddNewRecordForm';
 
 const AdminEditRecordPage = () => {

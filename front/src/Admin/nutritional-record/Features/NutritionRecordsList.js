@@ -6,7 +6,7 @@ import NutritionCard from '../UI/NutritionCard';
 import {
   deleteNutritionalRecord,
   getNutritionalRecords,
-} from '../../api-client/nutritional-record/nutritional-record.api';
+} from '../../../api-client/nutritional-record/nutritional-record.api';
 
 const NutritionRecordsList = () => {
   const [foodList, setFoodList] = useState([]);
