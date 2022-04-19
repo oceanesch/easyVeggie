@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { MainNavigation } from './shared';
 import LandingPage from './Landing Page/Page/LandingPage';
-import AdminLandingPage from './Admin/Pages/AdminLandingPage';
-import AdminNutritionalListPage from './Admin/Pages/AdminNutritionalListPage';
-import AdminAddNewRecordPage from './Admin/Pages/AdminAddNewRecordPage';
+import AdminLandingPage from './Admin/AdminLandingPage';
+import AdminNutritionalListPage from './Admin/nutritional-record/Pages/AdminNutritionalListPage';
+import AdminAddNewRecordPage from './Admin/nutritional-record/Pages/AdminAddNewRecordPage';
 import NutritionalRecordsPage from './Nutritional Record Page/Page/NutritionalRecordsPage';
 import NutritionalRecordDetailPage from './Nutritional Record Detail/Page/NutritionalRecordDetailPage';
-import AdminEditRecordPage from './Admin/Pages/AdminEditRecordPage';
+import AdminEditRecordPage from './Admin/nutritional-record/Pages/AdminEditRecordPage';
 
 function App() {
   return (

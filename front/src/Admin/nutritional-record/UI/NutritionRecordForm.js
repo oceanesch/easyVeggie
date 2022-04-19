@@ -1,8 +1,7 @@
 import { useFormik } from 'formik';
-import * as Yup from 'yup';
 import { StyledEngineProvider } from '@mui/material/styles';
-import sharedClasses from '../../shared/sharedCss.module.css';
-import classes from './AddNewRecordForm.module.css';
+import sharedClasses from '../../../shared/sharedCss.module.css';
+import classes from '../Features/AddNewRecordForm.module.css';
 import {
   Table,
   TableContainer,
@@ -16,174 +15,63 @@ import {
   Paper,
   Input,
 } from '@mui/material';
-import { MainButton } from '../../shared/Button/MainButton';
+import { MainButton } from '../../../shared/Button/MainButton';
 import camelCase from 'camelcase';
-import {
-  createNutritionalRecord,
-  editNutritionalRecord,
-  getNutritionalRecord,
-} from '../../api-client/nutritional-record/nutritional-record.api';
-import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useState } from 'react';
+import { nutritionalRecordValidator } from '../helpers/nutritional-record-validator';
+import { nutrientGroups } from '../helpers/nutrient-groups';
 
-const microTable = [
-  'Sodium',
-  'Iron',
-  'Potassium',
-  'Calcium',
-  'Magnesium',
-  'Zinc',
-  'Vitamin A',
-  'Vitamin B6',
-  'Vitamin B12',
-  'Vitamin C',
-  'Vitamin D',
-  'Vitamin E',
-  'Vitamin K',
-];
-
-const macroTable = [
-  'Calories',
-  'Total Fat',
-  'Saturated Fat',
-  'Unsaturated Fat',
-  'Trans fat',
-  'Cholesterol',
-  'Total carbs',
-  'Dietary fiber',
-  'Total sugars',
-  'Protein',
-];
-
-const nutrientGroups = [
-  { name: 'Macro Nutrition Values', nutrients: macroTable },
-  { name: 'Micro Nutrition Values', nutrients: microTable },
-];
-
-const AddNewRecordForm = () => {
+const NutritionRecordForm = (props) => {
+  const nutrientRecord = props.nutrientRecord || {};
   const [uploadedImage, setUploadedImage] = useState();
-  const [foodData, setFoodData] = useState({});
-  const [isImageSelected, setIsImageSelected] = useState(false);
   const [previewImage, setPreviewImage] = useState();
-  const { foodId } = useParams();
-
-  useEffect(() => {
-    if (foodId) {
-      getNutritionalRecord(foodId)
-        .then((record) => {
-          setFoodData(record);
-        })
-        .catch((error) => console.error(error));
-    } else {
-      return;
-    }
-  }, [foodId]);
-
-  const formik = useFormik({
-    enableReinitialize: true,
-    initialValues: {
-      foodName: `${foodData.foodName || ''}`,
-      foodDescription: `${foodData.foodDescription || ''}`,
-      foodQuantity: `${foodData.foodQuantity || ''}`,
-      foodImage: `${foodData.foodImage || ''}`,
-      //macroNutrition
-      calories: `${foodData.calories || ''}`,
-      totalFat: `${foodData.totalFat || ''}`,
-      saturatedFat: `${foodData.saturatedFat || ''}`,
-      unsaturatedFat: `${foodData.unsaturatedFat || ''}`,
-      transFat: `${foodData.transFat || ''}`,
-      cholesterol: `${foodData.cholesterol || ''}`,
-      totalCarbs: `${foodData.totalCarbs || ''}`,
-      dietaryFiber: `${foodData.dietaryFiber || ''}`,
-      totalSugars: `${foodData.totalSugars || ''}`,
-      protein: `${foodData.protein || ''}`,
-      //microNutrition
-      sodium: `${foodData.sodium || ''}`,
-      iron: `${foodData.iron || ''}`,
-      potassium: `${foodData.potassium || ''}`,
-      calcium: `${foodData.calcium || ''}`,
-      magnesium: `${foodData.magnesium || ''}`,
-      zinc: `${foodData.zinc || ''}`,
-      vitaminA: `${foodData.vitaminA || ''}`,
-      vitaminB6: `${foodData.vitaminB6 || ''}`,
-      vitaminB12: `${foodData.vitaminB12 || ''}`,
-      vitaminC: `${foodData.vitaminC || ''}`,
-      vitaminD: `${foodData.vitaminD || ''}`,
-      vitaminE: `${foodData.vitaminE || ''}`,
-      vitaminK: `${foodData.vitaminK || ''}`,
-    },
-    validationSchema: Yup.object({
-      foodName: Yup.string().required('Required.'),
-      foodDescription: Yup.string().required('Required.'),
-      foodQuantity: Yup.string().required('Required.'),
-      // foodImage: Yup.string().required('Required.'),
-
-      calories: Yup.string().required('Required.'),
-      totalFat: Yup.string().required('Required.'),
-      saturatedFat: Yup.string().required('Required.'),
-      unsaturatedFat: Yup.string().required('Required.'),
-      transFat: Yup.string().required('Required.'),
-      cholesterol: Yup.string().required('Required.'),
-      totalCarbs: Yup.string().required('Required.'),
-      dietaryFiber: Yup.string().required('Required.'),
-      totalSugars: Yup.string().required('Required.'),
-      protein: Yup.string().required('Required.'),
-      sodium: Yup.string().required('Required.'),
-      iron: Yup.string().required('Required.'),
-      potassium: Yup.string().required('Required.'),
-      calcium: Yup.string().required('Required.'),
-      magnesium: Yup.string().required('Required.'),
-      zinc: Yup.string().required('Required.'),
-      vitaminA: Yup.string().required('Required.'),
-      vitaminB6: Yup.string().required('Required.'),
-      vitaminB12: Yup.string().required('Required.'),
-      vitaminC: Yup.string().required('Required.'),
-      vitaminD: Yup.string().required('Required.'),
-      vitaminE: Yup.string().required('Required.'),
-      vitaminK: Yup.string().required('Required.'),
-    }),
-    onSubmit: async (values) => {
-      if (!foodId) {
-        console.log(values);
-
-        const formData = new FormData();
-        Object.entries(values).forEach(([key, value]) => {
-          formData.append(key, value);
-        });
-        formData.append('image', uploadedImage);
-
-        createNutritionalRecord(formData)
-          .then((response) => {
-            if (response.status !== 200) {
-              throw new Error('Adding a new record failed.');
-            }
-            return response;
-          })
-          .then((responseData) => console.log(responseData.data.message))
-          .catch((error) => console.error(error));
-      } else {
-        console.log('Edit form');
-        try {
-          const editResponse = await editNutritionalRecord(foodId, values);
-          if (editResponse.status !== 200) {
-            throw new Error('Editing record failed.');
-          } else {
-            console.log(editResponse.data.message);
-          }
-        } catch (error) {
-          console.error(error);
-        }
-      }
-    },
-  });
 
   const uploadedImageChangeHandler = (event) => {
     event.preventDefault();
     setUploadedImage(event.target.files[0]);
     console.log(event.target.files[0]);
-    setIsImageSelected(true);
     setPreviewImage(URL.createObjectURL(event.target.files[0]));
   };
+
+  const formik = useFormik({
+    enableReinitialize: true,
+    initialValues: {
+      foodName: `${nutrientRecord.foodName || ''}`,
+      foodDescription: `${nutrientRecord.foodDescription || ''}`,
+      foodQuantity: `${nutrientRecord.foodQuantity || ''}`,
+      foodImage: `${nutrientRecord.foodImage || ''}`,
+      //macroNutrition
+      calories: `${nutrientRecord.calories || ''}`,
+      totalFat: `${nutrientRecord.totalFat || ''}`,
+      saturatedFat: `${nutrientRecord.saturatedFat || ''}`,
+      unsaturatedFat: `${nutrientRecord.unsaturatedFat || ''}`,
+      transFat: `${nutrientRecord.transFat || ''}`,
+      cholesterol: `${nutrientRecord.cholesterol || ''}`,
+      totalCarbs: `${nutrientRecord.totalCarbs || ''}`,
+      dietaryFiber: `${nutrientRecord.dietaryFiber || ''}`,
+      totalSugars: `${nutrientRecord.totalSugars || ''}`,
+      protein: `${nutrientRecord.protein || ''}`,
+      //microNutrition
+      sodium: `${nutrientRecord.sodium || ''}`,
+      iron: `${nutrientRecord.iron || ''}`,
+      potassium: `${nutrientRecord.potassium || ''}`,
+      calcium: `${nutrientRecord.calcium || ''}`,
+      magnesium: `${nutrientRecord.magnesium || ''}`,
+      zinc: `${nutrientRecord.zinc || ''}`,
+      vitaminA: `${nutrientRecord.vitaminA || ''}`,
+      vitaminB6: `${nutrientRecord.vitaminB6 || ''}`,
+      vitaminB12: `${nutrientRecord.vitaminB12 || ''}`,
+      vitaminC: `${nutrientRecord.vitaminC || ''}`,
+      vitaminD: `${nutrientRecord.vitaminD || ''}`,
+      vitaminE: `${nutrientRecord.vitaminE || ''}`,
+      vitaminK: `${nutrientRecord.vitaminK || ''}`,
+    },
+    validationSchema: nutritionalRecordValidator,
+    onSubmit: async (values) => {
+      console.log(values);
+      props.onSubmit({ ...values, uploadedImage });
+    },
+  });
 
   return (
     <StyledEngineProvider injectFirst>
@@ -240,7 +128,7 @@ const AddNewRecordForm = () => {
             margin="normal"
             id="foodImage"
             name="foodImage"
-            label="Adress URL of the food's image"
+            label="Address URL of the food's image"
             onChange={formik.handleChange}
             value={formik.values.foodImage}
             error={formik.touched.foodImage && Boolean(formik.errors.foodImage)}
@@ -345,11 +233,10 @@ const AddNewRecordForm = () => {
         <Typography component="h2" className={sharedClasses.subTitle}>
           TAGS
         </Typography>
-        {!foodId && <MainButton type="submit">Submit</MainButton>}
-        {foodId && <MainButton type="submit">Edit</MainButton>}
+        <MainButton type="submit">Submit</MainButton>
       </form>
     </StyledEngineProvider>
   );
 };
 
-export default AddNewRecordForm;
+export default NutritionRecordForm;

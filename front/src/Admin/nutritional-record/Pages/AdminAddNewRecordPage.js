@@ -1,7 +1,8 @@
 import { Typography } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
-import sharedClasses from '../../shared/sharedCss.module.css';
-import AddNewRecordForm from '../Features/AddNewRecordForm';
+import sharedClasses from '../../../shared/sharedCss.module.css';
+// import AddNewRecordForm from '../Features/AddNewRecordForm';
+import NutritionRecordCreate from '../Features/NutritionRecordCreate';
 
 const AdminAddNewRecordPage = () => {
   return (
@@ -9,7 +10,8 @@ const AdminAddNewRecordPage = () => {
       <Typography component="h1" className={sharedClasses.mainTitle}>
         ADD A NEW RECORD
       </Typography>
-      <AddNewRecordForm />
+      {/* <AddNewRecordForm /> */}
+      <NutritionRecordCreate />
     </StyledEngineProvider>
   );
 };
