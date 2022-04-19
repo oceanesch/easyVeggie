@@ -57,13 +57,31 @@ exports.deleteNutritionalRecord = async (req, res, next) => {
     const nutritionalRecord = await NutritionalRecord.findById(foodId);
 
     if (!nutritionalRecord) {
-      const error = new Error('No book found');
+      const error = new Error('No record found');
       error.statusCode = 404;
       throw error;
       //TODO: adding another if block for verification that admin is authenticated
     } else {
       await NutritionalRecord.findByIdAndRemove(foodId);
       res.status(200).json({ message: 'Record deleted.' });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+};
+
+exports.editNutritionalRecord = async (req, res, next) => {
+  const { foodId } = req.params;
+
+  try {
+    const nutritionalRecord = await NutritionalRecord.findById(foodId);
+    if (!nutritionalRecord) {
+      const error = new Error('No record found');
+      error.statusCode = 404;
+      throw error;
+    } else {
+      await NutritionalRecord.findByIdAndUpdate(foodId, req.body);
+      res.status(200).json({ message: 'Record successfully edited.' });
     }
   } catch (error) {
     console.error(error);
