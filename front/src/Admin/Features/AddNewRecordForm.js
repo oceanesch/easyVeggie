@@ -20,6 +20,7 @@ import { MainButton } from '../../shared/Button/MainButton';
 import camelCase from 'camelcase';
 import {
   createNutritionalRecord,
+  editNutritionalRecord,
   getNutritionalRecord,
 } from '../../api-client/nutritional-record/nutritional-record.api';
 import { useEffect, useState } from 'react';
@@ -141,24 +142,38 @@ const AddNewRecordForm = () => {
       vitaminE: Yup.string().required('Required.'),
       vitaminK: Yup.string().required('Required.'),
     }),
-    onSubmit: (values) => {
-      console.log(values);
+    onSubmit: async (values) => {
+      if (!foodId) {
+        console.log(values);
 
-      const formData = new FormData();
-      Object.entries(values).forEach(([key, value]) => {
-        formData.append(key, value);
-      });
-      formData.append('image', uploadedImage);
+        const formData = new FormData();
+        Object.entries(values).forEach(([key, value]) => {
+          formData.append(key, value);
+        });
+        formData.append('image', uploadedImage);
 
-      createNutritionalRecord(formData)
-        .then((response) => {
-          if (response.status !== 200) {
-            throw new Error('Adding a new record failed.');
+        createNutritionalRecord(formData)
+          .then((response) => {
+            if (response.status !== 200) {
+              throw new Error('Adding a new record failed.');
+            }
+            return response;
+          })
+          .then((responseData) => console.log(responseData.data.message))
+          .catch((error) => console.error(error));
+      } else {
+        console.log('Edit form');
+        try {
+          const editResponse = await editNutritionalRecord(foodId, values);
+          if (editResponse.status !== 200) {
+            throw new Error('Editing record failed.');
+          } else {
+            console.log(editResponse.data.message);
           }
-          return response;
-        })
-        .then((responseData) => console.log(responseData.data.message))
-        .catch((error) => console.error(error));
+        } catch (error) {
+          console.error(error);
+        }
+      }
     },
   });
 

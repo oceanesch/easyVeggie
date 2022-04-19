@@ -48,4 +48,9 @@ router.delete(
   nutritionalRecordController.deleteNutritionalRecord
 );
 
+router.patch(
+  '/nutritionalrecord/:foodId',
+  nutritionalRecordController.editNutritionalRecord
+);
+
 module.exports = router;

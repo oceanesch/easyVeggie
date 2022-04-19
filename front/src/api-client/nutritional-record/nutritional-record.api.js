@@ -17,3 +17,7 @@ export async function createNutritionalRecord(data) {
 export async function deleteNutritionalRecord(foodId) {
   return await httpClient.delete(`admin/nutritionalrecord/${foodId}`);
 }
+
+export async function editNutritionalRecord(foodId, data) {
+  return await httpClient.patch(`admin/nutritionalrecord/${foodId}`, data);
+}
