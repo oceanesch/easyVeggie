@@ -1,17 +1,17 @@
 import { Typography } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../../shared/sharedCss.module.css';
-import AddNewRecordForm from '../Features/AddNewRecordForm';
+import NutritionRecordCreate from '../Features/NutritionRecordCreate';
 
-const AdminEditRecordPage = () => {
+const AdminAddNewRecordPage = () => {
   return (
     <StyledEngineProvider injectFirst>
       <Typography component="h1" className={sharedClasses.mainTitle}>
-        EDIT RECORD
+        ADD A NEW RECORD
       </Typography>
-      <AddNewRecordForm />
+      <NutritionRecordCreate />
     </StyledEngineProvider>
   );
 };
 
-export default AdminEditRecordPage;
+export default AdminAddNewRecordPage;

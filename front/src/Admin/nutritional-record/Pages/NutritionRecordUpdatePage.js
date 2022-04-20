@@ -1,19 +1,20 @@
 import { Typography } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
+import { useParams } from 'react-router-dom';
 import sharedClasses from '../../../shared/sharedCss.module.css';
-// import AddNewRecordForm from '../Features/AddNewRecordForm';
-import NutritionRecordCreate from '../Features/NutritionRecordCreate';
+import NutritionRecordUpdate from '../Features/NutritionRecordUpdate';
 
-const AdminAddNewRecordPage = () => {
+const NutritionRecordEditPage = () => {
+  const { foodId } = useParams();
+
   return (
     <StyledEngineProvider injectFirst>
       <Typography component="h1" className={sharedClasses.mainTitle}>
-        ADD A NEW RECORD
+        EDIT RECORD
       </Typography>
-      {/* <AddNewRecordForm /> */}
-      <NutritionRecordCreate />
+      <NutritionRecordUpdate foodId={foodId} />
     </StyledEngineProvider>
   );
 };
 
-export default AdminAddNewRecordPage;
+export default NutritionRecordEditPage;

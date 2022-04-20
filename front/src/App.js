@@ -3,10 +3,10 @@ import { MainNavigation } from './shared';
 import LandingPage from './Landing Page/Page/LandingPage';
 import AdminLandingPage from './Admin/AdminLandingPage';
 import AdminNutritionalListPage from './Admin/nutritional-record/Pages/AdminNutritionalListPage';
-import AdminAddNewRecordPage from './Admin/nutritional-record/Pages/AdminAddNewRecordPage';
+import AdminAddNewRecordPage from './Admin/nutritional-record/Pages/NutritionRecordCreatePage';
 import NutritionalRecordsPage from './Nutritional Record Page/Page/NutritionalRecordsPage';
 import NutritionalRecordDetailPage from './Nutritional Record Detail/Page/NutritionalRecordDetailPage';
-import AdminEditRecordPage from './Admin/nutritional-record/Pages/AdminEditRecordPage';
+import NutritionRecordEditPage from './Admin/nutritional-record/Pages/NutritionRecordUpdatePage';
 
 function App() {
   return (
@@ -29,7 +29,10 @@ function App() {
           element={<AdminNutritionalListPage />}
         />
         <Route path="/admin/addnewrecord" element={<AdminAddNewRecordPage />} />
-        <Route path="/admin/editrecord/:foodId" element={<AdminEditRecordPage />} />
+        <Route
+          path="/admin/editrecord/:foodId"
+          element={<NutritionRecordEditPage />}
+        />
       </Routes>
     </div>
   );
