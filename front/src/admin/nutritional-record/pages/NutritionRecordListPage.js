@@ -3,9 +3,9 @@ import sharedClasses from '../../../shared/sharedCss.module.css';
 import { Typography, Grid } from '@mui/material';
 import { SearchBar } from '../../../shared/SearchBar/SearchBar';
 import { MainButton } from '../../../shared/Button/MainButton';
-import NutritionRecordsList from '../Features/NutritionRecordsList';
+import NutritionRecordList from '../features/NutritionRecordList';
 
-const AdminNutritionalListPage = () => {
+const NutritionRecordListPage = () => {
   return (
     <StyledEngineProvider injectFirst>
       <Grid container className={sharedClasses.headSection}>
@@ -17,9 +17,9 @@ const AdminNutritionalListPage = () => {
         </Grid>
         <MainButton>ADD A NEW RECORD</MainButton>
       </Grid>
-      <NutritionRecordsList />
+      <NutritionRecordList />
     </StyledEngineProvider>
   );
 };
 
-export default AdminNutritionalListPage;
+export default NutritionRecordListPage;

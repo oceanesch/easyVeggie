@@ -1,12 +1,12 @@
 import { Route, Routes } from 'react-router-dom';
 import { MainNavigation } from './shared';
 import LandingPage from './Landing Page/Page/LandingPage';
-import AdminLandingPage from './Admin/AdminLandingPage';
-import AdminNutritionalListPage from './Admin/nutritional-record/Pages/AdminNutritionalListPage';
-import AdminAddNewRecordPage from './Admin/nutritional-record/Pages/NutritionRecordCreatePage';
+import AdminLandingPage from './admin/landing-page/pages/LandingPage';
+import NutritionRecordListPage from './admin/nutritional-record/pages/NutritionRecordListPage';
+import NutritionRecordCreatePage from './admin/nutritional-record/pages/NutritionRecordCreatePage'
 import NutritionalRecordsPage from './Nutritional Record Page/Page/NutritionalRecordsPage';
 import NutritionalRecordDetailPage from './Nutritional Record Detail/Page/NutritionalRecordDetailPage';
-import NutritionRecordEditPage from './Admin/nutritional-record/Pages/NutritionRecordUpdatePage';
+import NutritionRecordUpdatePage from './admin/nutritional-record/pages/NutritionRecordUpdatePage';
 
 function App() {
   return (
@@ -26,12 +26,12 @@ function App() {
         <Route path="/admin" element={<AdminLandingPage />} />
         <Route
           path="/admin/nutritionalrecordslist"
-          element={<AdminNutritionalListPage />}
+          element={<NutritionRecordListPage />}
         />
-        <Route path="/admin/addnewrecord" element={<AdminAddNewRecordPage />} />
+        <Route path="/admin/addnewrecord" element={<NutritionRecordCreatePage />} />
         <Route
           path="/admin/editrecord/:foodId"
-          element={<NutritionRecordEditPage />}
+          element={<NutritionRecordUpdatePage />}
         />
       </Routes>
     </div>
