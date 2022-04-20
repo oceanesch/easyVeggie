@@ -1,4 +1,4 @@
-import SideMenu from './SideMenu';
+import SideMenu from '../../shared/SideMenu';
 
 const AdminLandingPage = () => {
   return (

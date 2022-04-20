@@ -1,14 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import classes from './NutritionRecordsList.module.css';
+import classes from './NutritionRecordList.module.css';
 import { List } from '@mui/material';
-import NutritionCard from '../UI/NutritionCard';
+import NutritionRecordCard from '../UI/NutritionRecordCard';
 import {
   deleteNutritionalRecord,
   getNutritionalRecords,
 } from '../../../api-client/nutritional-record/nutritional-record.api';
 
-const NutritionRecordsList = () => {
+const NutritionRecordList = () => {
   const [foodList, setFoodList] = useState([]);
   const navigation = useNavigate();
 
@@ -42,7 +42,7 @@ const NutritionRecordsList = () => {
     <List className={classes.nutritionRecordsList}>
       {foodList.map((foodItem) => {
         return (
-          <NutritionCard
+          <NutritionRecordCard
             key={foodItem._id}
             id={foodItem._id}
             name={foodItem.foodName}
@@ -55,4 +55,4 @@ const NutritionRecordsList = () => {
   );
 };
 
-export default NutritionRecordsList;
+export default NutritionRecordList;

@@ -1,7 +1,7 @@
 import { useFormik } from 'formik';
 import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../../shared/sharedCss.module.css';
-import classes from '../Features/AddNewRecordForm.module.css';
+import classes from './NutritionRecordForm.module.css';
 import {
   Table,
   TableContainer,
