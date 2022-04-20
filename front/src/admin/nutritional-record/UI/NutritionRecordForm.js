@@ -14,6 +14,8 @@ import {
   Box,
   Paper,
   Input,
+  FormControl,
+  FormHelperText,
 } from '@mui/material';
 import { MainButton } from '../../../shared/Button/MainButton';
 import camelCase from 'camelcase';
@@ -204,22 +206,31 @@ const NutritionRecordForm = (props) => {
                             {item}
                           </TableCell>
                           <TableCell align="center">
-                            <TextField
-                              variant="outlined"
-                              className={classes.arrayInputCell}
-                              id={camelCase(item)}
-                              name={camelCase(item)}
-                              onChange={formik.handleChange}
-                              value={formik.values[camelCase(item)]}
-                              error={
-                                formik.touched[camelCase(item)] &&
-                                Boolean(formik.errors[camelCase(item)])
-                              }
-                              helperText={
-                                formik.touched[camelCase(item)] &&
-                                formik.errors[camelCase(item)]
-                              }
-                            />
+                            <FormControl>
+                              <Input
+                                id={camelCase(item)}
+                                disableUnderline
+                                className={
+                                  formik.touched[camelCase(item)] &&
+                                  formik.errors[camelCase(item)]
+                                    ? ''
+                                    : classes.arrayInputCell
+                                }
+                                name={camelCase(item)}
+                                onChange={formik.handleChange}
+                                value={formik.values[camelCase(item)]}
+                                error={
+                                  formik.touched[camelCase(item)] &&
+                                  Boolean(formik.errors[camelCase(item)])
+                                }
+                              />
+                              {formik.touched[camelCase(item)] &&
+                                formik.errors[camelCase(item)] && (
+                                  <FormHelperText error>
+                                    Required
+                                  </FormHelperText>
+                                )}
+                            </FormControl>
                           </TableCell>
                         </TableRow>
                       );
