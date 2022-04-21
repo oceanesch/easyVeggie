@@ -1,9 +1,9 @@
 import { Typography, Grid } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../shared/sharedCss.module.css';
-import classes from './NutritionalRecordsPage.module.css';
-import SearchSection from '../Features/SearchSection';
-import NutritionalRecordsList from '../Features/NutritionalRecordsList';
+import classes from './NutritionalRecordPage.module.css';
+import SearchSection from '../features/SearchSection';
+import NutritionalRecordList from '../features/NutritionalRecordList';
 
 const NutritionalRecordsPage = () => {
   return (
@@ -15,7 +15,7 @@ const NutritionalRecordsPage = () => {
         <SearchSection />
       </Grid>
       <Grid container className={classes.cardSection}>
-      <NutritionalRecordsList />
+        <NutritionalRecordList />
       </Grid>
     </StyledEngineProvider>
   );
