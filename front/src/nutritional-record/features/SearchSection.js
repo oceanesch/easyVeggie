@@ -4,11 +4,14 @@ import { MainButton, SearchBar } from '../../shared';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import FoodSelect from '../UI/FoodSelect';
 import NutrientSelect from '../UI/NutrientSelect';
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { CancelButton } from '../../shared/Button/CancelButton';
+import SearchContext from '../../store/search-context';
 
 const SearchSection = (props) => {
   const [searchedFood, setSearchFood] = useState('');
+
+  const searchCtx = useContext(SearchContext);
 
   const onChangeHandler = (searchedFood) => {
     setSearchFood(searchedFood);
@@ -16,7 +19,7 @@ const SearchSection = (props) => {
 
   const searchSubmitHandler = (event) => {
     event.preventDefault();
-    props.onSearchSubmit(searchedFood);
+    searchCtx.onSubmitHandler(searchedFood)
   };
 
   const resetSearchFormHandler = () => {

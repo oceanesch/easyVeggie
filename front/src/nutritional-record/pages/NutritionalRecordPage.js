@@ -4,14 +4,11 @@ import sharedClasses from '../../shared/sharedCss.module.css';
 import classes from './NutritionalRecordPage.module.css';
 import SearchSection from '../features/SearchSection';
 import NutritionalRecordList from '../features/NutritionalRecordList';
-import { useState } from 'react';
+import { useContext } from 'react';
+import SearchContext from '../../store/search-context';
 
 const NutritionalRecordsPage = () => {
-  const [searchedFood, setSearchedFood] = useState('');
-
-  const searchSubmitHandler = (searchedFood) => {
-    setSearchedFood(searchedFood);
-  };
+  const searchCtx = useContext(SearchContext)
 
   return (
     <StyledEngineProvider injectFirst>
@@ -19,10 +16,10 @@ const NutritionalRecordsPage = () => {
         <Typography component="h1" className={sharedClasses.mainTitle}>
           NUTRITIONAL RECORDS
         </Typography>
-        <SearchSection onSearchSubmit={searchSubmitHandler} />
+        <SearchSection />
       </Grid>
       <Grid container className={classes.cardSection}>
-        <NutritionalRecordList searchedFood={searchedFood} />
+        <NutritionalRecordList searchedFood={searchCtx.searchedFood} />
       </Grid>
     </StyledEngineProvider>
   );
