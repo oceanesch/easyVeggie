@@ -1,6 +1,9 @@
 .mainButton {
   background-color: #a4ac9e;
   color: white;
+  font-size: 1rem;
+  font-family: 'Yuji Syuku';
+  width: 7rem;
 }
 
 .mainButton:hover {

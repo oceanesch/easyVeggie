@@ -5,6 +5,7 @@ import sharedClasses from '../../shared/sharedCss.module.css';
 import FoodSelect from '../UI/FoodSelect';
 import NutrientSelect from '../UI/NutrientSelect';
 import { useState } from 'react';
+import { CancelButton } from '../../shared/Button/CancelButton';
 
 const SearchSection = (props) => {
   const [searchedFood, setSearchFood] = useState('');
@@ -18,12 +19,16 @@ const SearchSection = (props) => {
     props.onSearchSubmit(searchedFood);
   };
 
+  const resetSearchFormHandler = () => {
+    setSearchFood('');
+  };
+
   return (
     <StyledEngineProvider injectFirst>
       <form onSubmit={searchSubmitHandler}>
         <Grid container className={sharedClasses.searchSection}>
           <Grid item className={sharedClasses.searchBar}>
-            <SearchBar onChange={onChangeHandler} />
+            <SearchBar searchedFood={searchedFood} onChange={onChangeHandler} />
           </Grid>
           <Grid container className={sharedClasses.filterSection}>
             <Grid item>
@@ -39,8 +44,15 @@ const SearchSection = (props) => {
               <NutrientSelect />
             </Grid>
           </Grid>
-          <Grid item>
-            <MainButton type="submit">SUBMIT</MainButton>
+          <Grid container className={sharedClasses.actionSection}>
+            <Grid item>
+              <MainButton type="submit">SUBMIT</MainButton>
+            </Grid>
+            <Grid item>
+              <CancelButton onClick={resetSearchFormHandler}>
+                RESET
+              </CancelButton>
+            </Grid>
           </Grid>
         </Grid>
       </form>
