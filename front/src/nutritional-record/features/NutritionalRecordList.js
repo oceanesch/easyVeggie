@@ -4,16 +4,19 @@ import { useEffect, useState } from 'react';
 import { getNutritionalRecords } from '../../api-client/nutritional-record/nutritional-record.api';
 import NutritionalRecordCard from '../UI/NutritionalRecordCard';
 
-const NutritionalRecordsList = () => {
+const NutritionalRecordsList = (props) => {
+  const filter = props.searchedFood;
+  console.log(filter);
+
   const [foodList, setFoodList] = useState([]);
 
   useEffect(() => {
-    getNutritionalRecords()
+    getNutritionalRecords({filter})
       .then((records) => {
         setFoodList(records);
       })
       .catch((error) => console.error(error));
-  }, []);
+  }, [filter]);
 
   return (
     <StyledEngineProvider injectFirst>

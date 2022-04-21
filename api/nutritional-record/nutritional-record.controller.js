@@ -1,6 +1,10 @@
 const NutritionalRecord = require('./nutritional-record.model');
 
 exports.getNutritionalRecords = (req, res, next) => {
+ 
+  const { filter } = req.query;
+  console.log(filter)
+
   NutritionalRecord.find()
     .then((records) => {
       res.status(200).json({

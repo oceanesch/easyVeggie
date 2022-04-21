@@ -5,9 +5,9 @@ export async function getNutritionalRecord(foodId) {
     .nutritionalRecord;
 }
 
-export async function getNutritionalRecords() {
-  return (await httpClient.get('admin/nutritionalrecord')).data
-    .nutritionalRecords;
+export async function getNutritionalRecords(filter) {
+  return (await httpClient.get('admin/nutritionalrecord', { params: filter}))
+    .data.nutritionalRecords;
 }
 
 export async function createNutritionalRecord(data) {

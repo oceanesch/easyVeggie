@@ -25,6 +25,12 @@
 }
 
 .searchSection {
+  display: flex;
+  justify-content: center;
+  padding: 3rem 0rem;
+}
+
+.searchBar {
   width: 100%;
   display: flex;
   justify-content: center;
