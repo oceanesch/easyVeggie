@@ -3,15 +3,15 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import { useEffect, useState } from 'react';
 import { getNutritionalRecords } from '../../api-client/nutritional-record/nutritional-record.api';
 import NutritionalRecordCard from '../UI/NutritionalRecordCard';
+import * as changeCase from 'change-case';
 
 const NutritionalRecordsList = (props) => {
-  const filter = props.searchedFood;
-  console.log(filter);
+  const filter = changeCase.capitalCase(props.searchedFood)
 
   const [foodList, setFoodList] = useState([]);
 
   useEffect(() => {
-    getNutritionalRecords({filter})
+    getNutritionalRecords({ filter })
       .then((records) => {
         setFoodList(records);
       })
