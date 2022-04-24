@@ -1,0 +1,32 @@
+import * as Yup from 'yup';
+
+export const nutritionalRecordValidator = Yup.object({
+    foodName: Yup.string().required('Required.'),
+    foodDescription: Yup.string().required('Required.'),
+    foodQuantity: Yup.string().required('Required.'),
+    // foodImage: Yup.string().required('Required.'),
+
+    calories: Yup.string().required('Required.'),
+    totalFat: Yup.string().required('Required.'),
+    saturatedFat: Yup.string().required('Required.'),
+    unsaturatedFat: Yup.string().required('Required.'),
+    transFat: Yup.string().required('Required.'),
+    cholesterol: Yup.string().required('Required.'),
+    totalCarbs: Yup.string().required('Required.'),
+    dietaryFiber: Yup.string().required('Required.'),
+    totalSugars: Yup.string().required('Required.'),
+    protein: Yup.string().required('Required.'),
+    sodium: Yup.string().required('Required.'),
+    iron: Yup.string().required('Required.'),
+    potassium: Yup.string().required('Required.'),
+    calcium: Yup.string().required('Required.'),
+    magnesium: Yup.string().required('Required.'),
+    zinc: Yup.string().required('Required.'),
+    vitaminA: Yup.string().required('Required.'),
+    vitaminB6: Yup.string().required('Required.'),
+    vitaminB12: Yup.string().required('Required.'),
+    vitaminC: Yup.string().required('Required.'),
+    vitaminD: Yup.string().required('Required.'),
+    vitaminE: Yup.string().required('Required.'),
+    vitaminK: Yup.string().required('Required.'),
+  })

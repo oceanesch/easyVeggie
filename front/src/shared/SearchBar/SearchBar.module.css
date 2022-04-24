@@ -1,9 +1,12 @@
 .searchBar {
   background-color: white;
-  width: 50%;
   border-radius: 3rem;
 }
-
+@media (min-width: 950px) {
+  .searchBar {
+    width: 50%;
+  }
+}
 .outlinedSearchBar {
   border-radius: 3rem;
   border: solid 2px #64825e;

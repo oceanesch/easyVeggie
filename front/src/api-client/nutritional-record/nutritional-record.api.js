@@ -5,11 +5,19 @@ export async function getNutritionalRecord(foodId) {
     .nutritionalRecord;
 }
 
-export async function getNutritionalRecords() {
-  return (await httpClient.get('admin/nutritionalrecord')).data
-    .nutritionalRecords;
+export async function getNutritionalRecords(filter) {
+  return (await httpClient.get('admin/nutritionalrecord', { params: filter}))
+    .data.nutritionalRecords;
 }
 
 export async function createNutritionalRecord(data) {
   return await httpClient.post('admin/nutritionalrecord', data);
+}
+
+export async function deleteNutritionalRecord(foodId) {
+  return await httpClient.delete(`admin/nutritionalrecord/${foodId}`);
+}
+
+export async function editNutritionalRecord(foodId, data) {
+  return await httpClient.patch(`admin/nutritionalrecord/${foodId}`, data);
 }

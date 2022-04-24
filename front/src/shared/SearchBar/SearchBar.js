@@ -2,7 +2,11 @@ import { TextField, InputAdornment } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import classes from './SearchBar.module.css';
 
-export const SearchBar = () => {
+export const SearchBar = (props) => {
+  const onChangeHandler = (event) => {
+    props.onChange(event.target.value);
+  };
+
   return (
     <TextField
       id="search-bar"
@@ -17,6 +21,8 @@ export const SearchBar = () => {
         className: classes.outlinedSearchBar,
       }}
       className={classes.searchBar}
+      onChange={onChangeHandler}
+      value={props.searchedFood}
     />
   );
 };

@@ -2,12 +2,12 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 0;
+  margin: 1rem 0;
 }
 
 .mainTitle {
   font-family: 'Yuji Syuku', serif;
-  font-size: 3.5rem;
+  font-size: 1.9rem;
   color: #64825e;
   text-align: center;
   padding: 1.5rem 0rem;
@@ -15,9 +15,18 @@
 
 .subTitle {
   font-family: 'Yuji Syuku', serif;
-  font-size: 1.5rem;
+  font-size: 1.1rem;
   color: #64825e;
   padding: 1rem;
+}
+
+@media (min-width: 950px) {
+  .mainTitle {
+    font-size: 3.5rem;
+  }
+  .subTitle {
+    font-size: 1.5rem;
+  }
 }
 
 .noLink {
@@ -25,10 +34,15 @@
 }
 
 .searchSection {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.searchBar {
   width: 100%;
   display: flex;
   justify-content: center;
-  padding: 3rem 0rem;
 }
 
 .filterSelect {
@@ -45,6 +59,12 @@
 
 .filterSection fieldset {
   border-radius: 50px;
+}
+
+.actionSection {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 2rem;
 }
 
 .mainText {

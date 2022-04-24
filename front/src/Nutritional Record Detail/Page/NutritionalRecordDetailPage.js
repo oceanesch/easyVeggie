@@ -7,17 +7,17 @@ import { useEffect, useState } from 'react';
 import { getNutritionalRecord } from '../../api-client/nutritional-record/nutritional-record.api';
 
 const NutritionalRecordDetailPage = () => {
-  const params = useParams();
+  const { foodId } = useParams();
 
   const [foodData, setFoodData] = useState({});
 
   useEffect(() => {
-    getNutritionalRecord(params.foodId)
+    getNutritionalRecord(foodId)
       .then((record) => {
         setFoodData(record);
       })
       .catch((error) => console.error(error));
-  }, [params.foodId]);
+  }, [foodId]);
 
   return (
     <StyledEngineProvider injectFirst>
@@ -33,7 +33,7 @@ const NutritionalRecordDetailPage = () => {
           </Typography>
         </Grid>
       </Grid>
-      <NutritionalRecordMainSection foodData={foodData}/>
+      <NutritionalRecordMainSection foodData={foodData} />
     </StyledEngineProvider>
   );
 };

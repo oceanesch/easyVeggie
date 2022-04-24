@@ -1,0 +1,20 @@
+.cancelButton {
+    background-color: #e78200;
+    color: white;
+    font-size: 1rem;
+    font-family: 'Yuji Syuku';
+    width: 7rem;
+    height: 2rem;
+  }
+
+  @media (min-width: 950px) {
+    .cancelButton {
+      height: auto;
+    }
+  }
+  
+  .cancelButton:hover {
+    background-color: white;
+    border: solid #e78200;
+    color: #e78200;
+  }
