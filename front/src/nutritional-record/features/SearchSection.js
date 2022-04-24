@@ -2,6 +2,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import { Grid, Typography } from '@mui/material';
 import { MainButton, SearchBar } from '../../shared';
 import sharedClasses from '../../shared/sharedCss.module.css';
+import classes from './SearchSection.module.css';
 import FoodSelect from '../UI/FoodSelect';
 import NutrientSelect from '../UI/NutrientSelect';
 import { useContext, useState } from 'react';
@@ -19,7 +20,7 @@ const SearchSection = (props) => {
 
   const searchSubmitHandler = (event) => {
     event.preventDefault();
-    searchCtx.onSubmitHandler(searchedFood)
+    searchCtx.onSubmitHandler(searchedFood);
   };
 
   const resetSearchFormHandler = () => {
@@ -32,6 +33,9 @@ const SearchSection = (props) => {
         <Grid container className={sharedClasses.searchSection}>
           <Grid item className={sharedClasses.searchBar}>
             <SearchBar searchedFood={searchedFood} onChange={onChangeHandler} />
+          </Grid>
+          <Grid item className={classes.responsiveFilterSectionButton}>
+            <MainButton>Filter</MainButton>
           </Grid>
           <Grid container className={sharedClasses.filterSection}>
             <Grid item>

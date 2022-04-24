@@ -8,7 +8,11 @@ const NutrientSelect = () => {
 
   return (
     <StyledEngineProvider injectFirst>
-      <FormControl fullWidth className={sharedClasses.filterSelect}>
+      <FormControl
+        fullWidth
+        className={sharedClasses.filterSelect}
+        size="small"
+      >
         <InputLabel id="select-nutrient-label">Select a nutrient</InputLabel>
         <Select
           labelId="select-nutrient-label"

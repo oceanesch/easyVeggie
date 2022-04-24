@@ -8,7 +8,11 @@ const FoodSelect = () => {
 
   return (
     <StyledEngineProvider injectFirst>
-      <FormControl fullWidth className={sharedClasses.filterSelect}>
+      <FormControl
+        fullWidth
+        className={sharedClasses.filterSelect}
+        size="small"
+      >
         <InputLabel id="select-category-food-label">
           Select a category of food
         </InputLabel>

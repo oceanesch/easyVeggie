@@ -1,0 +1,10 @@
+.responsiveFilterSectionButton {
+    display: block;
+    margin: 1rem;
+}
+
+@media (min-width: 950px) {
+    .responsiveFilterSectionButton {
+        display: none;
+    }
+}
