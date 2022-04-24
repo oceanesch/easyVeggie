@@ -1,12 +1,11 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-// const multer = require('multer');
+
 const nutritionalRecordRoutes = require('./nutritional-record/nutritional-record.router');
 
 const app = express();
 
-// app.use(multer({ dest: 'images' }).single('image'));
 app.use(bodyParser.json());
 app.use(
   bodyParser.urlencoded({

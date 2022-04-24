@@ -1,10 +1,12 @@
+const fs = require('fs-extra');
 const NutritionalRecord = require('./nutritional-record.model');
 
-exports.getNutritionalRecords =(req, res, next) => {
+exports.getNutritionalRecords = (req, res, next) => {
   const { filter } = req.query;
-  
+
   if (filter) {
-    NutritionalRecord.find({ foodName: filter }).exec()
+    NutritionalRecord.find({ foodName: filter })
+      .exec()
       .then((records) => {
         res.status(200).json({
           message: 'Nutritional records successfully fetched.',
@@ -40,29 +42,23 @@ exports.getNutritionalRecord = (req, res, next) => {
     .catch((error) => console.error(error));
 };
 
-exports.addNewNutritionalRecord = (req, res, next) => {
-  const newNutritionalRecord = new NutritionalRecord(req.body);
-  newNutritionalRecord
-    .save()
-    .then(() => {
-      res.status(200).json({ message: 'New nutritional record added.' });
-    })
-    .then(() => {
-      const foodId = newNutritionalRecord._id.toString();
-      console.log(foodId);
-      const foodImage = req.file;
-      foodImage.filename = foodId;
+exports.addNewNutritionalRecord = async (req, res, next) => {
+  try {
+    // save nutritional record
+    const newNutritionalRecord = new NutritionalRecord(req.body);
+    const nutritionalRecord = await newNutritionalRecord.save();
 
-      // let foodImage;
+    // move image out of temporary folder with new name
+    const nutritionalRecordId = nutritionalRecord._id.toString();
+    const imageSourcePath = req.file.path;
+    const imageDestinationPath = `public/images/nutritional-records/${nutritionalRecordId}`;
+    await fs.move(imageSourcePath, imageDestinationPath);
 
-      // foodImage = req.file;
-      // foodImage.filename = foodId;
-      // foodImage.destination = './public/images';
-      // console.log(foodImage);
-    })
-    .catch((error) => {
-      console.error(error);
-    });
+    // send response to user
+    res.status(200).json({ message: 'New nutritional record added.' });
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 exports.deleteNutritionalRecord = async (req, res, next) => {
