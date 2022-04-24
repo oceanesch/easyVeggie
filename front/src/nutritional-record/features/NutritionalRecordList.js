@@ -5,11 +5,12 @@ import { getNutritionalRecords } from '../../api-client/nutritional-record/nutri
 import NutritionalRecordCard from '../UI/NutritionalRecordCard';
 import * as changeCase from 'change-case';
 import SearchContext from '../../store/search-context';
+import { getImageUrl } from '../helpers/get-image-url';
 
 const NutritionalRecordsList = (props) => {
   const searchCtx = useContext(SearchContext);
 
-  const searchedFood = searchCtx.searchedFood
+  const searchedFood = searchCtx.searchedFood;
 
   const filter = changeCase.capitalCase(searchedFood);
 
@@ -31,7 +32,7 @@ const NutritionalRecordsList = (props) => {
             <NutritionalRecordCard
               id={item._id}
               name={item.foodName}
-              image={item.foodImage}
+              image={getImageUrl(item._id)}
             />
           </Grid>
         );

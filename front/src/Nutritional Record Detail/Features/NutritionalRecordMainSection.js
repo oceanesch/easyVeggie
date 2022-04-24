@@ -3,6 +3,7 @@ import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import classes from './NutritionalRecordMainSection.module.css';
 import NutritionalRecordArray from '../UI/NutritionalRecordArray';
+import { getImageUrl } from '../../nutritional-record/helpers/get-image-url';
 
 const NutritionalRecordMainSection = (props) => {
   return (
@@ -11,7 +12,7 @@ const NutritionalRecordMainSection = (props) => {
         <Grid item>
           <img
             alt={props.foodData.foodName}
-            src={props.foodData.foodImage}
+            src={getImageUrl(props.foodData._id)}
             className={classes.foodDetailImage}
           />
         </Grid>

@@ -41,7 +41,6 @@ const NutritionRecordForm = (props) => {
       foodName: `${nutrientRecord.foodName || ''}`,
       foodDescription: `${nutrientRecord.foodDescription || ''}`,
       foodQuantity: `${nutrientRecord.foodQuantity || ''}`,
-      foodImage: `${nutrientRecord.foodImage || ''}`,
       //macroNutrition
       calories: `${nutrientRecord.calories || ''}`,
       totalFat: `${nutrientRecord.totalFat || ''}`,
@@ -124,17 +123,6 @@ const NutritionRecordForm = (props) => {
             helperText={
               formik.touched.foodQuantity && formik.errors.foodQuantity
             }
-          />
-          <TextField
-            variant="outlined"
-            margin="normal"
-            id="foodImage"
-            name="foodImage"
-            label="Address URL of the food's image"
-            onChange={formik.handleChange}
-            value={formik.values.foodImage}
-            error={formik.touched.foodImage && Boolean(formik.errors.foodImage)}
-            helperText={formik.touched.foodImage && formik.errors.foodImage}
           />
           <Box
             container
