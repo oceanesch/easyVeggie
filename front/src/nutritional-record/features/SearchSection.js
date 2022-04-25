@@ -11,6 +11,7 @@ import SearchContext from '../../store/search-context';
 
 const SearchSection = (props) => {
   const [searchedFood, setSearchFood] = useState('');
+  const [openFilterSection, setOpenFilterSection] = useState(false);
 
   const searchCtx = useContext(SearchContext);
 
@@ -27,6 +28,10 @@ const SearchSection = (props) => {
     setSearchFood('');
   };
 
+  const toggleFilterSectionHandler = () => {
+    setOpenFilterSection(!openFilterSection);
+  };
+
   return (
     <StyledEngineProvider injectFirst>
       <form onSubmit={searchSubmitHandler}>
@@ -35,22 +40,44 @@ const SearchSection = (props) => {
             <SearchBar searchedFood={searchedFood} onChange={onChangeHandler} />
           </Grid>
           <Grid item className={classes.responsiveFilterSectionButton}>
-            <MainButton>Filter</MainButton>
+            <MainButton onClick={toggleFilterSectionHandler}>Filter</MainButton>
           </Grid>
-          <Grid container className={sharedClasses.filterSection}>
-            <Grid item>
-              <Typography component="h2" className={sharedClasses.subTitle}>
-                FILTER BY CATEGORY OF FOOD
-              </Typography>
-              <FoodSelect />
+          <Grid
+              container
+              className={`${sharedClasses.filterSection} ${classes.filterSection}`}
+            >
+              <Grid item>
+                <Typography component="h2" className={sharedClasses.subTitle}>
+                  FILTER BY CATEGORY OF FOOD
+                </Typography>
+                <FoodSelect />
+              </Grid>
+              <Grid item>
+                <Typography component="h2" className={sharedClasses.subTitle}>
+                  FILTER BY NUTRIENT
+                </Typography>
+                <NutrientSelect />
+              </Grid>
             </Grid>
-            <Grid item>
-              <Typography component="h2" className={sharedClasses.subTitle}>
-                FILTER BY NUTRIENT
-              </Typography>
-              <NutrientSelect />
+          {openFilterSection && (
+            <Grid
+              container
+              className={`${sharedClasses.filterSection} ${classes.responsiveFilterSection}`}
+            >
+              <Grid item>
+                <Typography component="h2" className={sharedClasses.subTitle}>
+                  FILTER BY CATEGORY OF FOOD
+                </Typography>
+                <FoodSelect />
+              </Grid>
+              <Grid item>
+                <Typography component="h2" className={sharedClasses.subTitle}>
+                  FILTER BY NUTRIENT
+                </Typography>
+                <NutrientSelect />
+              </Grid>
             </Grid>
-          </Grid>
+          )}
           <Grid container className={sharedClasses.actionSection}>
             <Grid item>
               <MainButton type="submit">SUBMIT</MainButton>

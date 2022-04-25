@@ -16,7 +16,7 @@ const NutritionalRecordMainSection = (props) => {
             className={classes.foodDetailImage}
           />
         </Grid>
-        <Grid item>
+        <Grid item className={classes.foodDetailArraySection}>
           <Typography component="h5" className={classes.foodDetailArrayTitle}>
             {` NUTRITION FOR: ${props.foodData.foodQuantity}`}
           </Typography>

@@ -1,18 +1,40 @@
 .foodDetailMainSection {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-around;
-  }
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-evenly;
+}
 
+.foodDetailImage {
+  width: 75vw;
+  border-radius: 30px;
+  margin-bottom: 1rem;
+}
+
+.foodDetailArraySection {
+  margin: 0 1rem;
+}
+
+.foodDetailArrayTitle {
+  font-family: 'Yuji Syuku', serif;
+  color: #64825e;
+  font-size: 1.2rem;
+  font-weight: 500;
+}
+
+@media (min-width: 950px) {
+  .foodDetailMainSection {
+    margin: 2rem;
+  }
   .foodDetailImage {
-    width: 45vw;
-    border-radius: 30px;
+    width: 40vw;
+    max-width: 800px;
+    margin-bottom: 0;
   }
-  
+  .foodDetailArraySection {
+    width: 40vw;
+  }
   .foodDetailArrayTitle {
-    font-family: 'Yuji Syuku', serif;
-    color: #64825e;
     font-size: 1.5rem;
-    font-weight: 500;
   }
+}
