@@ -3,7 +3,7 @@
 }
 
 .foodDetailArrayColumn {
-  width: 45%;
+  width: 50%;
 }
 
 .foodDetailArrayItem {
@@ -12,10 +12,20 @@
 
 .foodDetailArrayText {
   font-family: 'Zen Kaku Gothic New', sans-serif;
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   text-align: justify;
 }
 
 .foodDetailArrayNutriValue {
   text-align: right;
+}
+
+@media (min-width: 950px) {
+  .foodDetailArrayColumn {
+    width: 45%;
+  }
+
+  .foodDetailArrayText {
+    font-size: 1.1rem;
+  }
 }

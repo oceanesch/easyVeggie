@@ -12,6 +12,7 @@ export const MainButton = (props) => {
           className={classes.mainButton}
           type={props.type || null}
           component={props.component || null}
+          onClick={props.onClick || null}
         >
           {props.children}
         </Button>

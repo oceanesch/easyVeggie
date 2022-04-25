@@ -21,7 +21,7 @@ const NutritionalRecordCard = (props) => {
             alt="Image of basil leaves"
             className={classes.cardImage}
           />
-          <CardContent>
+          <CardContent className={classes.cardContent}>
             <Typography component="h5" className={classes.cardTitle}>
               {props.name}
             </Typography>

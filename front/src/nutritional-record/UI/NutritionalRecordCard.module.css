@@ -1,21 +1,41 @@
 .card {
   box-sizing: border-box;
-  width: 17rem;
-  height: 15.5rem;
-  margin: 1.5rem;
-  padding: 1.5rem;
+  width: 11rem;
+  height: 11rem;
+  margin: 0.5rem;
+  padding: 1rem;
   border: solid 3px #a4ac9e;
   border-radius: 30px;
 }
 
 .cardImage {
-  height: 9.1rem;
+  height: 5.75rem;
+  border-radius: 10px;
+}
+
+.cardContent {
+  padding-top: 1rem;
 }
 
 .cardTitle {
   font-family: 'Yuji Syuku';
   text-align: center;
-  font-size: 1.3rem;
+  font-size: 0.9rem;
   color: #64825e;
   font-weight: 500;
+}
+
+@media (min-width: 950px) {
+  .card {
+    width: 17rem;
+    height: 15.5rem;
+  }
+
+  .cardImage {
+    height: 9.1rem;
+  }
+
+  .cardTitle {
+    font-size: 1.3rem;
+  }
 }

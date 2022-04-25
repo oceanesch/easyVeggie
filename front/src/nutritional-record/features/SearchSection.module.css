@@ -1,10 +1,22 @@
+.filterSection {
+  display: none;
+}
+
 .responsiveFilterSectionButton {
-    display: block;
-    margin: 1rem;
+  display: block;
+  margin: 1rem;
 }
 
 @media (min-width: 950px) {
-    .responsiveFilterSectionButton {
-        display: none;
-    }
+  .responsiveFilterSectionButton {
+    display: none;
+  }
+
+  .filterSection {
+    display: flex;
+  }
+
+  .responsiveFilterSectionButton {
+      display: none;
+  }
 }
