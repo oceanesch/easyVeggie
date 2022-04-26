@@ -53,3 +53,9 @@
     border-radius: 7px;
     height: 3rem;
   }
+
+  .actionButtonSection {
+    display: flex;
+    justify-content: space-evenly;
+    margin-bottom: 3rem;
+  }

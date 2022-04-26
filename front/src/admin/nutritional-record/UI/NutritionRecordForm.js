@@ -16,8 +16,10 @@ import {
   Input,
   FormControl,
   FormHelperText,
+  Grid,
 } from '@mui/material';
 import { MainButton } from '../../../shared/Button/MainButton';
+import { CancelButton } from '../../../shared/Button/CancelButton';
 import camelCase from 'camelcase';
 import { useState } from 'react';
 import { nutritionalRecordValidator } from '../helpers/nutritional-record-validator';
@@ -71,6 +73,7 @@ const NutritionRecordForm = (props) => {
     onSubmit: async (values) => {
       console.log(values);
       props.onSubmit({ ...values, uploadedImage });
+      formik.resetForm();
     },
   });
 
@@ -232,7 +235,14 @@ const NutritionRecordForm = (props) => {
         <Typography component="h2" className={sharedClasses.subTitle}>
           TAGS
         </Typography>
-        <MainButton type="submit">Submit</MainButton>
+        <Grid container className={classes.actionButtonSection}>
+          <Grid item>
+            <MainButton type="submit">Submit</MainButton>
+          </Grid>
+          <Grid item>
+            <CancelButton>Cancel</CancelButton>
+          </Grid>
+        </Grid>
       </form>
     </StyledEngineProvider>
   );

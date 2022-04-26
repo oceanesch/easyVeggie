@@ -1,4 +1,5 @@
 import { StyledEngineProvider } from '@mui/material/styles';
+import { Link as RouterLink } from 'react-router-dom';
 import sharedClasses from '../../../shared/sharedCss.module.css';
 import { Typography, Grid } from '@mui/material';
 import { SearchBar } from '../../../shared/SearchBar/SearchBar';
@@ -15,7 +16,9 @@ const NutritionRecordListPage = () => {
         <Grid item className={sharedClasses.searchSection}>
           <SearchBar />
         </Grid>
-        <MainButton>ADD A NEW RECORD</MainButton>
+        <RouterLink to="/admin/addnewrecord" className={sharedClasses.noLink}>
+          <MainButton>ADD A NEW RECORD</MainButton>
+        </RouterLink>
       </Grid>
       <NutritionRecordList />
     </StyledEngineProvider>
