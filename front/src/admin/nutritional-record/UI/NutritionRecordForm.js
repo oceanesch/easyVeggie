@@ -34,7 +34,6 @@ const NutritionRecordForm = (props) => {
   const uploadedImageChangeHandler = (event) => {
     event.preventDefault();
     setUploadedImage(event.target.files[0]);
-    console.log(event.target.files[0]);
     setPreviewImage(URL.createObjectURL(event.target.files[0]));
   };
 
@@ -75,6 +74,8 @@ const NutritionRecordForm = (props) => {
       console.log(values);
       props.onSubmit({ ...values, uploadedImage });
       formik.resetForm();
+      setUploadedImage(null);
+      setPreviewImage(null)
     },
   });
 
@@ -240,7 +241,9 @@ const NutritionRecordForm = (props) => {
             <MainButton type="submit">Submit</MainButton>
           </Grid>
           <Grid item>
-            <CancelButton onClick={props.onCancel}>Cancel</CancelButton>
+            <CancelButton onClick={props.onCancel} type="reset">
+              Cancel
+            </CancelButton>
           </Grid>
         </Grid>
       </form>

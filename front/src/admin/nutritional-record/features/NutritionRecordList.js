@@ -1,15 +1,27 @@
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import classes from './NutritionRecordList.module.css';
-import { List } from '@mui/material';
+import {
+  List,
+  Dialog,
+  DialogTitle,
+  DialogContent,
+  DialogContentText,
+  DialogActions,
+} from '@mui/material';
 import NutritionRecordCard from '../UI/NutritionRecordCard';
 import {
   deleteNutritionalRecord,
   getNutritionalRecords,
 } from '../../../api-client/nutritional-record/nutritional-record.api';
+import { CancelButton } from '../../../shared/Button/CancelButton';
+import { MainButton } from '../../../shared';
 
 const NutritionRecordList = () => {
   const [foodList, setFoodList] = useState([]);
+  const [foodId, setFoodId] = useState('');
+  const [openDialog, setOpenDialog] = useState(false);
+
   const navigation = useNavigate();
 
   useEffect(() => {
@@ -20,7 +32,17 @@ const NutritionRecordList = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const deleteRecordHandler = async (foodId) => {
+  const openDeleteModalHandler = (foodId) => {
+    setFoodId(foodId);
+    setOpenDialog(true);
+  };
+
+  const closeDialogHandler = () => {
+    setFoodId('');
+    setOpenDialog(false);
+  };
+
+  const deleteRecordHandler = async () => {
     try {
       const response = await deleteNutritionalRecord(foodId);
       if (response.status !== 200) {
@@ -32,6 +54,8 @@ const NutritionRecordList = () => {
     } catch (error) {
       console.error(error);
     }
+    setFoodId('');
+    setOpenDialog(false);
   };
 
   const editRecordHandler = (foodId) => {
@@ -39,19 +63,34 @@ const NutritionRecordList = () => {
   };
 
   return (
-    <List className={classes.nutritionRecordsList}>
-      {foodList.map((foodItem) => {
-        return (
-          <NutritionRecordCard
-            key={foodItem._id}
-            id={foodItem._id}
-            name={foodItem.foodName}
-            onDelete={deleteRecordHandler}
-            onEdit={editRecordHandler}
-          />
-        );
-      })}
-    </List>
+    <React.Fragment>
+      <List className={classes.nutritionRecordsList}>
+        {foodList.map((foodItem) => {
+          return (
+            <NutritionRecordCard
+              key={foodItem._id}
+              id={foodItem._id}
+              name={foodItem.foodName}
+              onDelete={openDeleteModalHandler}
+              onEdit={editRecordHandler}
+            />
+          );
+        })}
+      </List>
+      <Dialog open={openDialog} onClose={closeDialogHandler}>
+        <DialogContent className={classes.nutritionRecordsListModal}>
+          <DialogTitle>Are you sure ?</DialogTitle>
+          <DialogContentText className={classes.nutritionRecordsListModalContentText}>
+            You are about to delete a nutritional record. Do you want to
+            continue
+          </DialogContentText>
+          <DialogActions>
+            <CancelButton onClick={closeDialogHandler}>Cancel</CancelButton>
+            <MainButton onClick={deleteRecordHandler}>Delete</MainButton>
+          </DialogActions>
+        </DialogContent>
+      </Dialog>
+    </React.Fragment>
   );
 };
 
