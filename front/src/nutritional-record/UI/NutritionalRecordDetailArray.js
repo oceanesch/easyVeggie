@@ -1,8 +1,8 @@
 import { Grid, List, ListItem, Typography } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
-import classes from './NutritionalRecordArray.module.css';
+import classes from './NutritionalRecordDetailArray.module.css';
 
-const NutritionalRecordArray = (props) => {
+const NutritionalRecordDetailArray = (props) => {
   const nutriArray = [
     { name: 'Total Fat', value: props.nutriValue.totalFat },
     { name: 'Saturated Fat', value: props.nutriValue.saturatedFat },
@@ -127,4 +127,4 @@ const NutritionalRecordArray = (props) => {
   );
 };
 
-export default NutritionalRecordArray;
+export default NutritionalRecordDetailArray;

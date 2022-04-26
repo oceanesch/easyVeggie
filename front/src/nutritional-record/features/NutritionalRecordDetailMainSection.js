@@ -1,11 +1,11 @@
 import { Divider, Grid, Typography } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../shared/sharedCss.module.css';
-import classes from './NutritionalRecordMainSection.module.css';
-import NutritionalRecordArray from '../UI/NutritionalRecordArray';
+import classes from './NutritionalRecordDetailMainSection.module.css';
+import NutritionalRecordDetailArray from '../UI/NutritionalRecordDetailArray';
 import { getImageUrl } from '../../nutritional-record/helpers/get-image-url';
 
-const NutritionalRecordMainSection = (props) => {
+const NutritionalRecordDetailMainSection = (props) => {
   return (
     <StyledEngineProvider injectFirst>
       <Grid container className={classes.foodDetailMainSection}>
@@ -24,11 +24,11 @@ const NutritionalRecordMainSection = (props) => {
             {`Calories: ${props.foodData.calories}`}
           </Typography>
           <Divider />
-          <NutritionalRecordArray nutriValue={props.foodData} />
+          <NutritionalRecordDetailArray nutriValue={props.foodData} />
         </Grid>
       </Grid>
     </StyledEngineProvider>
   );
 };
 
-export default NutritionalRecordMainSection;
+export default NutritionalRecordDetailMainSection;

@@ -1,7 +1,7 @@
 import { StyledEngineProvider } from '@mui/material/styles';
 import { Grid, Typography } from '@mui/material';
 import sharedClasses from '../../shared/sharedCss.module.css';
-import NutritionalRecordMainSection from '../Features/NutritionalRecordMainSection';
+import NutritionalRecordDetailMainSection from '../features/NutritionalRecordDetailMainSection';
 import { useParams } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { getNutritionalRecord } from '../../api-client/nutritional-record/nutritional-record.api';
@@ -33,7 +33,7 @@ const NutritionalRecordDetailPage = () => {
           </Typography>
         </Grid>
       </Grid>
-      <NutritionalRecordMainSection foodData={foodData} />
+      <NutritionalRecordDetailMainSection foodData={foodData} />
     </StyledEngineProvider>
   );
 };
