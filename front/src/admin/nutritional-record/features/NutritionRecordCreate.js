@@ -9,7 +9,6 @@ const NutritionRecordCreate = () => {
   const [SuccessSnackBarMessage, setSuccessSnackBarMessage] = useState('');
 
   const onSubmitHandler = async ({ uploadedImage, ...nutritionalRecord }) => {
-    console.log(nutritionalRecord);
     const formData = new FormData();
     Object.entries(nutritionalRecord).forEach(([key, value]) => {
       formData.append(key, value);
