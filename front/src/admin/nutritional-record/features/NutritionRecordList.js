@@ -78,14 +78,17 @@ const NutritionRecordList = () => {
         })}
       </List>
       <Dialog open={openDialog} onClose={closeDialogHandler}>
-        <DialogTitle>Are you sure ?</DialogTitle>
-        <DialogContentText>
-          You are about to delete a nutritional record. Do you want to continue
-        </DialogContentText>
-        <DialogActions>
-          <CancelButton onClick={closeDialogHandler}>Cancel</CancelButton>
-          <MainButton onClick={deleteRecordHandler}>Delete</MainButton>
-        </DialogActions>
+        <DialogContent className={classes.nutritionRecordsListModal}>
+          <DialogTitle>Are you sure ?</DialogTitle>
+          <DialogContentText className={classes.nutritionRecordsListModalContentText}>
+            You are about to delete a nutritional record. Do you want to
+            continue
+          </DialogContentText>
+          <DialogActions>
+            <CancelButton onClick={closeDialogHandler}>Cancel</CancelButton>
+            <MainButton onClick={deleteRecordHandler}>Delete</MainButton>
+          </DialogActions>
+        </DialogContent>
       </Dialog>
     </React.Fragment>
   );
