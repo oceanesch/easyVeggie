@@ -19,6 +19,7 @@ import { MainButton } from '../../../shared';
 
 const NutritionRecordList = () => {
   const [foodList, setFoodList] = useState([]);
+  const [foodId, setFoodId] = useState('');
   const [openDialog, setOpenDialog] = useState(false);
 
   const navigation = useNavigate();
@@ -31,27 +32,34 @@ const NutritionRecordList = () => {
       .catch((error) => console.error(error));
   }, []);
 
-  const deleteRecordHandler = async (foodId) => {
-    // try {
-    //   const response = await deleteNutritionalRecord(foodId);
-    //   if (response.status !== 200) {
-    //     throw new Error('Deleting record failed.');
-    //   } else {
-    //     const updatedList = foodList.filter((record) => record._id !== foodId);
-    //     setFoodList(updatedList);
-    //   }
-    // } catch (error) {
-    //   console.error(error);
-    // }
+  const openDeleteModalHandler = (foodId) => {
+    setFoodId(foodId);
     setOpenDialog(true);
+  };
+
+  const closeDialogHandler = () => {
+    setFoodId('');
+    setOpenDialog(false);
+  };
+
+  const deleteRecordHandler = async () => {
+    try {
+      const response = await deleteNutritionalRecord(foodId);
+      if (response.status !== 200) {
+        throw new Error('Deleting record failed.');
+      } else {
+        const updatedList = foodList.filter((record) => record._id !== foodId);
+        setFoodList(updatedList);
+      }
+    } catch (error) {
+      console.error(error);
+    }
+    setFoodId('');
+    setOpenDialog(false);
   };
 
   const editRecordHandler = (foodId) => {
     navigation(`/admin/editrecord/${foodId}`);
-  };
-
-  const closeDialogHandler = () => {
-    setOpenDialog(false);
   };
 
   return (
@@ -63,7 +71,7 @@ const NutritionRecordList = () => {
               key={foodItem._id}
               id={foodItem._id}
               name={foodItem.foodName}
-              onDelete={deleteRecordHandler}
+              onDelete={openDeleteModalHandler}
               onEdit={editRecordHandler}
             />
           );
@@ -76,7 +84,7 @@ const NutritionRecordList = () => {
         </DialogContentText>
         <DialogActions>
           <CancelButton onClick={closeDialogHandler}>Cancel</CancelButton>
-          <MainButton>Delete</MainButton>
+          <MainButton onClick={deleteRecordHandler}>Delete</MainButton>
         </DialogActions>
       </Dialog>
     </React.Fragment>
