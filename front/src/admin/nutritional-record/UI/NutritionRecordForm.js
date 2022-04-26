@@ -17,6 +17,7 @@ import {
   FormControl,
   FormHelperText,
   Grid,
+  OutlinedInput,
 } from '@mui/material';
 import { MainButton } from '../../../shared/Button/MainButton';
 import { CancelButton } from '../../../shared/Button/CancelButton';
@@ -198,9 +199,8 @@ const NutritionRecordForm = (props) => {
                           </TableCell>
                           <TableCell align="center">
                             <FormControl>
-                              <Input
+                              <OutlinedInput
                                 id={camelCase(item)}
-                                disableUnderline
                                 className={
                                   formik.touched[camelCase(item)] &&
                                   formik.errors[camelCase(item)]
@@ -240,7 +240,7 @@ const NutritionRecordForm = (props) => {
             <MainButton type="submit">Submit</MainButton>
           </Grid>
           <Grid item>
-            <CancelButton>Cancel</CancelButton>
+            <CancelButton onClick={props.onCancel}>Cancel</CancelButton>
           </Grid>
         </Grid>
       </form>
