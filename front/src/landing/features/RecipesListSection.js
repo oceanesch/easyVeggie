@@ -32,20 +32,26 @@ const RecipesListSection = () => {
       recipeMainImage: '/images/landing_page_recipe_image_5.jpg',
     },
   ];
+
   return (
     <StyledEngineProvider injectFirst>
-      <Grid container className={classes.recipesListSection}>
-        <Grid item>
+      <Grid container>
+        <Grid item className={classes.recipesListHeadSection}>
           <Typography component="h1" className={sharedClasses.mainTitle}>
             LATEST RECIPES
           </Typography>
         </Grid>
-        <Grid item>
-          <RecipeCard
-            key={DUMMY_RECIPES_LIST[0].key}
-            recipeTitle={DUMMY_RECIPES_LIST[0].recipeTitle}
-            recipeMainImage={DUMMY_RECIPES_LIST[0].recipeMainImage}
-          />
+        <Grid container className={classes.recipesListCardSection}>
+          {DUMMY_RECIPES_LIST.map((recipe) => {
+            return (
+              <Grid item key={recipe.key}>
+                <RecipeCard
+                  recipeTitle={recipe.recipeTitle}
+                  recipeMainImage={recipe.recipeMainImage}
+                />
+              </Grid>
+            );
+          })}
         </Grid>
       </Grid>
     </StyledEngineProvider>
