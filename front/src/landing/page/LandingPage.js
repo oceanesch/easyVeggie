@@ -4,6 +4,7 @@ import classes from './LandingPage.module.css';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import React from 'react';
 import { Grid, Typography } from '@mui/material';
+import RecipesListSection from '../features/RecipesListSection';
 
 const LandingPage = () => {
   return (
@@ -38,6 +39,9 @@ const LandingPage = () => {
             your food on the planet or on your health.{' '}
           </Typography>
         </Grid>
+      </Grid>
+      <Grid container className={classes.recipesListSection}>
+        <RecipesListSection />
       </Grid>
     </StyledEngineProvider>
   );
