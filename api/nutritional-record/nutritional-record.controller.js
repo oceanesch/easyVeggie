@@ -3,31 +3,17 @@ const NutritionalRecord = require('./nutritional-record.model');
 
 exports.getNutritionalRecords = (req, res, next) => {
   const { filter } = req.query;
-
-  if (filter) {
-    NutritionalRecord.find({ foodName: filter })
-      .exec()
-      .then((records) => {
-        res.status(200).json({
-          message: 'Nutritional records successfully fetched.',
-          nutritionalRecords: records,
-        });
-      })
-      .catch((error) => {
-        console.error(error);
+  NutritionalRecord.find({ foodName: filter })
+    .exec()
+    .then((records) => {
+      res.status(200).json({
+        message: 'Nutritional records successfully fetched.',
+        nutritionalRecords: records,
       });
-  } else {
-    NutritionalRecord.find()
-      .then((records) => {
-        res.status(200).json({
-          message: 'Nutritional records successfully fetched.',
-          nutritionalRecords: records,
-        });
-      })
-      .catch((error) => {
-        console.error(error);
-      });
-  }
+    })
+    .catch((error) => {
+      console.error(error);
+    });
 };
 
 exports.getNutritionalRecord = (req, res, next) => {
