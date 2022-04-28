@@ -6,3 +6,9 @@
   display: flex;
   justify-content: space-evenly;
 }
+
+.recipesListButton {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0;
+}

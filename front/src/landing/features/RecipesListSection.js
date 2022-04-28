@@ -2,6 +2,7 @@ import { Grid, StyledEngineProvider, Typography } from '@mui/material';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import classes from './RecipesListSection.module.css';
 import RecipeCard from '../UI/RecipeCard';
+import { MainButton } from '../../shared/Button/MainButton';
 
 const RecipesListSection = () => {
   // Component will get the recipe's data by fetching it to the DB
@@ -52,6 +53,9 @@ const RecipesListSection = () => {
               </Grid>
             );
           })}
+        </Grid>
+        <Grid container className={classes.recipesListButton}>
+          <MainButton>More</MainButton>
         </Grid>
       </Grid>
     </StyledEngineProvider>
