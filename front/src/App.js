@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import { MainNavigation } from './shared';
-import LandingPage from './Landing Page/Page/LandingPage';
+import LandingPage from './landing/page/LandingPage';
 import AdminLandingPage from './admin/landing-page/pages/LandingPage';
 import NutritionRecordListPage from './admin/nutritional-record/pages/NutritionRecordListPage';
 import NutritionRecordCreatePage from './admin/nutritional-record/pages/NutritionRecordCreatePage';
 import NutritionalRecordPage from './nutritional-record/pages/NutritionalRecordPage';
-import NutritionalRecordDetailPage from './Nutritional Record Detail/Page/NutritionalRecordDetailPage';
+import NutritionalRecordDetailPage from './nutritional-record/pages/NutritionalRecordDetailPage';
 import NutritionRecordUpdatePage from './admin/nutritional-record/pages/NutritionRecordUpdatePage';
 
 function App() {

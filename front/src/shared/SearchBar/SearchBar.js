@@ -10,7 +10,7 @@ export const SearchBar = (props) => {
   return (
     <TextField
       id="search-bar"
-      label="Search everything"
+      label={props.label || 'Search everything'}
       variant="outlined"
       InputProps={{
         endAdornment: (
@@ -20,7 +20,7 @@ export const SearchBar = (props) => {
         ),
         className: classes.outlinedSearchBar,
       }}
-      className={classes.searchBar}
+      className={`${classes.searchBar} ${props.className || ''}`}
       onChange={onChangeHandler}
       value={props.searchedFood}
     />

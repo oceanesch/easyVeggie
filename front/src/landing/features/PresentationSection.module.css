@@ -1,0 +1,36 @@
+.presentationSection {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    margin-top: 3rem;
+  }
+  
+  .presentationSectionImageBox {
+    width: 40vw;
+  }
+  
+  .presentationSectionImage {
+    width: 100%;
+    max-height: 36rem;
+  }
+  
+  .presentationSectionTextArea {
+    width: 40vw;
+  }
+  
+  .presentationSectionTitle {
+    font-family: 'Oooh Baby';
+    font-size: 3rem;
+    color: #64825e;
+    font-weight: 600;
+    text-align: center;
+    margin: 0.7rem 0;
+  }
+  
+  .presentationSectionSubTitle {
+    font-size: 2rem;
+  }
+  
+  .presentationSectionText {
+    font-size: 1.2rem;
+  }

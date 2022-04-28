@@ -1,0 +1,14 @@
+.recipesListHeadSection {
+  margin: 1rem 0 1rem 5rem;
+}
+
+.recipesListCardSection {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.recipesListButton {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0;
+}
