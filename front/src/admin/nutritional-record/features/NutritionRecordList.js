@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import sharedClasses from '../../../shared/sharedCss.module.css';
 import classes from './NutritionRecordList.module.css';
 import {
   List,
@@ -8,6 +9,9 @@ import {
   DialogContent,
   DialogContentText,
   DialogActions,
+  StyledEngineProvider,
+  Grid,
+  Typography,
 } from '@mui/material';
 import NutritionRecordCard from '../UI/NutritionRecordCard';
 import {
@@ -15,10 +19,12 @@ import {
   getNutritionalRecords,
 } from '../../../api-client/nutritional-record/nutritional-record.api';
 import { CancelButton } from '../../../shared/Button/CancelButton';
-import { MainButton } from '../../../shared';
+import { MainButton, SearchBar } from '../../../shared';
 
 const NutritionRecordList = () => {
   const [foodList, setFoodList] = useState([]);
+  const [searchedFoodList, setSearchedFoodList] = useState([]);
+  const [filter, setFilter] = useState('');
   const [foodId, setFoodId] = useState('');
   const [openDialog, setOpenDialog] = useState(false);
 
@@ -62,25 +68,61 @@ const NutritionRecordList = () => {
     navigation(`/admin/editrecord/${foodId}`);
   };
 
+  const onChangeHandler = (searchedFood) => {
+    setFilter(searchedFood);
+    setSearchedFoodList(foodList);
+    const newFoodList = foodList.filter((food) => {
+      const regex = new RegExp(searchedFood, 'gi');
+      return food.foodName.match(regex);
+    });
+    setSearchedFoodList(newFoodList);
+  };
+
   return (
-    <React.Fragment>
+    <StyledEngineProvider injectFirst>
+      <Grid container className={sharedClasses.headSection}>
+        <Typography component="h1" className={sharedClasses.mainTitle}>
+          NUTRITIONAL RECORDS LIST
+        </Typography>
+        <Grid item className={sharedClasses.searchSection}>
+          <SearchBar onChange={onChangeHandler} />
+        </Grid>
+        <RouterLink to="/admin/addnewrecord" className={sharedClasses.noLink}>
+          <MainButton>ADD A NEW RECORD</MainButton>
+        </RouterLink>
+      </Grid>
       <List className={classes.nutritionRecordsList}>
-        {foodList.map((foodItem) => {
-          return (
-            <NutritionRecordCard
-              key={foodItem._id}
-              id={foodItem._id}
-              name={foodItem.foodName}
-              onDelete={openDeleteModalHandler}
-              onEdit={editRecordHandler}
-            />
-          );
-        })}
+        {!filter &&
+          foodList.map((foodItem) => {
+            return (
+              <NutritionRecordCard
+                key={foodItem._id}
+                id={foodItem._id}
+                name={foodItem.foodName}
+                onDelete={openDeleteModalHandler}
+                onEdit={editRecordHandler}
+              />
+            );
+          })}
+        {filter &&
+          searchedFoodList.map((foodItem) => {
+            return (
+              <NutritionRecordCard
+                key={foodItem._id}
+                id={foodItem._id}
+                name={foodItem.foodName}
+                onDelete={openDeleteModalHandler}
+                onEdit={editRecordHandler}
+              />
+            );
+          })}
       </List>
       <Dialog open={openDialog} onClose={closeDialogHandler}>
         <DialogContent className={classes.nutritionRecordsListModal}>
           <DialogTitle>Are you sure ?</DialogTitle>
-          <DialogContentText className={classes.nutritionRecordsListModalContentText}>
+          <DialogContentText
+            className={classes.nutritionRecordsListModalContentText}
+          >
             You are about to delete a nutritional record. Do you want to
             continue
           </DialogContentText>
@@ -90,7 +132,7 @@ const NutritionRecordList = () => {
           </DialogActions>
         </DialogContent>
       </Dialog>
-    </React.Fragment>
+    </StyledEngineProvider>
   );
 };
 
