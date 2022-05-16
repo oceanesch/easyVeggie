@@ -2,6 +2,7 @@ import { Grid, StyledEngineProvider, Typography } from '@mui/material';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import ArticleCard from '../UI/ArticleCard';
 import classes from './ArticlesListSection.module.css';
+import { MainButton } from '../../shared/Button/MainButton';
 
 const DUMMY_ARTICLES_LIST = [
   {
@@ -35,22 +36,29 @@ const ArticlesListSection = () => {
           <Typography component="h1" className={sharedClasses.mainTitle}>
             LATEST RECIPES
           </Typography>
-          </Grid>
-          <Grid container className={classes.articlesListMainSection}>
-            {DUMMY_ARTICLES_LIST.map((article) => {
-              return (
-                <Grid item key={article.key} className={classes.articlesListCardSection}>
+        </Grid>
+        <Grid container className={classes.articlesListMainSection}>
+          {DUMMY_ARTICLES_LIST.map((article) => {
+            return (
+              <Grid
+                item
+                key={article.key}
+                className={classes.articlesListCardSection}
+              >
                 <ArticleCard
                   articleKey={article.key}
                   articleTitle={article.articleTitle}
                   articleMainImage={article.articleMainImage}
                   articleAbstract={article.articleAbstract}
                 />
-                </Grid>
-              );
-            })}
-          </Grid>
+              </Grid>
+            );
+          })}
         </Grid>
+        <Grid container className={classes.articlesListButton}>
+          <MainButton>MORE</MainButton>
+        </Grid>
+      </Grid>
     </StyledEngineProvider>
   );
 };

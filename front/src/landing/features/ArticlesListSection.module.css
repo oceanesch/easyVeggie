@@ -11,3 +11,9 @@
   width: 25vw;
   height: 423px;
 }
+
+.articlesListButton {
+  display: flex;
+  justify-content: center;
+  margin: 2.5rem 0;
+}
