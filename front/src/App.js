@@ -7,6 +7,7 @@ import NutritionRecordCreatePage from './admin/nutritional-record/pages/Nutritio
 import NutritionalRecordPage from './nutritional-record/pages/NutritionalRecordPage';
 import NutritionalRecordDetailPage from './nutritional-record/pages/NutritionalRecordDetailPage';
 import NutritionRecordUpdatePage from './admin/nutritional-record/pages/NutritionRecordUpdatePage';
+import NotFoundPage from './not-found/NotFoundPage';
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
           path="/admin/editrecord/:foodId"
           element={<NutritionRecordUpdatePage />}
         />
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </div>
   );
