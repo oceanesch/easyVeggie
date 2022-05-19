@@ -3,6 +3,7 @@ import sharedClasses from '../../shared/sharedCss.module.css';
 import classes from './RecipesListSection.module.css';
 import RecipeCard from '../UI/RecipeCard';
 import { MainButton } from '../../shared/Button/MainButton';
+import { Link as RouterLink } from 'react-router-dom';
 
 const RecipesListSection = () => {
   // Component will get the recipe's data by fetching it to the DB
@@ -55,7 +56,9 @@ const RecipesListSection = () => {
           })}
         </Grid>
         <Grid container className={classes.recipesListButton}>
-          <MainButton>More</MainButton>
+          <RouterLink to="/recipes" className={sharedClasses.noLink}>
+            <MainButton>More</MainButton>
+          </RouterLink>
         </Grid>
       </Grid>
     </StyledEngineProvider>
