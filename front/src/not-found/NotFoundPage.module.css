@@ -1,0 +1,56 @@
+.notFoundFirstBlob {
+  width: 500px;
+  height: 500px;
+  background-color: #a4ac9e;
+  position: absolute;
+  border-radius: 230px;
+  left: 10px;
+  bottom: 60px;
+  z-index: -1;
+}
+
+.notFoundSecondBlob {
+  width: 500px;
+  height: 500px;
+  background-color: #fff9f2;
+  border-radius: 250px;
+  position: absolute;
+  right: 30px;
+  top: 190px;
+  z-index: -1;
+}
+
+.notFoundThirdBlob {
+  width: 300px;
+  height: 300px;
+  position: absolute;
+  background-color: #e78200;
+  border-radius: 150px;
+  z-index: -1;
+  left: 400px;
+  top: 200px;
+}
+
+.notFoundMainSection {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  height: 75vh;
+}
+
+.notFoundImageContainer {
+  width: 40vw;
+}
+
+.notFoundImage {
+  width: 100%;
+}
+
+.notFoundTextContainer {
+  width: 40vw;
+}
+
+.notFoundButtonSection {
+  justify-content: center;
+}
