@@ -3,7 +3,7 @@ const NutritionalRecord = require('./nutritional-record.model');
 
 exports.getNutritionalRecords = (req, res, next) => {
   const { filter } = req.query;
-  NutritionalRecord.find({ foodName: filter })
+  NutritionalRecord.find({ filter })
     .exec()
     .then((records) => {
       res.status(200).json({

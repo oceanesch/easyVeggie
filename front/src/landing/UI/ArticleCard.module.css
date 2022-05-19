@@ -1,0 +1,33 @@
+.articleBox {
+  width: 100%;
+  height: 100%;
+}
+
+.articleCard {
+  box-sizing: border-box;
+  padding: 1.5rem;
+  border: 3px solid #a4ac9e;
+  border-radius: 20px;
+}
+
+.articleCardImage {
+  height: 50%;
+  border-radius: 20px;
+}
+
+.articleCardContent {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+}
+
+.articleCardTitle {
+  font-family: 'Yuji Syuku';
+  color: #64825e;
+  font-size: 1.3rem;
+  text-align: left;
+}
+
+.articleCardAbstract {
+}

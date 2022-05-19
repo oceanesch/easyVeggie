@@ -1,0 +1,39 @@
+.footerBoxBackground {
+  background-color: #fff9f2;
+  height: 11rem;
+}
+
+.footerSection {
+  display: flex;
+  align-items: center;
+}
+
+.footerLogoImage {
+  width: 9rem;
+  margin: 1.3rem 0 0 3rem;
+}
+.footerSocialMediaSection {
+  width: 70vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.footerSocialMediaText {
+  font-family: 'Oooh Baby', cursive;
+  font-size: 4rem;
+  color: #a4ac9e;
+}
+
+.footerSocialMediaBox {
+  width: 19rem;
+}
+
+.footerSocialMediaLogoSection {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footerSocialMediaLogo {
+  width: 2rem;
+}
