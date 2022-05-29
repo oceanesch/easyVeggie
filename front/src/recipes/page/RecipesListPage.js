@@ -1,4 +1,5 @@
 import { Grid, StyledEngineProvider, Typography } from '@mui/material';
+import { Footer } from '../../shared';
 import sharedClasses from '.././../shared/sharedCss.module.css';
 import RecipesListSection from '../features/RecipesListSection';
 import SearchSection from '../features/SearchSection';
@@ -13,6 +14,7 @@ const RecipesListPage = () => {
         <SearchSection />
         <RecipesListSection />
       </Grid>
+      <Footer />
     </StyledEngineProvider>
   );
 };
