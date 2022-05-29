@@ -1,0 +1,19 @@
+.recipeCard {
+  height: 600px;
+  width: 400px;
+}
+
+.recipeCardImage {
+  height: 500px;
+}
+
+.recipeCardContent {
+  padding-top: 0.5rem;
+}
+
+.recipeCardTitle {
+  font-family: 'Yuji Syuku';
+  color: #64825e;
+  font-size: 1.3rem;
+  text-align: left;
+}

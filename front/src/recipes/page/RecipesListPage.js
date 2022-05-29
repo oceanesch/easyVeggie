@@ -1,5 +1,6 @@
 import { Grid, StyledEngineProvider, Typography } from '@mui/material';
 import sharedClasses from '.././../shared/sharedCss.module.css';
+import RecipesListSection from '../features/RecipesListSection';
 import SearchSection from '../features/SearchSection';
 
 const RecipesListPage = () => {
@@ -9,7 +10,8 @@ const RecipesListPage = () => {
         <Typography component="h1" className={sharedClasses.mainTitle}>
           RECIPES
         </Typography>
-        <SearchSection/>
+        <SearchSection />
+        <RecipesListSection />
       </Grid>
     </StyledEngineProvider>
   );
