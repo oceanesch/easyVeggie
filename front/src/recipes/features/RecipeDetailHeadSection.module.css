@@ -1,0 +1,22 @@
+.recipeDetailHeadSection {
+  margin: 4rem;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.recipeDetailImageBox {
+  width: 570px;
+  height: 860px;
+}
+
+.recipeDetailImage {
+  width: 100%;
+}
+
+.recipeDetailGeneralInfoBox {
+  width: 45vw;
+}
+
+.servingBox {
+  border: solid #64825e 2px;
+}

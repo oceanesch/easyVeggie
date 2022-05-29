@@ -9,6 +9,7 @@ import NutritionalRecordDetailPage from './nutritional-record/pages/NutritionalR
 import NutritionRecordUpdatePage from './admin/nutritional-record/pages/NutritionRecordUpdatePage';
 import NotFoundPage from './not-found/NotFoundPage';
 import RecipesListPage from './recipes/page/RecipesListPage';
+import RecipeDetailPage from './recipes/page/RecipeDetailPage';
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
         />
         <Route path="/nutritionalrecords" element={<NutritionalRecordPage />} />
         <Route path="/recipes" element={<RecipesListPage />} />
+        <Route path="/recipes/veganquiche" element={<RecipeDetailPage />} />
         <Route path="/admin" element={<AdminLandingPage />} />
         <Route
           path="/admin/nutritionalrecordslist"
