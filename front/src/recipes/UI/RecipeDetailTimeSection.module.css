@@ -1,0 +1,13 @@
+.recipeDetailTimeBox {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+  }
+  
+  .servingBox {
+    border: solid #64825e 2px;
+  }
+  
+  .recipeDetailCookingTimeText {
+    text-align: center;
+  }

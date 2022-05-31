@@ -15,8 +15,26 @@
 
 .recipeDetailGeneralInfoBox {
   width: 45vw;
+  height: 860px;
 }
 
-.servingBox {
-  border: solid #64825e 2px;
+.recipeDetailBox {
+  width: 100%;
+}
+
+.recipeDetailTagSection {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.recipeDetailGeneralInfoSection {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.recipeDetailTimeSection {
+  width: 100%;
 }

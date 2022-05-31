@@ -1,7 +1,8 @@
-import { Box, Grid, StyledEngineProvider, Typography } from '@mui/material';
+import { Grid, StyledEngineProvider, Typography } from '@mui/material';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import classes from './RecipeDetailHeadSection.module.css';
 import { TagCard } from '../../shared';
+import RecipeDetailTimeSection from '../UI/RecipeDetailTimeSection';
 
 const DUMMY_RECIPE_DETAIL = {
   recipeTitle: 'Summer Tomato Vegan Quiche',
@@ -26,59 +27,35 @@ const RecipeDetailHeadSection = () => {
           />
         </Grid>
         <Grid item className={classes.recipeDetailGeneralInfoBox}>
-          <Grid container>
+          <Grid container className={classes.recipeDetailGeneralInfoSection}>
             <Grid item>
               <Typography component="h1" className={sharedClasses.mainTitle}>
                 {DUMMY_RECIPE_DETAIL.recipeTitle}
               </Typography>
             </Grid>
-            <Grid item>
-              {DUMMY_RECIPE_DETAIL.recipeTags.map((tag) => {
-                return <TagCard tagName={tag} />;
-              })}
+            <Grid item className={classes.recipeDetailBox}>
+              <Grid container className={classes.recipeDetailTagSection}>
+                {DUMMY_RECIPE_DETAIL.recipeTags.map((tag, index) => {
+                  return (
+                    <Grid item key={index}>
+                      <TagCard tagName={tag} />
+                    </Grid>
+                  );
+                })}
+              </Grid>
             </Grid>
             <Grid item>
               <Typography component="p" className={sharedClasses.mainText}>
                 {DUMMY_RECIPE_DETAIL.recipeAbstract}
               </Typography>
             </Grid>
-            <Grid item>
-              <Grid container>
-                <Grid item>
-                  <Typography component="h5" className={sharedClasses.subTitle}>
-                    Servings
-                  </Typography>
-                  <Box
-                    className={`${classes.servingBox} ${sharedClasses.mainText}`}
-                  >
-                    {DUMMY_RECIPE_DETAIL.recipeServings}
-                  </Box>
-                </Grid>
-                <Grid item>
-                  <Typography component="h5" className={sharedClasses.subTitle}>
-                    Total time
-                  </Typography>
-                  <Typography component="h6" className={sharedClasses.mainText}>
-                    {DUMMY_RECIPE_DETAIL.recipeTotalTime}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography component="h5" className={sharedClasses.subTitle}>
-                    Prep time
-                  </Typography>
-                  <Typography component="h6" className={sharedClasses.mainText}>
-                    {DUMMY_RECIPE_DETAIL.recipePrepTime}
-                  </Typography>
-                </Grid>
-                <Grid item>
-                  <Typography component="h5" className={sharedClasses.subTitle}>
-                    Cook time
-                  </Typography>
-                  <Typography component="h6" className={sharedClasses.mainText}>
-                    {DUMMY_RECIPE_DETAIL.recipeCookTime}
-                  </Typography>
-                </Grid>
-              </Grid>
+            <Grid item className={classes.recipeDetailBox}>
+              <RecipeDetailTimeSection
+                recipeServings={DUMMY_RECIPE_DETAIL.recipeServings}
+                recipeTotalTime={DUMMY_RECIPE_DETAIL.recipeTotalTime}
+                recipeCookTime={DUMMY_RECIPE_DETAIL.recipeCookTime}
+                recipePrepTime={DUMMY_RECIPE_DETAIL.recipePrepTime}
+              />
             </Grid>
           </Grid>
         </Grid>
