@@ -10,6 +10,7 @@ import NutritionRecordUpdatePage from './admin/nutritional-record/pages/Nutritio
 import NotFoundPage from './not-found/NotFoundPage';
 import RecipesListPage from './recipes/page/RecipesListPage';
 import RecipeDetailPage from './recipes/page/RecipeDetailPage';
+import RecipeCreatePage from './admin/recipe/pages/RecipeCreatePage';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           path="/admin/nutritionalrecordslist"
           element={<NutritionRecordListPage />}
         />
+        <Route path="/admin/addnewrecipe" element={<RecipeCreatePage />} />
         <Route
           path="/admin/addnewrecord"
           element={<NutritionRecordCreatePage />}

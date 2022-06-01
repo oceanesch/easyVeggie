@@ -10,6 +10,7 @@ import ExpandMore from '@mui/icons-material/ExpandMore';
 import Collapse from '@mui/material/Collapse';
 import Box from '@mui/material/Box';
 import classes from './SideMenu.module.css';
+import sharedClasses from '../../shared/sharedCss.module.css';
 
 const SideMenu = () => {
   const [openNestedMenu, setOpenNestedMenu] = useState({
@@ -61,7 +62,9 @@ const SideMenu = () => {
       key: 2,
       primaryName: 'RECIPES',
       nestedList1: 'Recipes list',
+      url1: '/admin/recipeslist',
       nestedList2: 'Add a new recipe',
+      url2: '/admin/addnewrecipe',
       toggleFunction: toggleNestedRecipesHandler,
       state: openNestedMenu.openRecipeNestedMenu,
     },
@@ -102,7 +105,10 @@ const SideMenu = () => {
                   </ListItemButton>
                   <Collapse in={menuItem.state} timeout="auto" unmountOnExit>
                     <List>
-                      <RouterLink to={menuItem.url1}>
+                      <RouterLink
+                        to={menuItem.url1}
+                        className={sharedClasses.noLink}
+                      >
                         <ListItemButton>
                           <ListItemText
                             primary={menuItem.nestedList1}
@@ -111,7 +117,10 @@ const SideMenu = () => {
                           />
                         </ListItemButton>
                       </RouterLink>
-                      <RouterLink to={menuItem.url2}>
+                      <RouterLink
+                        to={menuItem.url2}
+                        className={sharedClasses.noLink}
+                      >
                         <ListItemButton>
                           <ListItemText
                             primary={menuItem.nestedList2}
