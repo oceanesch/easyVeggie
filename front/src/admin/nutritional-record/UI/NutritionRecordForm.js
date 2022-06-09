@@ -2,6 +2,7 @@ import { useFormik } from 'formik';
 import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../../shared/sharedCss.module.css';
 import classes from './NutritionRecordForm.module.css';
+import arraySharedClasses from '../../shared/arraySharedClasses.module.css'
 import {
   Table,
   TableContainer,
@@ -176,13 +177,13 @@ const NutritionRecordForm = (props) => {
                     <TableRow>
                       <TableCell
                         align="center"
-                        className={classes.arrayHeadCell}
+                        className={arraySharedClasses.arrayHeadCell}
                       >
                         {group.name}
                       </TableCell>
                       <TableCell
                         align="center"
-                        className={classes.arrayHeadCell}
+                        className={arraySharedClasses.arrayHeadCell}
                       >
                         Quantity
                       </TableCell>
@@ -194,7 +195,7 @@ const NutritionRecordForm = (props) => {
                         <TableRow key={index} hover>
                           <TableCell
                             align="center"
-                            className={classes.arrayBodyCell}
+                            className={arraySharedClasses.arrayBodyCell}
                           >
                             {item}
                           </TableCell>
@@ -206,7 +207,7 @@ const NutritionRecordForm = (props) => {
                                   formik.touched[camelCase(item)] &&
                                   formik.errors[camelCase(item)]
                                     ? ''
-                                    : classes.arrayInputCell
+                                    : arraySharedClasses.arrayInputCell
                                 }
                                 name={camelCase(item)}
                                 onChange={formik.handleChange}
@@ -236,7 +237,7 @@ const NutritionRecordForm = (props) => {
         <Typography component="h2" className={sharedClasses.subTitle}>
           TAGS
         </Typography>
-        <Grid container className={classes.actionButtonSection}>
+        <Grid container className={arraySharedClasses.actionButtonSection}>
           <Grid item>
             <MainButton type="submit">Submit</MainButton>
           </Grid>

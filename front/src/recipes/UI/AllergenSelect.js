@@ -29,10 +29,10 @@ const AllergenSelect = () => {
             setSelectedAllergen(event.target.value);
           }}
         >
-            <MenuItem value="Soy">Soy</MenuItem>
-            <MenuItem value="Gluten">Gluten</MenuItem>
-            <MenuItem value="Nuts">Nuts</MenuItem>
-            <MenuItem value="Sesame">Sesame</MenuItem>
+            <MenuItem value="soy">Soy</MenuItem>
+            <MenuItem value="gluten">Gluten</MenuItem>
+            <MenuItem value="nuts">Nuts</MenuItem>
+            <MenuItem value="sesame">Sesame</MenuItem>
         </Select>
       </FormControl>
     </StyledEngineProvider>

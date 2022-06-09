@@ -29,12 +29,12 @@ const CookingTimeSelect = () => {
             setSelectedCookingTime(event.target.value);
           }}
         >
-          <MenuItem value={'10 min or less'}>{`10 min or less`}</MenuItem>
-          <MenuItem value={'15 min or less'}>{`15 min or less`}</MenuItem>
-          <MenuItem value={'20 min or less'}>{`20 min or less`}</MenuItem>
-          <MenuItem value={'30 min or less'}>{`30 min or less`}</MenuItem>
-          <MenuItem value={'40 min or less'}>{`40 min or less`}</MenuItem>
-          <MenuItem value={'50 min or less'}>{`50 min or less`}</MenuItem>
+          <MenuItem value={10}>{`10 min or less`}</MenuItem>
+          <MenuItem value={15}>{`15 min or less`}</MenuItem>
+          <MenuItem value={20}>{`20 min or less`}</MenuItem>
+          <MenuItem value={30}>{`30 min or less`}</MenuItem>
+          <MenuItem value={40}>{`40 min or less`}</MenuItem>
+          <MenuItem value={50}>{`50 min or less`}</MenuItem>
         </Select>
       </FormControl>
     </StyledEngineProvider>

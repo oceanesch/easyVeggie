@@ -36,26 +36,26 @@
     margin: 1.5rem;
   }
   
-  .arrayHeadCell {
+  /* .arrayHeadCell {
     font-family: 'Zen Kaku Gothic New', sans-serif;
     font-size: 1.2rem;
     font-weight: bold;
     color: #64825e;
-  }
+  } */
   
-  .arrayBodyCell {
+  /* .arrayBodyCell {
     font-family: 'Zen Kaku Gothic New', sans-serif;
     font-size: 1rem;
-  }
+  } */
   
-  .arrayInputCell {
+  /* .arrayInputCell {
     border: solid 2px #a4ac9e;
     border-radius: 7px;
     height: 3rem;
-  }
+  } */
 
-  .actionButtonSection {
+  /* .actionButtonSection {
     display: flex;
     justify-content: space-evenly;
     margin-bottom: 3rem;
-  }
+  } */

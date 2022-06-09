@@ -29,14 +29,14 @@ const RecipeTypeSelect = () => {
             setSelectedRecipeType(event.target.value);
           }}
         >
-          <MenuItem value={'Breakfast'}>Breakfast</MenuItem>
-          <MenuItem value={'Hot & Cold Beverage'}>Hot & Cold Beverage</MenuItem>
-          <MenuItem value={'Smoothie'}>Smoothie</MenuItem>
-          <MenuItem value={'Side Dish'}>Side Dish</MenuItem>
-          <MenuItem value={'Main Meal'}>Main Meal</MenuItem>
-          <MenuItem value={'Dessert'}>Dessert</MenuItem>
-          <MenuItem value={'Salad'}>Salad</MenuItem>
-          <MenuItem value={'Soup'}>Soup</MenuItem>
+          <MenuItem value={'breakfast'}>Breakfast</MenuItem>
+          <MenuItem value={'beverage'}>Hot & Cold Beverage</MenuItem>
+          <MenuItem value={'smoothie'}>Smoothie</MenuItem>
+          <MenuItem value={'sideDish'}>Side Dish</MenuItem>
+          <MenuItem value={'mainMeal'}>Main Meal</MenuItem>
+          <MenuItem value={'dessert'}>Dessert</MenuItem>
+          <MenuItem value={'salad'}>Salad</MenuItem>
+          <MenuItem value={'soup'}>Soup</MenuItem>
         </Select>
       </FormControl>
     </StyledEngineProvider>
