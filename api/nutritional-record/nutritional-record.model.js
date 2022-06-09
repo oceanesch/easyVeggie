@@ -14,7 +14,6 @@ const nutritionalRecordSchema = new Schema({
     type: String,
     required: true,
   },
-
   calories: {
     type: String,
     required: true,
