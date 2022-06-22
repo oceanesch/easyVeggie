@@ -1,42 +1,33 @@
-import { Grid } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
-import { useContext, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { getNutritionalRecords } from '../../api-client/nutritional-record/nutritional-record.api';
-import NutritionalRecordCard from '../UI/NutritionalRecordCard';
-import * as changeCase from 'change-case';
-import SearchContext from '../../store/search-context';
-import { getImageUrl } from '../helpers/get-image-url';
+import UiNutritionalRecordList from '../UI/UiNutritionalRecordList';
+import NutritionalRecordFilters from './NutritionalRecordFilters';
 
 const NutritionalRecordsList = (props) => {
-  const searchCtx = useContext(SearchContext);
-
-  const searchedFood = searchCtx.searchedFood;
-
-  const filter = changeCase.capitalCase(searchedFood);
-
-  const [foodList, setFoodList] = useState([]);
+  const [nutritionalRecords, setNutritionalRecords] = useState([]);
+  const [nutritionalRecordFilters, setNutritionalRecordFilters] = useState({foodName:'',});
 
   useEffect(() => {
-    getNutritionalRecords({ filter })
+    getNutritionalRecords(nutritionalRecordFilters)
       .then((records) => {
-        setFoodList(records);
+        setNutritionalRecords(records);
       })
       .catch((error) => console.error(error));
-  }, [filter]);
+  }, [nutritionalRecordFilters, props.nutritionalRecordFilters]);
+
+  const onChangeHandler = (filters) => {
+    setNutritionalRecordFilters(filters);
+    props.onChange(filters);
+  };
 
   return (
     <StyledEngineProvider injectFirst>
-      {foodList.map((item) => {
-        return (
-          <Grid item key={item._id}>
-            <NutritionalRecordCard
-              id={item._id}
-              name={item.foodName}
-              image={getImageUrl(item._id)}
-            />
-          </Grid>
-        );
-      })}
+      <NutritionalRecordFilters
+        onChange={onChangeHandler}
+        nutritionalRecordFilters={nutritionalRecordFilters}
+      />
+      <UiNutritionalRecordList nutritionalRecords={nutritionalRecords} />
     </StyledEngineProvider>
   );
 };

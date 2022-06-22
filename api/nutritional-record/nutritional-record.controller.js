@@ -2,8 +2,8 @@ const fs = require('fs-extra');
 const NutritionalRecord = require('./nutritional-record.model');
 
 exports.getNutritionalRecords = (req, res, next) => {
-  const filter  = req.query.filter || '';
-  NutritionalRecord.find({ foodName: { "$regex": filter, "$options": 'i' } })
+  const foodName = req.query.foodName || '';
+  NutritionalRecord.find({ foodName: { $regex: foodName, $options: 'i' } })
     .exec()
     .then((records) => {
       res.status(200).json({

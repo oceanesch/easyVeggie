@@ -2,13 +2,16 @@ import { Typography, Grid } from '@mui/material';
 import { StyledEngineProvider } from '@mui/material/styles';
 import sharedClasses from '../../shared/sharedCss.module.css';
 import classes from './NutritionalRecordPage.module.css';
-import SearchSection from '../features/SearchSection';
 import NutritionalRecordList from '../features/NutritionalRecordList';
-import { useContext } from 'react';
-import SearchContext from '../../store/search-context';
+import { useParams, useSearchParams } from 'react-router-dom';
 
 const NutritionalRecordsPage = () => {
-  const searchCtx = useContext(SearchContext)
+  // const [searchParams, setSearchParams] = useSearchParams();
+  // console.log(searchParams);
+
+  const onChangeHandler = (filters) => {
+    // setSearchParams(filters);
+  };
 
   return (
     <StyledEngineProvider injectFirst>
@@ -16,10 +19,13 @@ const NutritionalRecordsPage = () => {
         <Typography component="h1" className={sharedClasses.mainTitle}>
           NUTRITIONAL RECORDS
         </Typography>
-        <SearchSection />
       </Grid>
       <Grid container className={classes.cardSection}>
-        <NutritionalRecordList searchedFood={searchCtx.searchedFood} />
+        <NutritionalRecordList
+          onChange={onChangeHandler}
+          // nutritionalRecordFilters={searchParams}
+        />
+        {/* <p>coucou {searchParams.foodName}</p> */}
       </Grid>
     </StyledEngineProvider>
   );

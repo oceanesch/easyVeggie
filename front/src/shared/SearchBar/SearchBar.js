@@ -22,7 +22,7 @@ export const SearchBar = (props) => {
       }}
       className={`${classes.searchBar} ${props.className || ''}`}
       onChange={onChangeHandler}
-      value={props.searchedFood}
+      // value={props.searchedNutritionalRecordString}
     />
   );
 };
